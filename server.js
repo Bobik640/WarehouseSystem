@@ -17,38 +17,37 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Подключение к MongoDB Atlas
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/warehouse';
+const mongoURI = process.env.MONGODB_URI;
 
-console.log('🔄 Подключение к MongoDB Atlas...');
+// Функция для определения, доступна ли MongoDB
+function isMongoDBConnected() {
+    return mongoose.connection.readyState === 1; // 1 = подключено
+}
 
-// Функция подключения к MongoDB
-async function connectToDatabase() {
-    try {
-        await mongoose.connect(mongoURI, {
-            serverSelectionTimeoutMS: 10000,
-            socketTimeoutMS: 45000,
-        });
-        
-        console.log('✅ УСПЕХ! MongoDB Atlas подключена!');
+// Подключение к MongoDB
+if (mongoURI) {
+    console.log('🔌 Подключение к MongoDB Atlas...');
+    
+    // САМЫЙ ПРОСТОЙ ВАРИАНТ
+    mongoose.connect(mongoURI)
+    .then(() => {
+        console.log('✅ MongoDB Atlas подключена!');
         console.log(`📁 База данных: ${mongoose.connection.db?.databaseName || 'warehouse'}`);
         console.log(`📍 Хост: ${mongoose.connection.host}`);
         console.log('📊 Режим: облачная база данных');
-        
-        return true;
-    } catch (error) {
+    })
+    .catch(err => {
         console.log('❌ Ошибка подключения к MongoDB Atlas:');
-        console.log(`   Сообщение: ${error.message}`);
+        console.log(`   Сообщение: ${err.message}`);
         console.log('⚠️  Проверьте:');
         console.log('   1. Строку подключения MONGODB_URI в Render');
-        console.log('   2. IP адрес в MongoDB Atlas Network Access');
+        console.log('   2. IP адрес в MongoDB Atlas Network Access (0.0.0.0/0)');
         console.log('   3. Имя пользователя и пароль в Atlas');
         console.log('📝 Переходим в режим работы с данными в памяти');
-        return false;
-    }
+    });
+} else {
+    console.log('⚠️  MONGODB_URI не настроена, работаем в памяти');
 }
-
-// Вызываем подключение
-connectToDatabase();
 
 // Схема и модель для товаров
 const productSchema = new mongoose.Schema({
@@ -93,11 +92,6 @@ app.use((req, res, next) => {
     console.log(`[${new Date().toLocaleTimeString()}] ${req.method} ${req.url}`);
     next();
 });
-
-// Функция для определения, доступна ли MongoDB
-function isMongoDBConnected() {
-    return mongoose.connection.readyState === 1; // 1 = подключено
-}
 
 // 📍 КОРНЕВОЙ МАРШРУТ
 app.get('/', (req, res) => {
