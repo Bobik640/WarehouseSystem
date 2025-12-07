@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 // Подключение к MongoDB Atlas
 const mongoURI = process.env.MONGODB_URI;
 
-// Функция для определения, доступна ли MongoDB
+// Функция проверки подключения
 function isMongoDBConnected() {
     return mongoose.connection.readyState === 1;
 }
@@ -27,37 +27,16 @@ function isMongoDBConnected() {
 // ===================
 // СХЕМА
 // ===================
-let Product;
 const productSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    quantity: {
-        type: Number,
-        required: true,
-        min: 0
-    },
-    category: {
-        type: String,
-        default: "Разное",
-        trim: true
-    },
-    price: {
-        type: Number,
-        default: 0,
-        min: 0
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    lastUpdated: {
-        type: Date,
-        default: Date.now
-    }
+    name: { type: String, required: true, trim: true },
+    quantity: { type: Number, required: true, min: 0 },
+    category: { type: String, default: "Разное", trim: true },
+    price: { type: Number, default: 0, min: 0 },
+    createdAt: { type: Date, default: Date.now },
+    lastUpdated: { type: Date, default: Date.now }
 });
+
+let Product = null;
 
 // =======================
 // КОННЕКТ К БАЗЕ
@@ -67,10 +46,7 @@ if (mongoURI) {
     console.log("🔌 Подключение к MongoDB Atlas...");
 
     mongoose
-        .connect(mongoURI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        })
+        .connect(mongoURI)
         .then(() => {
             console.log("✅ MongoDB Atlas подключена!");
             Product = mongoose.model("Product", productSchema);
@@ -80,6 +56,7 @@ if (mongoURI) {
             console.log("   " + err.message);
             console.log("⚠ Используем режим памяти");
         });
+
 } else {
     console.log("⚠ MONGODB_URI не настроена — работаем в памяти");
 }
@@ -90,7 +67,9 @@ if (mongoURI) {
 let inMemoryProducts = [];
 let nextId = 1;
 
-// Лог запросов
+// =====================
+// LOG
+// =====================
 app.use((req, res, next) => {
     console.log(`[${new Date().toLocaleTimeString()}] ${req.method} ${req.url}`);
     next();
@@ -121,14 +100,14 @@ app.get("/api/products", async (req, res) => {
                 success: true,
                 count: products.length,
                 data: products,
-                source: "mongodb",
+                source: "mongodb"
             });
         } else {
             return res.json({
                 success: true,
                 count: inMemoryProducts.length,
                 data: inMemoryProducts,
-                source: "memory",
+                source: "memory"
             });
         }
     } catch (err) {
@@ -143,7 +122,7 @@ app.post("/api/products", async (req, res) => {
             name: req.body.name?.trim(),
             quantity: req.body.quantity,
             category: req.body.category?.trim() || "Разное",
-            price: req.body.price || 0,
+            price: req.body.price || 0
         };
 
         if (isMongoDBConnected() && Product) {
@@ -180,7 +159,7 @@ app.delete("/api/products/:id", async (req, res) => {
 
             return res.json({ success: true, deleted, source: "mongodb" });
         } else {
-            const idx = inMemoryProducts.findIndex(p => p._id == req.params.id);
+            const idx = inMemoryProducts.findIndex((p) => p._id == req.params.id);
             if (idx === -1)
                 return res.status(404).json({ success: false, error: "Не найден" });
 
