@@ -1,0 +1,17 @@
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\obj\Debug\net10.0-windows\WarehouseClient.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\obj\Debug\net10.0-windows\WarehouseClient.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\obj\Debug\net10.0-windows\WarehouseClient.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\obj\Debug\net10.0-windows\WarehouseClient.AssemblyInfo.cs
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\obj\Debug\net10.0-windows\WarehouseClient.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\bin\Debug\net10.0-windows\WarehouseClient.exe
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\bin\Debug\net10.0-windows\WarehouseClient.deps.json
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\bin\Debug\net10.0-windows\WarehouseClient.runtimeconfig.json
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\bin\Debug\net10.0-windows\WarehouseClient.dll
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\bin\Debug\net10.0-windows\WarehouseClient.pdb
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\bin\Debug\net10.0-windows\Newtonsoft.Json.dll
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\obj\Debug\net10.0-windows\Warehous.228388BE.Up2Date
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\obj\Debug\net10.0-windows\WarehouseClient.dll
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\obj\Debug\net10.0-windows\refint\WarehouseClient.dll
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\obj\Debug\net10.0-windows\WarehouseClient.pdb
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\obj\Debug\net10.0-windows\WarehouseClient.genruntimeconfig.cache
+C:\Users\user\Desktop\WarehouseSystem\WarehouseClient\obj\Debug\net10.0-windows\ref\WarehouseClient.dll
