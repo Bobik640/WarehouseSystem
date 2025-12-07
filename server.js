@@ -3,13 +3,13 @@ const express = require('express');
 const cors = require('cors');
 
 // ====================
-// WAREHOUSE API WITH MONGODB
+// WAREHOUSE API WITH MONGODB ATLAS
 // ====================
 
 console.log('🔧 Загрузка Warehouse API с MongoDB Atlas...');
 
 const app = express();
-const PORT = process.env.PORT || 3002; // Используем порт из переменной окружения
+const PORT = process.env.PORT || 3002;
 
 // Middleware
 app.use(cors());
@@ -19,16 +19,17 @@ app.use(express.urlencoded({ extended: true }));
 // Подключение к MongoDB Atlas
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/warehouse';
 
+console.log('🔄 Подключение к MongoDB Atlas...');
+
 // Функция подключения к MongoDB
 async function connectToDatabase() {
     try {
-        // Используем новые настройки подключения
         await mongoose.connect(mongoURI, {
-            serverSelectionTimeoutMS: 5000, // 5 секунд таймаут
-            socketTimeoutMS: 45000, // 45 секунд таймаут сокета
+            serverSelectionTimeoutMS: 10000,
+            socketTimeoutMS: 45000,
         });
         
-        console.log('✅ MongoDB Atlas подключена успешно!');
+        console.log('✅ УСПЕХ! MongoDB Atlas подключена!');
         console.log(`📁 База данных: ${mongoose.connection.db?.databaseName || 'warehouse'}`);
         console.log(`📍 Хост: ${mongoose.connection.host}`);
         console.log('📊 Режим: облачная база данных');
@@ -103,6 +104,7 @@ app.get('/', (req, res) => {
     const mongoStatus = isMongoDBConnected() ? '🟢 ПОДКЛЮЧЕНА' : '🔴 ОТКЛЮЧЕНА';
     const mongoStatusClass = isMongoDBConnected() ? 'connected' : 'disconnected';
     const dbName = isMongoDBConnected() ? (mongoose.connection.db?.databaseName || 'warehouse') : 'Память';
+    const mongoURIInfo = process.env.MONGODB_URI ? 'Настроена' : 'Не настроена';
     
     res.send(`
         <!DOCTYPE html>
@@ -119,6 +121,7 @@ app.get('/', (req, res) => {
                 .endpoint { background: #f8f9fa; padding: 15px; margin: 10px 0; border-left: 4px solid #3498db; }
                 code { background: #2c3e50; color: white; padding: 2px 6px; border-radius: 3px; }
                 .info-box { background: #e8f4f8; padding: 15px; border-radius: 5px; margin: 15px 0; }
+                .status-info { background: #fff3cd; padding: 10px; border-radius: 5px; margin: 10px 0; }
             </style>
         </head>
         <body>
@@ -127,6 +130,12 @@ app.get('/', (req, res) => {
                 
                 <div class="mongo-status ${mongoStatusClass}">
                     <strong>MongoDB Atlas статус:</strong> ${mongoStatus}
+                </div>
+                
+                <div class="status-info">
+                    <p><strong>🔧 Конфигурация:</strong></p>
+                    <p><strong>MONGODB_URI:</strong> ${mongoURIInfo}</p>
+                    <p><strong>Режим работы:</strong> ${isMongoDBConnected() ? 'Облачная база' : 'Локальная память'}</p>
                 </div>
                 
                 <div class="info-box">
@@ -549,10 +558,11 @@ app.listen(PORT, () => {
     console.log('='.repeat(60));
     console.log(`📍 Render URL: ${process.env.RENDER_EXTERNAL_URL || 'https://warehousesystem-zljh.onrender.com'}`);
     console.log(`📍 Локальный порт: ${PORT}`);
-    console.log(`📍 API: ${process.env.RENDER_EXTERNAL_URL || 'http://localhost:' + PORT}/api/products`);
+    console.log(`📍 API Endpoint: ${process.env.RENDER_EXTERNAL_URL || 'http://localhost:' + PORT}/api/products`);
     console.log('='.repeat(60));
     console.log(`📊 MongoDB статус: ${isMongoDBConnected() ? '🟢 ПОДКЛЮЧЕНА' : '🔴 ОТКЛЮЧЕНА'}`);
     console.log(`📁 База данных: ${isMongoDBConnected() ? (mongoose.connection.db?.databaseName || 'warehouse') : 'Память'}`);
+    console.log(`🔗 MONGODB_URI: ${process.env.MONGODB_URI ? 'Настроена' : 'Не настроена'}`);
     console.log('='.repeat(60));
     console.log('📝 ДЛЯ ОСТАНОВКИ: Ctrl + C');
     console.log('='.repeat(60));
