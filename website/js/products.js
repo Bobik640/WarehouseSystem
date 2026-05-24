@@ -26,9 +26,7 @@ async function loadProducts() {
         }
 
         // ПОКАЗЫВАЕМ ТОВАРЫ
-        displayProducts(
-            AppState.products
-        );
+        applyFilters();
 
         // ОБНОВЛЯЕМ СТАТИСТИКУ
         updateStats();
@@ -106,6 +104,57 @@ function displayProducts(products){
         '</div>';
 
     return;
+}
+
+/* ===== FILTER PRODUCTS ===== */
+
+function applyFilters(){
+
+    const searchInput =
+        document.getElementById(
+            'searchInput'
+        );
+
+    const categoryFilter =
+        document.getElementById(
+            'categoryFilter'
+        );
+
+    const searchValue =
+        searchInput.value
+        .toLowerCase()
+        .trim();
+
+    const selectedCategory =
+        categoryFilter.value;
+
+    let filteredProducts =
+        AppState.products.filter(product => {
+
+            const matchesSearch =
+
+                product.name
+                .toLowerCase()
+                .includes(searchValue);
+
+            const matchesCategory =
+
+                selectedCategory === 'all'
+
+                ||
+
+                product.category ===
+                selectedCategory;
+
+            return (
+                matchesSearch &&
+                matchesCategory
+            );
+        });
+
+    displayProducts(
+        filteredProducts
+    );
 }
 
 for(var i = 0; i < products.length; i++){
@@ -2458,3 +2507,39 @@ function enableEditMode(enable){
 
 window.enableEditMode =
     enableEditMode;
+
+/* ===== FILTER EVENTS ===== */
+
+document.addEventListener(
+
+    'DOMContentLoaded',
+
+    function(){
+
+        const searchInput =
+            document.getElementById(
+                'searchInput'
+            );
+
+        const categoryFilter =
+            document.getElementById(
+                'categoryFilter'
+            );
+
+        if(searchInput){
+
+            searchInput.addEventListener(
+                'input',
+                applyFilters
+            );
+        }
+
+        if(categoryFilter){
+
+            categoryFilter.addEventListener(
+                'change',
+                applyFilters
+            );
+        }
+    }
+);
