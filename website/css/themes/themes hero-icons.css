@@ -1,0 +1,137 @@
+/* ===================================================== */
+/* ================= THEME HERO ICONS ================== */
+/* ===================================================== */
+
+/* ----- LIGHT THEME ----- */
+body.light-theme .hero-icon {
+
+    color:
+        #1e293b;
+}
+
+body.light-theme .hero-icon-primary {
+    color: #667eea;
+}
+
+body.light-theme .hero-icon-success {
+    color: #48bb78;
+}
+
+body.light-theme .hero-icon-warning {
+    color: #f6ad55;
+}
+
+body.light-theme .hero-icon-danger {
+    color: #fc8181;
+}
+
+body.light-theme .hero-icon-info {
+    color: #a0aec0;
+}
+
+body.light-theme .header-icon {
+    color: #ffffff;
+}
+
+body.light-theme .header-icon:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .nav-icon {
+    color: #2d3748;
+}
+
+body.light-theme .nav-icon:hover {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+}
+
+
+/* ----- DARK THEME ----- */
+body.dark-theme .hero-icon {
+
+    color:
+        #ffffff;
+}
+
+body.dark-theme .hero-icon-primary {
+    color: #818cf8;
+}
+
+body.dark-theme .hero-icon-success {
+    color: #4ade80;
+}
+
+body.dark-theme .hero-icon-warning {
+    color: #fbbf24;
+}
+
+body.dark-theme .hero-icon-danger {
+    color: #f87171;
+}
+
+body.dark-theme .hero-icon-info {
+    color: #94a3b8;
+}
+
+body.dark-theme .header-icon {
+    color: #ffffff;
+}
+
+body.dark-theme .header-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .nav-icon {
+    color: #e2e8f0;
+}
+
+body.dark-theme .nav-icon:hover {
+    background: rgba(129, 140, 248, 0.15);
+    color: #a5b4fc;
+}
+
+
+/* ----- PURPLE THEME ----- */
+body.purple-theme .hero-icon {
+
+    color:
+        #1e293b;
+}
+
+body.purple-theme .hero-icon-primary {
+    color: #c4b5fd;
+}
+
+body.purple-theme .hero-icon-success {
+    color: #86efac;
+}
+
+body.purple-theme .hero-icon-warning {
+    color: #fdba74;
+}
+
+body.purple-theme .hero-icon-danger {
+    color: #fca5a5;
+}
+
+body.purple-theme .hero-icon-info {
+    color: #b9c3d4;
+}
+
+body.purple-theme .header-icon {
+    color: #ffffff;
+}
+
+body.purple-theme .header-icon:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+body.purple-theme .nav-icon {
+    color: #f1f5f9;
+}
+
+body.purple-theme .nav-icon:hover {
+    background: rgba(196, 181, 253, 0.15);
+    color: #ddd6fe;
+}

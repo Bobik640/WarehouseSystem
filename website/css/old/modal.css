@@ -1,0 +1,54 @@
+/* ===== Модальное окно авторизации ===== */
+#loginModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 400px;
+    box-shadow: var(--shadow);
+    border: none;
+    z-index: 2000;
+}
+
+#loginModal::backdrop {
+    background: rgba(0,0,0,0.7);
+}
+
+#loginModal h3 { 
+    margin-bottom: 20px; 
+    color: var(--text-dark); 
+    text-align: center; 
+    font-size: 1.5rem; 
+}
+
+#loginModal .form-group { 
+    margin-bottom: 20px; 
+}
+
+.modal-buttons { 
+    display: flex; 
+    gap: 10px; 
+    margin-top: 20px; 
+}
+
+.modal-buttons button { 
+    flex: 1; 
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    #loginModal {
+        width: 95%; 
+        padding: 20px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-buttons {
+        flex-direction: column;
+    }
+}

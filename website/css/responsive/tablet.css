@@ -1,0 +1,14 @@
+@media(min-width:769px) and (max-width:1200px){
+
+    .dashboard-cards{
+
+        grid-template-columns:
+            1fr;
+    }
+
+    main{
+
+        flex-direction:
+            column;
+    }
+}

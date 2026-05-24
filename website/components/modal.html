@@ -1,0 +1,16 @@
+<!-- Этот файл используется как резервный компонент, но основная логика в js/modal.js -->
+<dialog id="loginModalBackup" style="display: none;">
+    <h3><i class="fas fa-lock"></i> Авторизация</h3>
+    <div class="form-group">
+        <label for="loginUsernameBackup">Имя пользователя</label>
+        <input type="text" id="loginUsernameBackup" class="form-control" placeholder="Введите имя" value="vladik">
+    </div>
+    <div class="form-group">
+        <label for="loginPasswordBackup">Пароль</label>
+        <input type="password" id="loginPasswordBackup" class="form-control" placeholder="Введите пароль">
+    </div>
+    <div class="modal-buttons">
+        <button class="btn btn-success" onclick="window.loginBackup && window.loginBackup()">Войти</button>
+        <button class="btn btn-secondary" onclick="this.closest('dialog').close()">Отмена</button>
+    </div>
+</dialog>

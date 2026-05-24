@@ -1,0 +1,324 @@
+/* ===================================================== */
+/* ================= HERO ICONS ======================== */
+/* ===================================================== */
+
+/* Базовые стили для всех иконок */
+i, .icon {
+    font-style: normal;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Размеры иконок */
+.icon-xs { font-size: 0.75rem; width: 20px; height: 20px; }
+.icon-sm { font-size: 0.875rem; width: 24px; height: 24px; }
+.icon-md { font-size: 1rem; width: 28px; height: 28px; }
+.icon-lg { font-size: 1.25rem; width: 32px; height: 32px; }
+.icon-xl { font-size: 1.5rem; width: 40px; height: 40px; }
+.icon-2xl { font-size: 2rem; width: 48px; height: 48px; }
+.icon-3xl { font-size: 2.5rem; width: 60px; height: 60px; }
+
+/* Анимации для иконок */
+.icon-pulse {
+    animation: iconPulse 1.5s ease-in-out infinite;
+}
+
+.icon-spin {
+    animation: iconSpin 2s linear infinite;
+}
+
+.icon-bounce {
+    animation: iconBounce 1s ease-in-out infinite;
+}
+
+.icon-float {
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes iconSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* Иконки в карточках */
+.card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.card-icon:hover {
+    transform: scale(1.05);
+}
+
+/* Иконки в кнопках */
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-icon i {
+    transition: transform 0.2s ease;
+}
+
+.btn-icon:hover i {
+    transform: translateX(2px);
+}
+
+/* Иконки статусов */
+.status-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-icon.success {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+}
+
+.status-icon.warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+.status-icon.danger {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.status-icon.info {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+}
+
+/* Иконки в модальных окнах */
+.modal-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.modal-icon.success { color: #22c55e; }
+.modal-icon.warning { color: #f59e0b; }
+.modal-icon.danger { color: #ef4444; }
+.modal-icon.info { color: #3b82f6; }
+
+/* Иконки в навигации */
+.nav-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.nav-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(2px);
+}
+
+/* Иконки уведомлений */
+.notification-icon {
+    position: relative;
+}
+
+.notification-icon .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ef4444;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 999px;
+    min-width: 18px;
+    text-align: center;
+}
+
+/* Heroicons специфичные стили */
+.hero-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hero-icon-outline {
+    stroke-width: 1.5;
+    stroke: currentColor;
+    fill: none;
+}
+
+.hero-icon-solid {
+    fill: currentColor;
+}
+
+.hero-icon-mini {
+    stroke-width: 1.5;
+    stroke: currentColor;
+    fill: none;
+}
+
+/* Размеры для heroicons */
+.hero-icon-4 { width: 1rem; height: 1rem; }
+.hero-icon-5 { width: 1.25rem; height: 1.25rem; }
+.hero-icon-6 { width: 1.5rem; height: 1.5rem; }
+.hero-icon-7 { width: 1.75rem; height: 1.75rem; }
+.hero-icon-8 { width: 2rem; height: 2rem; }
+
+/* Иконки в шапке */
+.header-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.header-icon:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+}
+
+/* Иконки в статистике */
+.stat-icon {
+    font-size: 1.8rem;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.stat-item:hover .stat-icon {
+    opacity: 1;
+}
+
+/* Иконки для карточек дашборда */
+.dashboard-icon {
+    transition: transform 0.2s ease;
+}
+
+.dashboard-card:hover .dashboard-icon {
+    transform: scale(1.1);
+}
+
+/* ===== HERO ===== */
+
+.products-hero{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.hero-icon{
+
+    width:68px;
+    height:68px;
+
+    border-radius:20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:1.8rem;
+
+    position:relative;
+
+    animation:
+    floating 3s ease-in-out infinite,
+    glowPulse 2.5s infinite;
+}
+
+.hero-text{
+    display:flex;
+    flex-direction:column;
+}
+
+.hero-label{
+
+    font-size:0.68rem;
+    letter-spacing:4px;
+    opacity:0.65;
+    font-weight:600;
+    text-transform:uppercase;
+}
+
+.hero-text h2{
+
+    margin:0;
+
+    font-size:2.3rem;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    line-height:0.9;
+
+    text-transform:uppercase;
+}
+
+
+/* ===== FLOAT ===== */
+
+@keyframes floating{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-5px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+
+/* ===== GLOW ===== */
+
+@keyframes glowPulse{
+
+    0%{
+        box-shadow:0 0 0 rgba(0,0,0,0);
+    }
+
+    50%{
+        box-shadow:0 0 25px rgba(102,126,234,0.45);
+    }
+
+    100%{
+        box-shadow:0 0 0 rgba(0,0,0,0);
+    }
+}

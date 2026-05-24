@@ -1,0 +1,8 @@
+body.light-theme .ambient-icons i{
+
+    color:
+        rgba(120,140,170,0.18);
+
+    filter:
+        blur(0.15px);
+}

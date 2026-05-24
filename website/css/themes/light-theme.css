@@ -1,0 +1,463 @@
+/* ===================================================== */
+/* ================= LIGHT THEME ======================= */
+/* ===================================================== */
+
+body.light-theme{
+
+    background:
+        linear-gradient(
+            135deg,
+            #cbd5e1,
+            #b8c4d6
+        );
+
+    color:
+        #1e293b;
+}
+
+/* ===================================================== */
+/* ================= APP CONTAINER ===================== */
+/* ===================================================== */
+
+body.light-theme .app-container{
+
+    background:
+        #f8fafc;
+
+    border:
+        1px solid rgba(255,255,255,0.7);
+
+    border-radius:
+        32px;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        0 20px 60px rgba(15,23,42,0.12);
+
+    backdrop-filter:
+        blur(18px);
+}
+
+/* ===================================================== */
+/* ================= HEADER ============================ */
+/* ===================================================== */
+
+body.light-theme header{
+
+    background:
+        linear-gradient(
+            145deg,
+            #f8fafc,
+            #eef2f7
+        );
+}
+
+body.light-theme .header-content h1{
+
+    color:
+        #1e293b;
+}
+
+body.light-theme .header-content p{
+
+    color:
+        #64748b;
+}
+
+/* ===================================================== */
+/* ================= THEME SWITCHER ==================== */
+/* ===================================================== */
+
+body.light-theme .header-theme-switcher{
+
+    background:
+        rgba(255,255,255,0.9);
+
+    border:
+        1px solid #dbeafe;
+
+    box-shadow:
+        0 6px 18px rgba(15,23,42,0.12);
+}
+
+/* ===================================================== */
+/* ================= OVERVIEW ========================== */
+/* ===================================================== */
+
+body.light-theme .overview-card,
+body.light-theme .analytics-card{
+
+    background:
+        linear-gradient(
+            145deg,
+            #6fa4cb,
+            #4b86b3
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.18);
+
+    box-shadow:
+        0 14px 35px rgba(59,130,246,0.12);
+
+    backdrop-filter:
+        blur(12px);
+}
+
+/* ===================================================== */
+/* ================= OVERVIEW TEXT ===================== */
+/* ===================================================== */
+
+body.light-theme .overview-top,
+body.light-theme .analytics-label,
+body.light-theme .overview-item span,
+body.light-theme .analytics-info span{
+
+    color:
+        rgba(255,255,255,0.82);
+}
+
+body.light-theme .analytics-header h3,
+body.light-theme .analytics-info strong,
+body.light-theme .overview-item strong{
+
+    color:
+        white;
+}
+
+/* ===================================================== */
+/* ================= SIDEBAR =========================== */
+/* ===================================================== */
+
+body.light-theme aside{
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f1f5f9
+        );
+
+    border:
+        1px solid #e2e8f0;
+
+    box-shadow:
+        0 10px 30px rgba(15,23,42,0.06);
+}
+
+/* ===================================================== */
+/* ================= PRODUCTS PANEL ==================== */
+/* ===================================================== */
+
+body.light-theme .products-panel{
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f8fafc
+        );
+
+    border:
+        1px solid #e2e8f0;
+
+    box-shadow:
+        0 10px 30px rgba(15,23,42,0.06);
+}
+
+/* ===================================================== */
+/* ================= SEARCH ============================ */
+/* ===================================================== */
+
+body.light-theme .search-input{
+
+    background:
+        #e5e7eb;
+
+    color:
+        #1e293b;
+
+    border:
+        2px solid rgba(15,23,42,0.18);
+
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,0.45);
+}
+
+body.light-theme .search-input::placeholder{
+
+    color:
+        #64748b;
+}
+
+body.light-theme .search-input:focus{
+
+    box-shadow:
+        0 0 0 4px rgba(148,163,184,0.18);
+}
+
+/* ===================================================== */
+/* ================= FORM ============================== */
+/* ===================================================== */
+
+body.light-theme .form-control,
+body.light-theme input,
+body.light-theme textarea,
+body.light-theme select{
+
+    background:
+        #f1f5f9;
+
+    color:
+        #1e293b;
+
+    border:
+        1px solid #cbd5e1;
+}
+
+body.light-theme input::placeholder,
+body.light-theme textarea::placeholder{
+
+    color:
+        #64748b;
+}
+
+/* ===================================================== */
+/* ================= BUTTONS =========================== */
+/* ===================================================== */
+
+body.light-theme .btn-secondary{
+
+    background:
+        linear-gradient(
+            145deg,
+            #cbd5e1,
+            #94a3b8
+        );
+
+    color:
+        white;
+
+    border:
+        1px solid rgba(255,255,255,0.25);
+}
+
+body.light-theme .btn-secondary:hover{
+
+    background:
+        linear-gradient(
+            145deg,
+            #b8c4d6,
+            #7c8ea3
+        );
+}
+
+/* ===================================================== */
+/* ================= PRODUCT CARD ====================== */
+/* ===================================================== */
+
+body.light-theme .product-card{
+
+    background:
+        white;
+
+    border:
+        1px solid #e2e8f0;
+
+    box-shadow:
+        0 10px 25px rgba(15,23,42,0.06);
+}
+
+body.light-theme .product-card-title{
+
+    color:
+        #1e293b;
+}
+
+body.light-theme .product-category{
+
+    background:
+        #eef2f7;
+
+    color:
+        #475569;
+}
+
+body.light-theme .product-price{
+
+    color:
+        #4c51bf;
+}
+
+/* ===================================================== */
+/* ================= SCROLLBAR ========================= */
+/* ===================================================== */
+
+body.light-theme ::-webkit-scrollbar-track{
+
+    background:
+        transparent;
+}
+
+body.light-theme ::-webkit-scrollbar-thumb{
+
+    background:
+        rgba(100,116,139,0.22);
+
+    border-radius:
+        999px;
+}
+
+body.light-theme ::-webkit-scrollbar-thumb:hover{
+
+    background:
+        rgba(100,116,139,0.35);
+}
+
+/* ===== LIGHT THEME BUTTON ===== */
+
+body.light-theme .btn-primary{
+
+    background:
+        linear-gradient(
+            135deg,
+            #7da7ff,
+            #6c8dff
+        );
+
+    color:
+        white;
+
+    border:
+        1px solid rgba(255,255,255,0.45);
+
+    box-shadow:
+        0 10px 22px rgba(108,141,255,0.28);
+}
+
+body.light-theme .btn-primary:hover{
+
+    background:
+        linear-gradient(
+            135deg,
+            #6c8dff,
+            #5b7cff
+        );
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 28px rgba(108,141,255,0.38);
+}
+
+body.light-theme .export-menu{
+
+    background:
+        #eef2f7;
+
+    border:
+        1px solid #dbeafe;
+}
+
+body.light-theme .export-menu button{
+
+    background:
+        #f8fafc;
+
+    color:
+        #1e293b;
+}
+
+/* ===== BUTTON ===== */
+
+body.purple-theme input[type="file"]::file-selector-button{
+
+    border:
+        none;
+
+    padding:
+        12px 18px;
+
+    margin-right:
+        14px;
+
+    border-radius:
+        14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            135deg,#4b3636,#764ba2
+        );
+
+    color:
+        white;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        0 10px 25px rgba(139,92,246,0.35);
+}
+
+/* ===== LIGHT LOGIN MODAL ===== */
+
+body.light-theme #loginModal{
+
+    background:
+        rgba(255,255,255,0.95);
+
+    border:
+        1px solid rgba(255,255,255,0.8);
+
+    box-shadow:
+        0 25px 60px rgba(148,163,184,0.22);
+}
+
+body.light-theme #loginModal h3{
+
+    color:
+        #1e293b;
+}
+
+body.light-theme #loginModal .form-control{
+
+    background:
+        #f1f5f9;
+
+    border:
+        1px solid #cbd5e1;
+
+    color:
+        #1e293b;
+}
+
+
+/* --- БЕЛАЯ ТЕМА --- */
+body.light-theme::-webkit-scrollbar-track,
+body.light-theme ::-webkit-scrollbar-track {
+    background-color: #ffffff !important; /* Цвет фона белой темы */
+}
+body.light-theme::-webkit-scrollbar-thumb,
+body.light-theme ::-webkit-scrollbar-thumb {
+    background-color: #8394ad !important;
+}
+body.light-theme::-webkit-scrollbar-thumb:hover,
+body.light-theme ::-webkit-scrollbar-thumb:hover {
+    background-color: #43626b !important;
+}
+
+body.light-theme .search-input{
+
+    background:
+        #ffffff;
+
+    color:
+        #1e293b;
+}

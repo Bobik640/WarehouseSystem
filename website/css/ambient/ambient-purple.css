@@ -1,0 +1,8 @@
+body.purple-theme .ambient-icons i{
+
+    color:
+        rgba(220,210,255,0.12);
+
+    filter:
+        blur(0.25px);
+}

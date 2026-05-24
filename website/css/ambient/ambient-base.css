@@ -1,0 +1,143 @@
+/* ===================================================== */
+/* ================= AMBIENT SYSTEM ==================== */
+/* ===================================================== */
+
+.ambient-icons{
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    overflow:
+        hidden;
+
+    pointer-events:
+        none;
+
+    z-index:
+        1;
+}
+
+.app-container{
+
+    position:
+        relative;
+
+    z-index:
+        5;
+}
+
+/* ===== ICON ===== */
+
+.ambient-icons i{
+
+    position:
+        absolute;
+
+    bottom:
+        -120px;
+
+    color:
+        rgba(255,255,255,0.05);
+
+    animation:
+        floatOne linear forwards;
+
+    pointer-events:
+        none;
+}
+
+/* ===== ANIMATION ===== */
+
+/* ===================================================== */
+/* ================= FLOAT ANIMATIONS ================== */
+/* ===================================================== */
+
+@keyframes floatTwo{
+
+    0%{
+
+        transform:
+            translate(0,0)
+            rotate(0deg);
+
+        opacity:
+            0;
+    }
+
+    10%{
+
+        opacity:
+            0.35;
+    }
+
+    100%{
+
+        transform:
+            translate(-20vw,-140vh)
+            rotate(-220deg);
+
+        opacity:
+            0;
+    }
+}
+
+@keyframes floatThree{
+
+    0%{
+
+        transform:
+            translate(0,0)
+            rotate(0deg);
+
+        opacity:
+            0;
+    }
+
+    10%{
+
+        opacity:
+            0.5;
+    }
+
+    100%{
+
+        transform:
+            translate(15vw,-160vh)
+            rotate(360deg);
+
+        opacity:
+            0;
+    }
+}
+
+@keyframes floatOne{
+
+    0%{
+
+        transform:
+            translate(0,0)
+            rotate(0deg);
+
+        opacity:
+            0;
+    }
+
+    10%{
+
+        opacity:
+            1;
+    }
+
+    100%{
+
+        transform:
+            translate(var(--drift), -140vh)
+            rotate(360deg);
+
+        opacity:
+            0;
+    }
+}

@@ -1,0 +1,74 @@
+<!-- Шаблон карточки товара (может использоваться для альтернативного отображения) -->
+<div class="product-card">
+    <div class="product-card-header">
+        <h4 class="product-name">{{name}}</h4>
+        <span class="product-category">{{category}}</span>
+    </div>
+    <div class="product-card-body">
+        <div class="product-quantity">
+            <i class="fas fa-boxes"></i>
+            <span>{{quantity}} шт.</span>
+        </div>
+        <div class="product-price">
+            <i class="fas fa-tag"></i>
+            <span>{{price}} сом</span>
+        </div>
+    </div>
+    <div class="product-card-actions">
+        <button class="btn-warning btn-sm" onclick="reduceQuantity('{{id}}', '{{name}}')">
+            <i class="fas fa-minus"></i> Списать
+        </button>
+        <button class="btn-danger btn-sm" onclick="deleteProduct('{{id}}', '{{name}}')">
+            <i class="fas fa-trash"></i> Удалить
+        </button>
+    </div>
+</div>
+
+<style>
+.product-card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+}
+
+.product-card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.product-name {
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.product-category {
+    background: var(--bg-gray);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.product-card-body {
+    margin: 10px 0;
+}
+
+.product-quantity, .product-price {
+    display: flex;
+    gap: 8px;
+    margin: 5px 0;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    margin: 0 5px;
+}
+</style>

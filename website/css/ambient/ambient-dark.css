@@ -1,0 +1,110 @@
+body.dark-theme .ambient-icons i{
+
+    color:
+        rgba(255,255,255,0.08);
+
+    filter:
+        blur(0.4px);
+
+    text-shadow:
+        0 0 15px rgba(255,255,255,0.05);
+}
+
+body.dark-theme .ambient-icons i{
+
+    color:
+        rgba(255,255,255,0.045);
+
+    filter:
+        blur(0.2px);
+
+    mix-blend-mode:
+        screen;
+}
+
+/* ===== ICON 1 ===== */
+
+body.dark-theme .ambient-icons i:nth-child(1){
+
+    left:5%;
+
+    font-size:52px;
+
+    animation:
+        floatOne 18s linear infinite;
+}
+
+/* ===== ICON 2 ===== */
+
+body.dark-theme .ambient-icons i:nth-child(2){
+
+    left:18%;
+
+    font-size:30px;
+
+    animation:
+        floatTwo 13s linear infinite;
+
+    animation-delay:
+        2s;
+}
+
+/* ===== ICON 3 ===== */
+
+body.dark-theme .ambient-icons i:nth-child(3){
+
+    left:35%;
+
+    font-size:70px;
+
+    animation:
+        floatThree 22s linear infinite;
+
+    animation-delay:
+        1s;
+}
+
+/* ===== ICON 4 ===== */
+
+body.dark-theme .ambient-icons i:nth-child(4){
+
+    left:50%;
+
+    font-size:38px;
+
+    animation:
+        floatOne 15s linear infinite;
+
+    animation-delay:
+        5s;
+}
+
+/* ===== ICON 5 ===== */
+
+body.dark-theme .ambient-icons i:nth-child(5){
+
+    left:68%;
+
+    font-size:60px;
+
+    animation:
+        floatTwo 17s linear infinite;
+
+    animation-delay:
+        3s;
+}
+
+/* ===== ICON 6 ===== */
+
+body.dark-theme .ambient-icons i:nth-child(6){
+
+    left:82%;
+
+    font-size:44px;
+
+    animation:
+        floatThree 20s linear infinite;
+
+    animation-delay:
+        6s;
+}

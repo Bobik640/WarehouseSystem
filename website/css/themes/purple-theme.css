@@ -1,0 +1,295 @@
+/* ===================================================== */
+/* ================= PURPLE THEME ====================== */
+/* ===================================================== */
+
+/* ===== SEARCH ===== */
+
+body.purple-theme .search-input{
+
+    background:
+        #e5e7eb;
+
+    color:
+        #1e293b;
+
+    border:
+        2px solid rgba(15,23,42,0.18);
+
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,0.45);
+}
+
+body.purple-theme .search-input::placeholder{
+
+    color:
+        #64748b;
+}
+
+body.purple-theme .search-input:focus{
+
+    box-shadow:
+        0 0 0 2px #667eea;
+}
+
+/* ===== PRODUCT CARD ===== */
+
+body.purple-theme .product-card{
+
+    background:
+        rgba(255,255,255,0.08);
+
+    backdrop-filter:
+        blur(10px);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+}
+
+body.purple-theme .product-card-title{
+
+    color:
+        white;
+}
+
+body.purple-theme .product-category{
+
+    background:
+        rgba(255,255,255,0.1);
+
+    color:
+        white;
+}
+
+body.purple-theme .product-price{
+
+    color:
+        #c4b5fd;
+}
+
+body.purple-theme .product-vip-badge{
+
+    background:
+        linear-gradient(
+            135deg,
+            #581c87,
+            #a855f7
+        );
+}
+
+body.purple-theme .product-expiry-badge{
+
+    background:
+        rgba(255,255,255,0.12);
+
+    color:
+        #fcd34d;
+}
+
+/* ===== HISTORY MODAL ===== */
+
+body.purple-theme .history-modal{
+
+    background:
+        linear-gradient(
+            145deg,
+            #667eea,
+            #5a67d8
+        );
+}
+
+body.purple-theme .history-header{
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.1);
+}
+
+body.purple-theme .history-header h2,
+body.purple-theme .history-item strong{
+
+    color:
+        white;
+}
+
+body.purple-theme .history-item{
+
+    background:
+        rgba(255,255,255,0.08);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+}
+
+body.purple-theme .history-item p,
+body.purple-theme .history-time{
+
+    color:
+        #e2e8f0;
+}
+
+body.purple-theme .history-actions button{
+
+    background:
+        rgba(255,255,255,0.12);
+
+    color:
+        white;
+}
+
+/* ===== PURPLE LOGIN MODAL ===== */
+
+body.purple-theme #loginModal{
+
+    background:
+        linear-gradient(
+            145deg,
+            #312e81,
+            #4c1d95
+        );
+
+    backdrop-filter:
+        blur(24px);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    border-radius:
+        30px;
+
+    box-shadow:
+        0 25px 70px rgba(76,29,149,0.45);
+}
+
+/* ===== TITLE ===== */
+
+body.purple-theme #loginModal h3{
+
+    color:
+        white;
+
+    font-weight:
+        800;
+}
+
+/* ===== LABELS ===== */
+
+body.purple-theme #loginModal label{
+
+    color:
+        rgba(255,255,255,0.72);
+}
+
+/* ===== INPUT ===== */
+
+body.purple-theme #loginModal .form-control{
+
+    background:
+        rgba(15,23,42,0.45);
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+    color:
+        white;
+
+    border-radius:
+        16px;
+
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,0.04);
+
+    transition:
+        0.22s;
+}
+
+/* ===== PLACEHOLDER ===== */
+
+body.purple-theme #loginModal .form-control::placeholder{
+
+    color:
+        rgba(255,255,255,0.42);
+}
+
+/* ===== FOCUS ===== */
+
+body.purple-theme #loginModal .form-control:focus{
+
+    border:
+        1px solid rgba(167,139,250,0.55);
+
+    box-shadow:
+        0 0 0 4px rgba(139,92,246,0.18);
+
+    background:
+        rgba(15,23,42,0.62);
+}
+
+/* ===================================================== */
+/* ============= PURPLE WINDOW RADIUS ================== */
+/* ===================================================== */
+
+body.purple-theme .app-container{
+
+    border-radius:
+        30px;
+}
+
+body.purple-theme header{
+
+    border-top-left-radius:
+        30px;
+
+    border-top-right-radius:
+        30px;
+
+    border-bottom-left-radius:
+        0;
+
+    border-bottom-right-radius:
+        0;
+}
+
+body.purple-theme .products-panel{
+
+    border-radius:
+        30px;
+}
+
+body.purple-theme aside{
+
+    border-radius:
+        30px;
+}
+
+
+/* --- ФИОЛЕТОВАЯ ТЕМА --- */
+body.purple-theme::-webkit-scrollbar-track,
+body.purple-theme ::-webkit-scrollbar-track {
+    background-color: #4a4b74 !important; /* Замени этот HEX на точный цвет фона фиолетовой темы из image_b03343.png */
+}
+body.purple-theme::-webkit-scrollbar-thumb,
+body.purple-theme ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #c6a3e2, #c6a3e2) !important;
+}
+body.purple-theme::-webkit-scrollbar-thumb:hover,
+body.purple-theme ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #c6a3e2, #c6a3e2) !important;
+}
+
+body.purple-theme main{
+
+    background:
+        linear-gradient(
+            135deg,
+        #d6d6d6,
+        #ffffff
+        ) !important;
+}
+
+body.purple-theme .search-input{
+
+    background:
+        rgba(255,255,255,0.92);
+
+    color:
+        #1e293b;
+}
