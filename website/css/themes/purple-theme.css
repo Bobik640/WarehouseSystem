@@ -294,68 +294,102 @@ body.purple-theme .search-input{
         #1e293b;
 }
 
-/* ===== PURPLE PRODUCT CARD — PREMIUM VERSION ===== */
+/* ===== PURPLE PRODUCT CARD — CLEAN PREMIUM ===== */
 
 body.purple-theme .product-card {
-    background: linear-gradient(145deg, #8b5cf6, #6d28d9);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 12px 32px rgba(109, 40, 217, 0.3);
+
+    background:
+        linear-gradient(
+            145deg,
+            #7c5cff,
+            #6d28d9
+        );
+
+    border:
+        1px solid rgba(124,92,255,0.45);
+
+    box-shadow:
+        0 14px 36px rgba(109,40,217,0.28);
 }
 
 body.purple-theme .product-card:hover {
-    box-shadow: 0 24px 48px rgba(109, 40, 217, 0.45);
-    transform: translateY(-8px);
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 26px 54px rgba(109,40,217,0.42);
 }
+
+/* ===== CARD BOTTOM ===== */
 
 body.purple-theme .product-card-content {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(139,92,246,0.96),
+            rgba(124,58,237,1)
+        );
+
+    border-top:
+        1px solid rgba(255,255,255,0.12);
 }
+
+/* ===== TITLE ===== */
 
 body.purple-theme .product-card-title {
-    color: #faf5ff;
-    font-weight: 700;
+
+    color:
+        #ffffff;
+
+    font-weight:
+        700;
 }
+
+/* ===== PRICE ===== */
 
 body.purple-theme .product-price {
-    color: #f3e8ff;
-    font-weight: 800;
+
+    color:
+        #f8fafc;
+
+    font-weight:
+        800;
 }
+
+/* ===== STOCK ===== */
 
 body.purple-theme .product-stock {
-    color: #a7f3d0;
+
+    color:
+        #ffffff;
 }
+
+/* ===== LOW STOCK ===== */
 
 body.purple-theme .product-stock.low {
-    color: #fecaca;
+
+    color:
+        #ff4d4f;
+
+    font-weight:
+        800;
 }
+
+/* ===== CATEGORY ===== */
 
 body.purple-theme .product-category {
-    background: rgba(255, 255, 255, 0.12);
-    color: #ede9fe;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(4px);
-}
 
-body.purple-theme .product-vip-badge {
-    background: linear-gradient(135deg, #fef08a, #fde047);
-    color: #5b21b6;
-}
+    background:
+        rgba(255,255,255,0.16);
 
-body.purple-theme .product-admin-btn {
-    background: rgba(255, 255, 255, 0.9);
-    color: #6d28d9;
-    backdrop-filter: blur(8px);
-}
+    color:
+        #f5f3ff;
 
-body.purple-theme .product-admin-btn:hover {
-    background: white;
-    color: #8b5cf6;
-    transform: scale(1.1);
-}
+    border:
+        1px solid rgba(255,255,255,0.08);
 
-/* Убираем свечение на картинках — удалил или закомментировал */
-/* body.purple-theme .product-card-image::after {
-    background: linear-gradient(to top, rgba(109, 40, 217, 0.6), transparent);
-} */
+    backdrop-filter:
+        blur(4px);
+}
