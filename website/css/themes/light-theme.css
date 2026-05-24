@@ -512,27 +512,28 @@ body.light-theme .overview-item.success strong{
         #4ade80;
 }
 
-/* ===== LIGHT THEME PRODUCT CARDS — СЕРАЯ ВЕРСИЯ ===== */
+/* ===== LIGHT THEME PRODUCT CARDS — ТЁМНО-СЕРАЯ ВЕРСИЯ ===== */
 
 body.light-theme .product-card {
-    background: #f8fafc;
+    background: #f1f5f9;
     border: none;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
 body.light-theme .product-card:hover {
-    background: #f9fbfd;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    background: #f8fafc;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
     transform: translateY(-6px);
 }
 
 body.light-theme .product-card-content {
-    background: #f8fafc;
+    background: #f1f5f9;
     border-top: none;
 }
 
 body.light-theme .product-card-title {
-    color: #1e293b;
+    color: #0f172a;
+    font-weight: 700;
 }
 
 body.light-theme .product-price {
@@ -550,7 +551,7 @@ body.light-theme .product-stock.low {
 
 body.light-theme .product-category {
     background: #e2e8f0;
-    color: #334155;
+    color: #1e293b;
     border: none;
 }
 
@@ -561,16 +562,17 @@ body.light-theme .product-vip-badge {
 }
 
 body.light-theme .product-admin-btn {
-    background: rgba(255, 255, 255, 0.9);
-    color: #64748b;
+    background: rgba(255, 255, 255, 0.95);
+    color: #475569;
     border: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 body.light-theme .product-admin-btn:hover {
     background: #ffffff;
     color: #4f46e5;
     box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+    transform: scale(1.08);
 }
 
 body.light-theme .product-card-image {

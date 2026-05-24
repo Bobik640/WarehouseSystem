@@ -324,8 +324,12 @@ body.purple-theme .product-card-title {
 /* ===== PRICE ===== */
 
 body.purple-theme .product-price {
-    color: #f8fafc;
-    font-weight: 800;
+
+    color:
+        #ffffff;
+
+    font-weight:
+        800;
 }
 
 /* ===== STOCK ===== */
@@ -334,11 +338,13 @@ body.purple-theme .product-stock {
     color: #e9d5ff;
 }
 
-/* ===== LOW STOCK ===== */
-
 body.purple-theme .product-stock.low {
-    color: #ffb4b4;
-    font-weight: 800;
+
+    color:
+        #ff3b3b;
+
+    font-weight:
+        800;
 }
 
 /* ===== CATEGORY ===== */
