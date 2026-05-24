@@ -72,9 +72,16 @@
     margin-bottom: 12px;
     min-height: 48px;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-overflow: ellipsis;
+    
+    /* Для Firefox */
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    
+    /* Стандартный вариант на будущее */
+    line-clamp: 2;
 }
 
 .product-card-info {
