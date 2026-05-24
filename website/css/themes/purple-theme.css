@@ -349,25 +349,24 @@ body.purple-theme .product-category {
     border: none;
 }
 
-/* ===== PURPLE CLOCK BADGE ===== */
+/* ===================================================== */
+/* ================= BADGES ============================ */
+/* ===================================================== */
 
 body.purple-theme .product-expiry-badge {
 
     background:
         linear-gradient(
-            145deg,
-            #facc15,
-            #f59e0b
+            135deg,
+            #f59e0b,
+            #f6ad55
         );
 
     color:
         white;
-
-    box-shadow:
-        0 0 18px rgba(250,204,21,0.45);
 }
 
-body.dark-theme .product-fridge-badge {
+body.purple-theme .product-fridge-badge {
 
     background:
         linear-gradient(
@@ -380,18 +379,12 @@ body.dark-theme .product-fridge-badge {
         2px solid #38bdf8;
 }
 
-body.purple-theme .product-expiry-badge.status {
+body.purple-theme .product-danger-badge {
 
     background:
         linear-gradient(
             145deg,
-            #facc15,
-            #f59e0b
+            #dc2626,
+            #ef4444
         );
-
-    color:
-        white;
-
-    box-shadow:
-        0 0 20px rgba(250,204,21,0.55);
 }
