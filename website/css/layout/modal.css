@@ -174,66 +174,6 @@
     to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-
-/* ===================================================== */
-/* ================= EDIT MODAL ======================== */
-/* ===================================================== */
-
-.edit-modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(10px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999999;
-}
-
-.edit-modal-overlay.active { display: flex; }
-
-.edit-modal {
-    width: min(650px, 92vw);
-    max-height: 90vh;
-    overflow-y: auto;
-    background: #111827;
-    border-radius: 30px;
-    padding: 32px;
-    position: relative;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.45);
-    animation: modalUp 0.25s ease;
-}
-
-.edit-modal-title {
-    color: white;
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 24px;
-}
-
-.edit-form { display: flex; flex-direction: column; gap: 16px; }
-.edit-form .form-control { background: #1f2937; border: 1px solid #374151; color: white; }
-.edit-form .form-control::placeholder { color: #94a3b8; }
-
-.edit-modal-close {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-    width: 46px;
-    height: 46px;
-    border: none;
-    border-radius: 14px;
-    background: #1f2937;
-    color: white;
-    cursor: pointer;
-    font-size: 1.1rem;
-}
-
-.edit-modal-buttons { margin-top: 12px; display: flex; justify-content: flex-end; }
-.btn-save-edit { border: none; border-radius: 16px; padding: 14px 24px; background: #3b82f6; color: white; font-weight: 700; cursor: pointer; transition: 0.2s; }
-.btn-save-edit:hover { transform: translateY(-2px); }
-
-
 /* ===================================================== */
 /* ================= ACTION MODAL ====================== */
 /* ===================================================== */
