@@ -211,11 +211,43 @@ escapeHtml(product.category) +
 
         :
 
-        '<div class="product-expiry-badge">' +
+        '<div class="product-tooltip-wrapper">' +
 
-        '<i class="fas fa-clock"></i>' +
+'<div class="product-expiry-badge">' +
 
-        '</div>'
+'<i class="fas fa-clock"></i>' +
+
+'</div>' +
+
+'<div class="product-tooltip">' +
+
+'<div class="product-tooltip-title">' +
+
+'Добавлен' +
+
+'</div>' +
+
+'<div class="product-tooltip-date">' +
+
+new Date(product.createdAt || Date.now()).toLocaleDateString() +
+
+'</div>' +
+
+'<div class="product-tooltip-title">' +
+
+'Годен до' +
+
+'</div>' +
+
+'<div class="product-tooltip-date">' +
+
+new Date(product.expiryDate).toLocaleDateString() +
+
+'</div>' +
+
+'</div>' +
+
+'</div>'
     )
 
     : ''

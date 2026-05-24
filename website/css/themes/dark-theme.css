@@ -795,3 +795,29 @@ body.dark-theme .product-card-content{
     border-top:
         1px solid rgba(255,255,255,0.06);
 }
+
+/* ===== DARK TOOLTIP ===== */
+
+body.dark-theme .product-tooltip{
+
+    background:
+        rgba(15,23,42,0.96);
+
+    border:
+        1px solid rgba(255,255,255,0.06);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.45);
+}
+
+body.dark-theme .product-tooltip-title{
+
+    color:
+        #94a3b8;
+}
+
+body.dark-theme .product-tooltip-date{
+
+    color:
+        white;
+}
