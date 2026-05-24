@@ -211,13 +211,21 @@
 
 .marquee-wrapper{
 
-    width:240px;
+    width:100%;
 
     overflow:hidden;
 
     position:relative;
 
     white-space:nowrap;
+
+    mask-image:linear-gradient(
+        to right,
+        transparent 0%,
+        white 8%,
+        white 92%,
+        transparent 100%
+    );
 }
 
 .marquee-text{
@@ -228,28 +236,41 @@
 
     padding-left:100%;
 
+    color:#ffffff;
+
+    font-weight:700;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.15);
+
     animation:
-    analyticsMarquee 12s linear infinite;
+    analyticsMarquee 18s linear infinite;
 }
 
 .analytics-info strong{
 
-    color:white;
+    width:100%;
+
+    display:block;
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    color:#ffffff;
 
     font-size:1rem;
 
-    display:inline-block;
-
-    white-space:nowrap;
+    font-weight:700;
 }
 
 @keyframes analyticsMarquee{
 
     from{
-        transform:translateX(0);
+        transform:translateX(0%);
     }
 
     to{
-        transform:translateX(-100%);
+        transform:translateX(-120%);
     }
 }
