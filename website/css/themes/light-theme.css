@@ -562,7 +562,24 @@ body.light-theme .product-card-image {
         #cfd8e3;
 }
 
-body.dark-theme .product-fridge-badge {
+/* ===================================================== */
+/* ================= BADGES ============================ */
+/* ===================================================== */
+
+body.light-theme .product-expiry-badge {
+
+    background:
+        linear-gradient(
+            135deg,
+            #f59e0b,
+            #f6ad55
+        );
+
+    color:
+        white;
+}
+
+body.light-theme .product-fridge-badge {
 
     background:
         linear-gradient(
@@ -573,4 +590,14 @@ body.dark-theme .product-fridge-badge {
 
     border:
         2px solid #38bdf8;
+}
+
+body.light-theme .product-danger-badge {
+
+    background:
+        linear-gradient(
+            145deg,
+            #dc2626,
+            #ef4444
+        );
 }
