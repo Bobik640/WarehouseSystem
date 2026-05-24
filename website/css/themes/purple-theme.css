@@ -294,31 +294,53 @@ body.purple-theme .search-input{
         #1e293b;
 }
 
-/* ===== PURPLE PRODUCT CARD — CLEAN PREMIUM ===== */
+/* ===== PURPLE PRODUCT CARD — SOFT PREMIUM ===== */
 
 body.purple-theme .product-card {
-    background: linear-gradient(145deg, #a78bfa, #8b5cf6);
-    border: none;
-    box-shadow: 0 14px 36px rgba(139, 92, 246, 0.2);
+
+    background:
+        #6d5dfc;
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 12px 30px rgba(109,93,252,0.22);
 }
 
 body.purple-theme .product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 26px 54px rgba(139, 92, 246, 0.3);
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 24px 48px rgba(109,93,252,0.34);
 }
 
 /* ===== CARD BOTTOM ===== */
 
 body.purple-theme .product-card-content {
-    background: linear-gradient(180deg, rgba(167, 139, 250, 0.96), rgba(139, 92, 246, 1));
-    border-top: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            #7c5cff,
+            #6d5dfc
+        );
+
+    border-top:
+        1px solid rgba(255,255,255,0.08);
 }
 
 /* ===== TITLE ===== */
 
 body.purple-theme .product-card-title {
-    color: #ffffff;
-    font-weight: 700;
+
+    color:
+        #ffffff;
+
+    font-weight:
+        700;
 }
 
 /* ===== PRICE ===== */
@@ -332,16 +354,12 @@ body.purple-theme .product-price {
         800;
 }
 
-/* ===== STOCK ===== */
-
-body.purple-theme .product-stock {
-    color: #e9d5ff;
-}
+/* ===== LOW STOCK ===== */
 
 body.purple-theme .product-stock.low {
 
     color:
-        #ff3b3b;
+        #ff4545;
 
     font-weight:
         800;
@@ -350,8 +368,13 @@ body.purple-theme .product-stock.low {
 /* ===== CATEGORY ===== */
 
 body.purple-theme .product-category {
-    background: rgba(255, 255, 255, 0.12);
-    color: #f5f3ff;
-    border: none;
-    backdrop-filter: blur(4px);
+
+    background:
+        rgba(255,255,255,0.14);
+
+    color:
+        #f8fafc;
+
+    border:
+        none;
 }
