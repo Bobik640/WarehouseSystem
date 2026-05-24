@@ -776,3 +776,16 @@ body.dark-theme .overview-item.success strong{
     color:
         #4ade80;
 }
+
+body.dark-theme .product-card-content{
+
+    background:
+        linear-gradient(
+            180deg,
+            #1e293b,
+            #0f172a
+        );
+
+    border-top:
+        1px solid rgba(255,255,255,0.05);
+}
