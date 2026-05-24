@@ -293,3 +293,52 @@ body.purple-theme .search-input{
     color:
         #1e293b;
 }
+
+/* ===== PURPLE PRODUCT CARD ===== */
+
+body.purple-theme .product-card{
+
+    background:
+        linear-gradient(
+            180deg,
+            #6366f1,
+            #7c3aed
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+}
+
+body.purple-theme .product-card-content{
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(79,70,229,0.96),
+            rgba(91,33,182,1)
+        );
+
+    border-top:
+        1px solid rgba(255,255,255,0.08);
+}
+
+body.purple-theme .product-card-title{
+
+    color:
+        white;
+}
+
+body.purple-theme .product-price{
+
+    color:
+        #ddd6fe;
+}
+
+body.purple-theme .product-category{
+
+    background:
+        rgba(255,255,255,0.12);
+
+    color:
+        white;
+}
