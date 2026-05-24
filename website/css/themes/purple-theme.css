@@ -355,6 +355,7 @@ body.purple-theme .product-admin-btn:hover {
     transform: scale(1.1);
 }
 
-body.purple-theme .product-card-image::after {
+/* Убираем свечение на картинках — удалил или закомментировал */
+/* body.purple-theme .product-card-image::after {
     background: linear-gradient(to top, rgba(109, 40, 217, 0.6), transparent);
-}
+} */
