@@ -461,3 +461,53 @@ body.light-theme .search-input{
     color:
         #1e293b;
 }
+
+/* ===== LIGHT OVERVIEW ITEMS ===== */
+
+body.light-theme .overview-item{
+
+    background:
+        rgba(255,255,255,0.12);
+
+    border:
+        1px solid rgba(255,255,255,0.14);
+
+    backdrop-filter:
+        blur(10px);
+}
+
+body.light-theme .overview-item:hover{
+
+    background:
+        rgba(255,255,255,0.18);
+}
+
+body.light-theme .overview-top{
+
+    color:
+        rgba(255,255,255,0.75);
+}
+
+body.light-theme .overview-item span{
+
+    color:
+        rgba(255,255,255,0.82);
+}
+
+body.light-theme .overview-item strong{
+
+    color:
+        white;
+}
+
+body.light-theme .overview-item.warning strong{
+
+    color:
+        #ffbe55;
+}
+
+body.light-theme .overview-item.success strong{
+
+    color:
+        #4ade80;
+}
