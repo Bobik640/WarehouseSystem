@@ -348,3 +348,37 @@ body.purple-theme .product-category {
     color: #f8fafc;
     border: none;
 }
+
+/* ===== PURPLE CLOCK BADGE ===== */
+
+body.purple-theme .product-expiry-badge {
+
+    background:
+        linear-gradient(
+            145deg,
+            #facc15,
+            #f59e0b
+        );
+
+    color:
+        white;
+
+    box-shadow:
+        0 0 18px rgba(250,204,21,0.45);
+}
+
+body.purple-theme .product-expiry-badge.status {
+
+    background:
+        linear-gradient(
+            145deg,
+            #facc15,
+            #f59e0b
+        );
+
+    color:
+        white;
+
+    box-shadow:
+        0 0 20px rgba(250,204,21,0.55);
+}
