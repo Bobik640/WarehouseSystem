@@ -512,26 +512,27 @@ body.light-theme .overview-item.success strong{
         #4ade80;
 }
 
-/* ===== LIGHT THEME PRODUCT CARDS — УЛУЧШЕННЫЙ ===== */
+/* ===== LIGHT THEME PRODUCT CARDS — СЕРАЯ ВЕРСИЯ ===== */
 
 body.light-theme .product-card {
-    background: #ffffff;
+    background: #f8fafc;
     border: none;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
 body.light-theme .product-card:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    background: #f9fbfd;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     transform: translateY(-6px);
 }
 
 body.light-theme .product-card-content {
-    background: #ffffff;
+    background: #f8fafc;
     border-top: none;
 }
 
 body.light-theme .product-card-title {
-    color: #0f172a;
+    color: #1e293b;
 }
 
 body.light-theme .product-price {
@@ -548,7 +549,7 @@ body.light-theme .product-stock.low {
 }
 
 body.light-theme .product-category {
-    background: #f8fafc;
+    background: #e2e8f0;
     color: #334155;
     border: none;
 }
@@ -560,7 +561,7 @@ body.light-theme .product-vip-badge {
 }
 
 body.light-theme .product-admin-btn {
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 0.9);
     color: #64748b;
     border: none;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
@@ -573,7 +574,7 @@ body.light-theme .product-admin-btn:hover {
 }
 
 body.light-theme .product-card-image {
-    background: #f1f5f9;
+    background: #e2e8f0;
 }
 
 body.light-theme .product-card-image::after {

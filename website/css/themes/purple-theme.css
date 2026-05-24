@@ -297,99 +297,55 @@ body.purple-theme .search-input{
 /* ===== PURPLE PRODUCT CARD — CLEAN PREMIUM ===== */
 
 body.purple-theme .product-card {
-
-    background:
-        linear-gradient(
-            145deg,
-            #7c5cff,
-            #6d28d9
-        );
-
-    border:
-        1px solid rgba(124,92,255,0.45);
-
-    box-shadow:
-        0 14px 36px rgba(109,40,217,0.28);
+    background: linear-gradient(145deg, #a78bfa, #8b5cf6);
+    border: none;
+    box-shadow: 0 14px 36px rgba(139, 92, 246, 0.2);
 }
 
 body.purple-theme .product-card:hover {
-
-    transform:
-        translateY(-8px);
-
-    box-shadow:
-        0 26px 54px rgba(109,40,217,0.42);
+    transform: translateY(-8px);
+    box-shadow: 0 26px 54px rgba(139, 92, 246, 0.3);
 }
 
 /* ===== CARD BOTTOM ===== */
 
 body.purple-theme .product-card-content {
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(139,92,246,0.96),
-            rgba(124,58,237,1)
-        );
-
-    border-top:
-        1px solid rgba(255,255,255,0.12);
+    background: linear-gradient(180deg, rgba(167, 139, 250, 0.96), rgba(139, 92, 246, 1));
+    border-top: none;
 }
 
 /* ===== TITLE ===== */
 
 body.purple-theme .product-card-title {
-
-    color:
-        #ffffff;
-
-    font-weight:
-        700;
+    color: #ffffff;
+    font-weight: 700;
 }
 
 /* ===== PRICE ===== */
 
 body.purple-theme .product-price {
-
-    color:
-        #f8fafc;
-
-    font-weight:
-        800;
+    color: #f8fafc;
+    font-weight: 800;
 }
 
 /* ===== STOCK ===== */
 
 body.purple-theme .product-stock {
-
-    color:
-        #ffffff;
+    color: #e9d5ff;
 }
 
 /* ===== LOW STOCK ===== */
 
 body.purple-theme .product-stock.low {
-
-    color:
-        #ff4d4f;
-
-    font-weight:
-        800;
+    color: #ffb4b4;
+    font-weight: 800;
 }
 
 /* ===== CATEGORY ===== */
 
 body.purple-theme .product-category {
-
-    background:
-        rgba(255,255,255,0.16);
-
-    color:
-        #f5f3ff;
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    backdrop-filter:
-        blur(4px);
+    background: rgba(255, 255, 255, 0.12);
+    color: #f5f3ff;
+    border: none;
+    backdrop-filter: blur(4px);
 }
