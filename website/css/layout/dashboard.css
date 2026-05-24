@@ -226,21 +226,21 @@
 
     white-space:nowrap;
 
-    padding-left:100%;
-
     color:#ffffff !important;
-
-    opacity:1 !important;
-
-    -webkit-text-fill-color:#ffffff;
-
-    text-shadow:
-        0 0 8px rgba(255,255,255,0.25);
 
     font-weight:700;
 
+    font-size:1rem;
+
+    text-shadow:
+        0 0 2px rgba(255,255,255,0.2);
+
+    padding-left:100%;
+
+    will-change:transform;
+
     animation:
-    analyticsMarquee 24s linear infinite;
+    analyticsMarquee 28s linear infinite;
 }
 
 .analytics-info strong{
@@ -253,7 +253,7 @@
 
     white-space:nowrap;
 
-    color:#ffffff;
+    color:#ffffff !important;
 
     font-size:1rem;
 
@@ -262,11 +262,11 @@
 
 @keyframes analyticsMarquee{
 
-    from{
-        transform:translateX(100%);
+    0%{
+        transform:translateX(0%);
     }
 
-    to{
-        transform:translateX(-120%);
+    100%{
+        transform:translateX(-100%);
     }
 }
