@@ -847,7 +847,10 @@ function updateAnalytics(){
 
     if(expiryProductsElem){
         if(expiryProducts.length){
-            expiryProductsElem.textContent = expiryProducts.join(' • ');
+            expiryProductsElem.innerHTML =
+'<span class="marquee-text">' +
+expiryProducts.join(' • ') +
+'</span>';
         } else {
             expiryProductsElem.textContent = 'Нет товаров с истекающим сроком';
         }
@@ -858,7 +861,10 @@ function updateAnalytics(){
     }
 
     if(expensiveElem){
-        expensiveElem.textContent = expensive.name;
+        expensiveElem.innerHTML =
+'<span class="marquee-text">' +
+expensive.name +
+'</span>';
     }
 
     /* ===== LOW STOCK ===== */
@@ -868,7 +874,10 @@ function updateAnalytics(){
 
     if(lowStockProductsElem){
         if(lowProducts.length){
-            lowStockProductsElem.textContent = lowProducts.join(' • ');
+            lowStockProductsElem.innerHTML =
+'<span class="marquee-text">' +
+lowProducts.join(' • ') +
+'</span>';
         } else {
             lowStockProductsElem.textContent = 'Нет товаров с низким запасом';
         }
