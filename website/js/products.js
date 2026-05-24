@@ -106,57 +106,6 @@ function displayProducts(products){
     return;
 }
 
-/* ===== FILTER PRODUCTS ===== */
-
-function applyFilters(){
-
-    const searchInput =
-        document.getElementById(
-            'searchInput'
-        );
-
-    const categoryFilter =
-        document.getElementById(
-            'categoryFilter'
-        );
-
-    const searchValue =
-        searchInput.value
-        .toLowerCase()
-        .trim();
-
-    const selectedCategory =
-        categoryFilter.value;
-
-    let filteredProducts =
-        AppState.products.filter(product => {
-
-            const matchesSearch =
-
-                product.name
-                .toLowerCase()
-                .includes(searchValue);
-
-            const matchesCategory =
-
-                selectedCategory === 'all'
-
-                ||
-
-                product.category ===
-                selectedCategory;
-
-            return (
-                matchesSearch &&
-                matchesCategory
-            );
-        });
-
-    displayProducts(
-        filteredProducts
-    );
-}
-
 for(var i = 0; i < products.length; i++){
         var product = products[i];
         var card = document.createElement('div');
@@ -2504,6 +2453,56 @@ function enableEditMode(enable){
     }
 }
 
+/* ===== FILTER PRODUCTS ===== */
+
+function applyFilters(){
+
+    const searchInput =
+        document.getElementById(
+            'searchInput'
+        );
+
+    const categoryFilter =
+        document.getElementById(
+            'categoryFilter'
+        );
+
+    const searchValue =
+        searchInput.value
+        .toLowerCase()
+        .trim();
+
+    const selectedCategory =
+        categoryFilter.value;
+
+    let filteredProducts =
+        AppState.products.filter(product => {
+
+            const matchesSearch =
+
+                product.name
+                .toLowerCase()
+                .includes(searchValue);
+
+            const matchesCategory =
+
+                selectedCategory === 'all'
+
+                ||
+
+                product.category ===
+                selectedCategory;
+
+            return (
+                matchesSearch &&
+                matchesCategory
+            );
+        });
+
+    displayProducts(
+        filteredProducts
+    );
+}
 
 window.enableEditMode =
     enableEditMode;
