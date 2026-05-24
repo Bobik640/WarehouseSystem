@@ -296,49 +296,99 @@ body.purple-theme .search-input{
 
 /* ===== PURPLE PRODUCT CARD ===== */
 
-body.purple-theme .product-card{
-
-    background:
-        linear-gradient(
-            180deg,
-            #6366f1,
-            #7c3aed
-        );
-
-    border:
-        1px solid rgba(255,255,255,0.08);
+body.purple-theme .product-card {
+    background: linear-gradient(145deg, #6d5dfc, #5b21b6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 28px rgba(91, 33, 182, 0.35);
 }
 
-body.purple-theme .product-card-content{
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(79,70,229,0.96),
-            rgba(91,33,182,1)
-        );
-
-    border-top:
-        1px solid rgba(255,255,255,0.08);
+body.purple-theme .product-card:hover {
+    box-shadow: 0 20px 40px rgba(91, 33, 182, 0.5);
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.25);
 }
 
-body.purple-theme .product-card-title{
-
-    color:
-        white;
+body.purple-theme .product-card-content {
+    background: linear-gradient(135deg, rgba(109, 93, 252, 0.95), rgba(91, 33, 182, 0.98));
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(4px);
 }
 
-body.purple-theme .product-price{
-
-    color:
-        #ddd6fe;
+body.purple-theme .product-card-title {
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-body.purple-theme .product-category{
+body.purple-theme .product-price {
+    color: #e9d5ff;
+    font-weight: 800;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
 
-    background:
-        rgba(255,255,255,0.12);
+body.purple-theme .product-stock {
+    color: #86efac;
+}
 
-    color:
-        white;
+body.purple-theme .product-stock.low {
+    color: #fca5a5;
+}
+
+body.purple-theme .product-category {
+    background: rgba(255, 255, 255, 0.15);
+    color: #f3e8ff;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.purple-theme .product-category:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+/* Дополнительные элементы карточки для пурпурной темы */
+body.purple-theme .product-card-info {
+    color: #e9d5ff;
+}
+
+body.purple-theme .product-expiry-badge {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fcd34d;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+body.purple-theme .product-vip-badge {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: #4c1d95;
+}
+
+body.purple-theme .product-admin-btn {
+    background: rgba(255, 255, 255, 0.85);
+    color: #5b21b6;
+}
+
+body.purple-theme .product-admin-btn:hover {
+    background: white;
+    color: #7c3aed;
+}
+
+body.purple-theme .product-card-image::after {
+    background: linear-gradient(to top, rgba(91, 33, 182, 0.5), transparent);
+}
+
+/* Бейджи для пурпурной темы */
+body.purple-theme .low-stock-badge {
+    background: #dc2626;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
+}
+
+body.purple-theme .product-fridge-badge {
+    background: linear-gradient(145deg, #06b6d4, #0891b2);
+    border: none;
+}
+
+body.purple-theme .product-expiry-badge.status {
+    background: linear-gradient(145deg, #f59e0b, #ea580c);
+}
+
+body.purple-theme .product-danger-badge {
+    background: linear-gradient(145deg, #ef4444, #b91c1c);
 }
