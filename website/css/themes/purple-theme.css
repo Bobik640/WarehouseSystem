@@ -367,6 +367,19 @@ body.purple-theme .product-expiry-badge {
         0 0 18px rgba(250,204,21,0.45);
 }
 
+body.dark-theme .product-fridge-badge {
+
+    background:
+        linear-gradient(
+            145deg,
+            #0ea5e9,
+            #2563eb
+        );
+
+    border:
+        2px solid #38bdf8;
+}
+
 body.purple-theme .product-expiry-badge.status {
 
     background:

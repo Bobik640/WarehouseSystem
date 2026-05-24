@@ -561,3 +561,16 @@ body.light-theme .product-card-image {
     background:
         #cfd8e3;
 }
+
+body.dark-theme .product-fridge-badge {
+
+    background:
+        linear-gradient(
+            145deg,
+            #0ea5e9,
+            #2563eb
+        );
+
+    border:
+        2px solid #38bdf8;
+}
