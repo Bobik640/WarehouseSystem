@@ -782,10 +782,13 @@ body.dark-theme .product-card-content{
     background:
         linear-gradient(
             180deg,
-            #1e293b,
-            #0f172a
+            rgba(30,41,59,0.96),
+            rgba(15,23,42,1)
         );
 
+    backdrop-filter:
+        blur(12px);
+
     border-top:
-        1px solid rgba(255,255,255,0.05);
+        1px solid rgba(255,255,255,0.06);
 }
