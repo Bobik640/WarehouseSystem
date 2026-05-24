@@ -140,17 +140,29 @@
 
 .analytics-chart {
 
-    flex:1;
+    flex:
+        1;
 
-    display:flex;
+    display:
+        flex;
 
-    flex-direction:column;
+    flex-direction:
+        column;
 
-    gap:14px;
+    gap:
+        14px;
 
-    height:210px;
+    height:
+        210px;
 
-    overflow:hidden;
+    overflow-y:
+        auto;
+
+    overflow-x:
+        hidden;
+
+    padding-right:
+        6px;
 }
 
 .chart-item {
