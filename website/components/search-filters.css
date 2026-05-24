@@ -162,3 +162,38 @@
         max-width: 100%;
     }
 }
+
+/* ===== FIX DOUBLE ARROWS ===== */
+
+.category-filter{
+
+    appearance:
+        none !important;
+
+    -webkit-appearance:
+        none !important;
+
+    -moz-appearance:
+        none !important;
+
+    background-repeat:
+        no-repeat !important;
+}
+
+.category-filter::-ms-expand{
+
+    display:
+        none;
+}
+
+select{
+
+    appearance:
+        none !important;
+
+    -webkit-appearance:
+        none !important;
+
+    -moz-appearance:
+        none !important;
+}
