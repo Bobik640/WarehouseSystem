@@ -779,15 +779,18 @@ body.dark-theme .overview-item.success strong{
 
 body.dark-theme .product-card-content{
 
+    padding:
+        18px;
+
+    min-height:
+        180px;
+
     background:
         linear-gradient(
             180deg,
-            rgba(30,41,59,0.96),
-            rgba(15,23,42,1)
+            #1e293b,
+            #0f172a
         );
-
-    backdrop-filter:
-        blur(12px);
 
     border-top:
         1px solid rgba(255,255,255,0.06);
