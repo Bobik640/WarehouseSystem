@@ -247,13 +247,13 @@
     will-change:transform;
 }
 
-#expensiveProduct{
+#expensiveProduct .marquee-text{
 
     animation:
         analyticsMarquee 18s linear infinite;
 }
 
-#lowStockProducts{
+#lowStockProducts .marquee-text{
 
     animation:
         analyticsMarquee 22s linear infinite;
@@ -261,7 +261,7 @@
     animation-delay:-6s;
 }
 
-#expiryProducts{
+#expiryProducts .marquee-text{
 
     animation:
         analyticsMarquee 26s linear infinite;
