@@ -629,67 +629,86 @@ body.light-theme .product-tooltip-date{
 }
 
 /* ===================================================== */
-/* ================= MODALS ============================ */
+/* ================= LIGHT EDIT MODAL ================== */
 /* ===================================================== */
 
-.edit-modal{
+body.light-theme .edit-modal{
 
     background:white;
 
-    border:1px solid #e2e8f0;
+    border:
+        1px solid #e2e8f0;
+
+    box-shadow:
+        0 35px 80px rgba(15,23,42,.12);
 }
 
-.edit-modal-title{
+body.light-theme .edit-modal-title{
     color:#0f172a;
 }
 
-.edit-modal-label,
-.edit-section-title{
+body.light-theme .edit-modal-label,
+body.light-theme .edit-section-title{
     color:#64748b;
 }
 
-.edit-close-btn{
+body.light-theme .edit-close-btn{
 
     background:#f1f5f9;
 
     color:#0f172a;
 }
 
-.form-control{
+body.light-theme .edit-close-btn:hover{
+
+    background:#dbeafe;
+
+    transform:
+        rotate(90deg);
+}
+
+body.light-theme .edit-form .form-control{
 
     background:#f8fafc;
 
-    border:1px solid #dbe3ef;
+    border:
+        1px solid #dbe3ef;
 
     color:#0f172a;
 }
 
-.edit-upload-zone{
+body.light-theme .edit-form .form-control::placeholder{
 
-    border:2px dashed #cbd5e1;
+    color:#94a3b8;
+}
+
+body.light-theme .edit-upload-zone{
+
+    border:
+        2px dashed #cbd5e1;
 
     background:#f8fafc;
 }
 
-.edit-upload-zone:hover{
+body.light-theme .edit-upload-zone:hover{
 
     border-color:#2563eb;
 
     background:#eff6ff;
 }
 
-.edit-upload-icon{
+body.light-theme .edit-upload-icon{
 
     background:#dbeafe;
 
     color:#2563eb;
 }
 
-.edit-upload-title{
+body.light-theme .edit-upload-title{
     color:#0f172a;
 }
 
-.edit-save-btn{
+body.light-theme .edit-save-btn{
 
     background:
     linear-gradient(
@@ -699,6 +718,18 @@ body.light-theme .product-tooltip-date{
     );
 
     color:white;
+
+    box-shadow:
+        0 12px 28px rgba(37,99,235,.22);
+}
+
+body.light-theme .edit-save-btn:hover{
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 16px 34px rgba(37,99,235,.28);
 }
 
 body.light-theme .edit-upload-zone.dragover{
