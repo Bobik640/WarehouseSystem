@@ -246,8 +246,27 @@
 
     will-change:transform;
 
+    #expensiveProduct{
+
     animation:
         analyticsMarquee 18s linear infinite;
+}
+
+#lowStockProducts{
+
+    animation:
+        analyticsMarquee 22s linear infinite;
+
+    animation-delay:-6s;
+}
+
+#expiryProducts{
+
+    animation:
+        analyticsMarquee 26s linear infinite;
+
+    animation-delay:-12s;
+}
 }
 
 .analytics-info{
