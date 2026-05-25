@@ -235,10 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if(!uploadZone || !fileInput) return;
 
-    uploadZone.addEventListener('click', () => {
+    uploadZone.onclick = () => {
 
-        fileInput.click();
-    });
+    fileInput.click();
+};
 
     uploadZone.addEventListener('dragover', (e) => {
 

@@ -329,3 +329,12 @@
 .edit-upload-zone input[type="file"]{
     display:none !important;
 }
+
+.edit-upload-zone.dragover{
+
+    border-color:#3b82f6;
+
+    background:rgba(59,130,246,0.08);
+
+    transform:scale(1.01);
+}
