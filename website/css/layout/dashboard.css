@@ -229,7 +229,11 @@
 
     position:relative;
 
-    height:24px;
+    height:32px;
+
+    display:flex;
+
+    align-items:center;
 }
 
 .marquee-text{
@@ -240,7 +244,10 @@
 
     padding-left:100%;
 
-    animation:analyticsMarquee 18s linear infinite;
+    will-change:transform;
+
+    animation:
+        analyticsMarquee 12s linear infinite;
 }
 
 .analytics-info{
@@ -275,6 +282,6 @@
     }
 
     to{
-        transform:translateX(-100%);
+    transform:translateX(calc(-100% - 240px));
     }
 }
