@@ -321,3 +321,11 @@
 
     margin-top:28px;
 }
+
+#editImage{
+    display:none !important;
+}
+
+.edit-upload-zone input[type="file"]{
+    display:none !important;
+}
