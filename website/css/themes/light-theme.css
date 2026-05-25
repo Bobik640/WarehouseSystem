@@ -627,3 +627,90 @@ body.light-theme .product-tooltip-date{
     color:
         #1e293b;
 }
+
+/* ===================================================== */
+/* ================= MODALS ============================ */
+/* ===================================================== */
+
+.edit-modal{
+
+    background:white;
+
+    border:1px solid #e2e8f0;
+}
+
+.edit-modal-title{
+    color:#0f172a;
+}
+
+.edit-modal-label,
+.edit-section-title{
+    color:#64748b;
+}
+
+.edit-close-btn{
+
+    background:#f1f5f9;
+
+    color:#0f172a;
+}
+
+.form-control{
+
+    background:#f8fafc;
+
+    border:1px solid #dbe3ef;
+
+    color:#0f172a;
+}
+
+.edit-upload-zone{
+
+    border:2px dashed #cbd5e1;
+
+    background:#f8fafc;
+}
+
+.edit-upload-zone:hover{
+
+    border-color:#2563eb;
+
+    background:#eff6ff;
+}
+
+.edit-upload-icon{
+
+    background:#dbeafe;
+
+    color:#2563eb;
+}
+
+.edit-upload-title{
+    color:#0f172a;
+}
+
+.edit-save-btn{
+
+    background:
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
+
+    color:white;
+}
+
+body.light-theme .edit-upload-zone.dragover{
+
+    border-color:#2563eb;
+
+    background:
+        rgba(37,99,235,0.08);
+
+    box-shadow:
+        0 0 26px rgba(37,99,235,0.18);
+
+    transform:
+        scale(1.02);
+}
