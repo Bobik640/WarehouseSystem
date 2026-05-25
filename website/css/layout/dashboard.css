@@ -249,11 +249,11 @@
 
     flex-direction:column;
 
-    gap:10px;
-
     justify-content:flex-start;
 
-    margin-top:-8px;
+    gap:6px;
+
+    margin-top:-10px;
 }
 
 .analytics-info p{
