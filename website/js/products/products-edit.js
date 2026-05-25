@@ -222,5 +222,74 @@ document.addEventListener(
     }
 );
 
+document.addEventListener('DOMContentLoaded', () => {
+
+    const uploadZone =
+        document.querySelector('.edit-upload-zone');
+
+    const fileInput =
+        document.getElementById('editImage');
+
+    const preview =
+        document.getElementById('editPreviewImage');
+
+    if(!uploadZone || !fileInput) return;
+
+    uploadZone.addEventListener('click', () => {
+
+        fileInput.click();
+    });
+
+    uploadZone.addEventListener('dragover', (e) => {
+
+        e.preventDefault();
+
+        uploadZone.classList.add('dragover');
+    });
+
+    uploadZone.addEventListener('dragleave', () => {
+
+        uploadZone.classList.remove('dragover');
+    });
+
+    uploadZone.addEventListener('drop', async (e) => {
+
+        e.preventDefault();
+
+        uploadZone.classList.remove('dragover');
+
+        const file = e.dataTransfer.files[0];
+
+        if(!file) return;
+
+        fileInput.files = e.dataTransfer.files;
+
+        const reader = new FileReader();
+
+        reader.onload = function(event){
+
+            preview.src = event.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    });
+
+    fileInput.addEventListener('change', () => {
+
+        const file = fileInput.files[0];
+
+        if(!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = function(event){
+
+            preview.src = event.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    });
+});
+
 window.openEditModal =
     openEditModal;
