@@ -254,15 +254,15 @@ function updateAnalytics(){
             if(!product.expiryDate) return false;
             const expiry = new Date(product.expiryDate);
             const diffDays = (expiry - today) / (1000 * 60 * 60 * 24);
-            return diffDays <= 7 && diffDays >= 0;
+            return diffDays <= 7;
         })
         .map(product => product.name);
 
     if(expiryProductsElem){
         if(expiryProducts.length){
-            expiryProductsElem.innerHTML = expiryProducts.map(name => `<span style="display: block; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">• ${name}</span>`).join('');
+            expiryProductsElem.textContent = expiryProducts.join(' • ');
         } else {
-            expiryProductsElem.innerHTML = '<span style="color: #64748b;">Нет товаров с истекающим сроком</span>';
+            expiryProductsElem.textContent = 'Нет товаров с истекающим сроком';
         }
     }
 
@@ -281,9 +281,9 @@ function updateAnalytics(){
 
     if(lowStockProductsElem){
         if(lowProducts.length){
-            lowStockProductsElem.innerHTML = lowProducts.map(name => `<span style="display: block; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">• ${name}</span>`).join('');
+            lowStockProductsElem.textContent = lowProducts.join(' • ');
         } else {
-            lowStockProductsElem.innerHTML = '<span style="color: #64748b;">Нет товаров с низким запасом</span>';
+            lowStockProductsElem.textContent = 'Нет товаров с низким запасом';
         }
     }
 }

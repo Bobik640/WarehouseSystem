@@ -228,20 +228,22 @@
     overflow:hidden;
 
     position:relative;
-
-    white-space:nowrap;
 }
 
 .marquee-text{
 
-    display:inline-block;
+    display:block;
 
-    white-space:nowrap;
+    overflow:hidden;
 
-    padding-left:100%;
+    line-height:1.4;
 
-    animation:
-    analyticsMarquee 20s linear infinite;
+    max-height:4.2em;
+
+    word-break:break-word;
+    overflow-wrap:break-word;
+
+    white-space:normal;
 }
 
 .analytics-info strong{
@@ -250,9 +252,18 @@
 
     font-size:1rem;
 
-    display:inline-block;
+    display:block;
 
-    white-space:nowrap;
+    overflow:hidden;
+
+    line-height:1.4;
+
+    max-height:4.2em;
+
+    white-space:normal;
+
+    word-break:break-word;
+    overflow-wrap:break-word;
 }
 
 @keyframes analyticsMarquee{
