@@ -38,7 +38,7 @@ function displayProducts(products){
             (isLowStock ? '<div class="low-stock-badge">НИЗКИЙ ЗАПАС</div>' : '') +
             (AppState.isLoggedIn
                 ? '<div class="product-admin-actions">' +
-                  '<button class="product-admin-btn edit-product-btn" data-id="' + product._id + '">' +
+                  '<button class="product-admin-btn" onclick="event.stopPropagation(); openEditModal(\'' + product._id + '\')">' +
                     '<i class="fas fa-pen"></i>' +
                     '</button>' +
                   '<button class="product-admin-btn" onclick="event.stopPropagation(); window.openActionModal(\'delete\', \'' + product._id + '\')">' +
@@ -88,17 +88,6 @@ function displayProducts(products){
 
         productsList.appendChild(card);
 
-        const editBtn = card.querySelector('.edit-product-btn');
-
-        if(editBtn){
-
-        editBtn.addEventListener('click', function(e){
-
-        e.stopPropagation();
-
-        openEditModal(product._id);
-    });
-}
     }
 }
 
