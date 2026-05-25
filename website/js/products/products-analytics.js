@@ -248,30 +248,23 @@ function updateAnalytics(){
     const expiryProductsElem = document.getElementById('expiryProducts');
 
     /* ===== EXPIRY PRODUCTS ===== */
-    const today = new Date();
-    const expiryProducts = AppState.products
-        .filter(product => {
-            if(!product.expiryDate) return false;
-            const expiry = new Date(product.expiryDate);
-            const diffDays = (expiry - today) / (1000 * 60 * 60 * 24);
-            return diffDays <= 7;
-        })
-        .map(product => product.name);
-
     if(expiryProductsElem){
         if(expiryProducts.length){
             expiryProductsElem.textContent = expiryProducts.join(' • ');
         } else {
             expiryProductsElem.textContent = 'Нет товаров с истекающим сроком';
         }
-    }
 
-    if(topCategoryElem){
-        topCategoryElem.textContent = topCategory;
-    }
-
-    if(expensiveElem){
-        expensiveElem.textContent = expensive.name;
+        // Защита конкретно для 4-й строки от вылета и скролла
+        expiryProductsElem.style.display = 'block';
+        expiryProductsElem.style.width = '100%';
+        expiryProductsElem.style.maxWidth = '260px'; // Подобрано под размер твоей карточки
+        expiryProductsElem.style.whiteSpace = 'nowrap';
+        expiryProductsElem.style.overflow = 'hidden';
+        expiryProductsElem.style.textOverflow = 'ellipsis';
+        
+        // Чтобы при наведении можно было прочитать весь список
+        expiryProductsElem.title = expiryProducts.length ? expiryProducts.join(' • ') : '';
     }
 
     /* ===== LOW STOCK ===== */
