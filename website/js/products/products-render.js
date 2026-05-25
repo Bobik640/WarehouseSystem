@@ -97,7 +97,7 @@ function displayProducts(products){
 
         // Обработчики кнопок админки (назначаем только если админ залогинен)
         if (AppState.isLoggedIn) {
-            var productId = product._id;
+            let productId = product._id;
 
             var editBtn = card.querySelector('.edit-action-trigger');
             var deleteBtn = card.querySelector('.delete-action-trigger');
