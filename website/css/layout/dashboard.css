@@ -245,8 +245,9 @@
     padding-left:100%;
 
     will-change:transform;
+}
 
-    #expensiveProduct{
+#expensiveProduct{
 
     animation:
         analyticsMarquee 18s linear infinite;
@@ -266,7 +267,6 @@
         analyticsMarquee 26s linear infinite;
 
     animation-delay:-12s;
-}
 }
 
 .analytics-info{
