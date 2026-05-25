@@ -229,7 +229,7 @@
 
     position:relative;
 
-    height:42px;
+    height:24px;
 }
 
 .marquee-text{
@@ -241,21 +241,6 @@
     padding-left:100%;
 
     animation:analyticsMarquee 18s linear infinite;
-}
-
-.analytics-info strong{
-
-    color:white;
-
-    font-size:1rem;
-
-    display:block;
-
-    overflow:hidden;
-
-    white-space:nowrap;
-
-    text-overflow:ellipsis;
 }
 
 @keyframes analyticsMarquee{
