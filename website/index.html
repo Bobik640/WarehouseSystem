@@ -836,10 +836,161 @@
 </div>
 
 <!-- EDIT PRODUCT MODAL -->
+
 <div class="edit-modal-overlay" id="editModalOverlay">
-    <div class="edit-modal" id="editModalContent">
-        <!-- СОДЕРЖИМОЕ БУДЕТ ВСТАВЛЕНО JAVASCRIPT -->
+
+    <div class="edit-modal">
+
+        <div class="edit-modal-container">
+
+            <div class="edit-modal-header">
+
+                <div>
+                    <span class="edit-modal-label">
+                        РЕДАКТИРОВАНИЕ ТОВАРА
+                    </span>
+
+                    <h2 class="edit-modal-title" id="editModalTitle">
+                        Товар
+                    </h2>
+                </div>
+
+                <button class="edit-close-btn" id="closeEditModalBtn">
+                    <i class="fas fa-xmark"></i>
+                </button>
+
+            </div>
+
+            <div class="edit-modal-body">
+
+                <!-- LEFT -->
+
+                <div class="edit-preview-section">
+
+                    <img
+                        id="editPreviewImage"
+                        class="edit-preview-image"
+                        src=""
+                    >
+
+                </div>
+
+                <!-- RIGHT -->
+
+                <div class="edit-form">
+
+                    <div class="edit-section">
+
+                        <div class="edit-section-title">
+                            Основная информация
+                        </div>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="editName"
+                            placeholder="Название"
+                        >
+
+                        <textarea
+                            class="form-control"
+                            id="editDescription"
+                            placeholder="Описание"
+                        ></textarea>
+
+                    </div>
+
+                    <div class="edit-grid">
+
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="editQuantity"
+                            placeholder="Количество"
+                        >
+
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="editPrice"
+                            placeholder="Цена"
+                        >
+
+                    </div>
+
+                    <div class="edit-grid">
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="editSupplier"
+                            placeholder="Поставщик"
+                        >
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="editLocation"
+                            placeholder="Склад"
+                        >
+
+                    </div>
+
+                    <select
+                        class="form-control"
+                        id="editCategory"
+                    >
+                        <option>Электроника</option>
+                        <option>Одежда</option>
+                        <option>Продукты</option>
+                        <option>Освещение</option>
+                        <option>Спорт</option>
+                        <option>Другое</option>
+                    </select>
+
+                    <div class="edit-section">
+
+                        <div class="edit-section-title">
+                            Фото товара
+                        </div>
+
+                        <label class="edit-upload-zone">
+
+                            <input
+                                type="file"
+                                id="editImage"
+                                accept="image/*"
+                                hidden
+                            >
+
+                            <div class="edit-upload-icon">
+                                <i class="fas fa-cloud-arrow-up"></i>
+                            </div>
+
+                            <div class="edit-upload-title">
+                                Выберите фото
+                            </div>
+
+                        </label>
+
+                    </div>
+
+                    <button class="edit-save-btn" id="saveEditBtn">
+
+                        <i class="fas fa-check"></i>
+
+                        Сохранить
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
+
 </div>
 
 <!-- ACTION MODAL -->
