@@ -134,7 +134,7 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 30px;
-    height: 210px;
+    height: 190px;
     overflow: hidden;
 }
 
@@ -241,6 +241,31 @@
     padding-left:100%;
 
     animation:analyticsMarquee 18s linear infinite;
+}
+
+.analytics-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    justify-content:flex-start;
+
+    margin-top:-8px;
+}
+
+.analytics-info p{
+
+    margin:0;
+}
+
+.analytics-info strong{
+
+    display:block;
+
+    margin-top:2px;
 }
 
 @keyframes analyticsMarquee{
