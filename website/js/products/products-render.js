@@ -20,10 +20,19 @@ function displayProducts(products){
         var card = document.createElement('div');
         
         (function(index){
-            card.addEventListener('click', function(){
-                openProductModal(index);
-            });
-        })(i);
+
+    card.addEventListener('click', function(e){
+
+        if(
+            e.target.closest('.product-admin-actions')
+        ){
+            return;
+        }
+
+        openProductModal(index);
+    });
+
+})(i);
         
         card.className = 'product-card';
 
