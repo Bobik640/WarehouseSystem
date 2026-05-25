@@ -229,7 +229,7 @@
 
     position:relative;
 
-    height:32px;
+    height:24px;
 
     display:flex;
 
@@ -247,7 +247,7 @@
     will-change:transform;
 
     animation:
-        analyticsMarquee 12s linear infinite;
+        analyticsMarquee 18s linear infinite;
 }
 
 .analytics-info{
@@ -282,6 +282,6 @@
     }
 
     to{
-    transform:translateX(calc(-100% - 240px));
+        transform:translateX(-140%);
     }
 }
