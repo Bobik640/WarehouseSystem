@@ -18,23 +18,8 @@ function displayProducts(products){
     for(var i = 0; i < products.length; i++){
         var product = products[i];
         var card = document.createElement('div');
-        
-        (function(index){
-
-    card.addEventListener('click', function(e){
-
-        if(
-            e.target.closest('.product-admin-actions')
-        ){
-            return;
-        }
-
-        openProductModal(index);
-    });
-
-})(i);
-        
         card.className = 'product-card';
+        card.setAttribute('data-id', product._id); // Сохраняем ID в дата-атрибут для удобства
 
         var imageUrl = product.image && product.image.trim() !== '' 
             ? product.image 
@@ -42,22 +27,22 @@ function displayProducts(products){
 
         var isLowStock = Number(product.quantity) < 5;
 
-        // ИСПРАВЛЕНИЕ: используем window.openEditModal и window.openActionModal
+        // 1. Сначала генерируем СТРУКТУРУ карточки
         card.innerHTML =
             (isLowStock ? '<div class="low-stock-badge">НИЗКИЙ ЗАПАС</div>' : '') +
             (AppState.isLoggedIn
                 ? '<div class="product-admin-actions">' +
-                  '<button class="product-admin-btn" onclick="event.stopPropagation(); window.openEditModal(\'' + product._id + '\')">' +
+                  '<button class="product-admin-btn edit-action-trigger">' +
                     '<i class="fas fa-pen"></i>' +
-                    '</button>' +
-                  '<button class="product-admin-btn" onclick="event.stopPropagation(); window.openActionModal(\'delete\', \'' + product._id + '\')">' +
-                  '<i class="fas fa-trash"></i>' +
                   '</button>' +
-                  '<button class="product-admin-btn" onclick="event.stopPropagation(); window.openActionModal(\'reduce\', \'' + product._id + '\')">' +
-                  '<i class="fas fa-minus"></i>' +
+                  '<button class="product-admin-btn delete-action-trigger">' +
+                    '<i class="fas fa-trash"></i>' +
                   '</button>' +
-                  '<button class="product-admin-btn" onclick="event.stopPropagation(); window.openActionModal(\'add\', \'' + product._id + '\')">' +
-                  '<i class="fas fa-plus"></i>' +
+                  '<button class="product-admin-btn reduce-action-trigger">' +
+                    '<i class="fas fa-minus"></i>' +
+                  '</button>' +
+                  '<button class="product-admin-btn add-action-trigger">' +
+                    '<i class="fas fa-plus"></i>' +
                   '</button>' +
                   '</div>'
                 : ''
@@ -95,12 +80,69 @@ function displayProducts(products){
             '</div>' +
             '</div>';
 
-        productsList.appendChild(card);
+        // 2. А вот ТЕПЕРЬ, когда DOM внутри карточки готов, вешаем все обработчики
+        
+        // Клик по самой карточке (открытие инфо-модалки)
+        (function(index) {
+            card.addEventListener('click', function(e) {
+                // Если кликнули на админ-панель или любую кнопку внутри неё — игнорируем, чтобы не открывать карточку
+                if (e.target.closest('.product-admin-actions')) {
+                    return;
+                }
+                if (typeof openProductModal === 'function') {
+                    openProductModal(index);
+                }
+            });
+        })(i);
 
+        // Обработчики кнопок админки (назначаем только если админ залогинен)
+        if (AppState.isLoggedIn) {
+            var productId = product._id;
+
+            var editBtn = card.querySelector('.edit-action-trigger');
+            var deleteBtn = card.querySelector('.delete-action-trigger');
+            var reduceBtn = card.querySelector('.reduce-action-trigger');
+            var addBtn = card.querySelector('.add-action-trigger');
+
+            if (editBtn) {
+                editBtn.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Стопаем всплытие к карточке
+                    if (typeof window.openEditModal === 'function') {
+                        window.openEditModal(productId);
+                    } else {
+                        console.error('❌ Функция window.openEditModal не найдена в глобальной области!');
+                    }
+                });
+            }
+
+            if (deleteBtn) {
+                deleteBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    window.openActionModal('delete', productId);
+                });
+            }
+
+            if (reduceBtn) {
+                reduceBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    window.openActionModal('reduce', productId);
+                });
+            }
+
+            if (addBtn) {
+                addBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    window.openActionModal('add', productId);
+                });
+            }
+        }
+
+        productsList.appendChild(card);
     }
 }
 
 function renderProductModal(){
+    if (typeof currentProductIndex === 'undefined') return;
     const product = AppState.products[currentProductIndex];
     if(!product) return;
 
