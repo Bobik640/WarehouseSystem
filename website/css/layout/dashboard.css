@@ -228,22 +228,19 @@
     overflow:hidden;
 
     position:relative;
+
+    height:42px;
 }
 
 .marquee-text{
 
-    display:block;
+    display:inline-block;
 
-    overflow:hidden;
+    white-space:nowrap;
 
-    line-height:1.4;
+    padding-left:100%;
 
-    max-height:4.2em;
-
-    word-break:break-word;
-    overflow-wrap:break-word;
-
-    white-space:normal;
+    animation:analyticsMarquee 18s linear infinite;
 }
 
 .analytics-info strong{
@@ -256,14 +253,9 @@
 
     overflow:hidden;
 
-    line-height:1.4;
+    white-space:nowrap;
 
-    max-height:4.2em;
-
-    white-space:normal;
-
-    word-break:break-word;
-    overflow-wrap:break-word;
+    text-overflow:ellipsis;
 }
 
 @keyframes analyticsMarquee{
