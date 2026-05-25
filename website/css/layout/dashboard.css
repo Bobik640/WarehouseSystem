@@ -228,27 +228,30 @@
     height: 24px;
     display: flex;
     align-items: center;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 0 8px;
 }
 
 .marquee-text {
     display: inline-block;
     white-space: nowrap;
-    padding-left: 100%;
     will-change: transform;
+    animation: analyticsMarquee 18s linear infinite;
+    color: white;
+    font-size: 0.85rem;
 }
 
-/* Анимация для 1-й категории (lowStock) */
-.marquee-text.low-stock {
+/* Разные скорости для каждой категории */
+#lowStockMarquee {
     animation: analyticsMarquee1 18s linear infinite;
 }
 
-/* Анимация для 2-й категории (expiry) */
-.marquee-text.expiry {
+#expiryMarquee {
     animation: analyticsMarquee2 20s linear infinite;
 }
 
-/* Анимация для 3-й категории (expensive) */
-.marquee-text.expensive {
+#expensiveMarquee {
     animation: analyticsMarquee3 22s linear infinite;
 }
 
@@ -269,30 +272,29 @@
     margin-top: 2px;
 }
 
-/* Разные ключевые кадры для каждой анимации */
 @keyframes analyticsMarquee1 {
-    from {
-        transform: translateX(0);
+    0% {
+        transform: translateX(100%);
     }
-    to {
-        transform: translateX(-140%);
+    100% {
+        transform: translateX(-100%);
     }
 }
 
 @keyframes analyticsMarquee2 {
-    from {
-        transform: translateX(0);
+    0% {
+        transform: translateX(100%);
     }
-    to {
-        transform: translateX(-140%);
+    100% {
+        transform: translateX(-100%);
     }
 }
 
 @keyframes analyticsMarquee3 {
-    from {
-        transform: translateX(0);
+    0% {
+        transform: translateX(100%);
     }
-    to {
-        transform: translateX(-140%);
+    100% {
+        transform: translateX(-100%);
     }
 }
