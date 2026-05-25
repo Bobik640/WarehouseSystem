@@ -186,12 +186,12 @@ function updateAnalytics(){
     });
 
     /* ===== BARS ===== */
-    const maxValue = Math.max(...Object.values(categoryMap), 1);
+    const totalProducts = AppState.products.length || 1;
 
     function setBar(id,value){
         const elem = document.getElementById(id);
         if(elem){
-            elem.style.width = ((value / maxValue) * 100) + '%';
+            elem.style.width = ((value / totalProducts) * 100) + '%';
         }
     }
 
