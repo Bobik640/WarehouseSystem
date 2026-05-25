@@ -221,86 +221,78 @@
     from { width: 0; }
 }
 
-.marquee-wrapper{
-
-    width:240px;
-
-    overflow:hidden;
-
-    position:relative;
-
-    height:24px;
-
-    display:flex;
-
-    align-items:center;
+.marquee-wrapper {
+    width: 240px;
+    overflow: hidden;
+    position: relative;
+    height: 24px;
+    display: flex;
+    align-items: center;
 }
 
-.marquee-text{
-
-    display:inline-block;
-
-    white-space:nowrap;
-
-    padding-left:100%;
-
-    will-change:transform;
+.marquee-text {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    will-change: transform;
 }
 
-#expensiveProduct .marquee-text{
-
-    animation:
-        analyticsMarquee 18s linear infinite;
+/* Анимация для 1-й категории (lowStock) */
+.marquee-text.low-stock {
+    animation: analyticsMarquee1 18s linear infinite;
 }
 
-#lowStockProducts .marquee-text{
-
-    animation:
-        analyticsMarquee 22s linear infinite;
-
-    animation-delay:-6s;
+/* Анимация для 2-й категории (expiry) */
+.marquee-text.expiry {
+    animation: analyticsMarquee2 20s linear infinite;
 }
 
-#expiryProducts .marquee-text{
-
-    animation:
-        analyticsMarquee 26s linear infinite;
-
-    animation-delay:-12s;
+/* Анимация для 3-й категории (expensive) */
+.marquee-text.expensive {
+    animation: analyticsMarquee3 22s linear infinite;
 }
 
-.analytics-info{
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:flex-start;
-
-    gap:6px;
-
-    margin-top:-5px;
+.analytics-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 6px;
+    margin-top: -5px;
 }
 
-.analytics-info p{
-
-    margin:0;
+.analytics-info p {
+    margin: 0;
 }
 
-.analytics-info strong{
-
-    display:block;
-
-    margin-top:2px;
+.analytics-info strong {
+    display: block;
+    margin-top: 2px;
 }
 
-@keyframes analyticsMarquee{
-
-    from{
-        transform:translateX(0);
+/* Разные ключевые кадры для каждой анимации */
+@keyframes analyticsMarquee1 {
+    from {
+        transform: translateX(0);
     }
+    to {
+        transform: translateX(-140%);
+    }
+}
 
-    to{
-        transform:translateX(-140%);
+@keyframes analyticsMarquee2 {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-140%);
+    }
+}
+
+@keyframes analyticsMarquee3 {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-140%);
     }
 }
