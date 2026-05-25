@@ -105,15 +105,19 @@ function displayProducts(products){
             var addBtn = card.querySelector('.add-action-trigger');
 
             if (editBtn) {
-                editBtn.addEventListener('click', function(e) {
-                    e.stopPropagation(); // Стопаем всплытие к карточке
-                    if (typeof window.openEditModal === 'function') {
-                        window.openEditModal(productId);
-                    } else {
-                        console.error('❌ Функция window.openEditModal не найдена в глобальной области!');
-                    }
-                });
-            }
+    editBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); 
+        
+        // === ДОБАВЬ ЭТУ СТРОКУ ===
+        console.log('🎯 Клик по кнопке карандаша зафиксирован! ID товара:', productId);
+
+        if (typeof window.openEditModal === 'function') {
+            window.openEditModal(productId);
+        } else {
+            console.error('❌ Функция window.openEditModal не найдена в window!');
+        }
+    });
+}
 
             if (deleteBtn) {
                 deleteBtn.addEventListener('click', function(e) {
