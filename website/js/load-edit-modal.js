@@ -245,7 +245,11 @@ async function saveEditedProduct() {
         category: document.getElementById('editCategory')?.value || '',
         image: image,
         refrigerationRequired: refrigerationRequired,
-        expiryDate: expiryDateInput && expiryDateInput.value ? expiryDateInput.value : null
+        expiryDate:
+    expiryDateInput &&
+    expiryDateInput.value
+    ? expiryDateInput.value
+    : oldProduct.expiryDate || null
     };
 
     // ===== MEDICINE EXTRA DATA =====
