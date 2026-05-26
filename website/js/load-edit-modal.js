@@ -153,15 +153,26 @@ function openEditModal(productId) {
         medicineFields.style.display = isMedicine ? 'flex' : 'none';
     }
 
-    // Заполняем медицинские поля, если товар - медикамент
+    // [ИСПРАВЛЕНО]: Чекбокс холодильника и дата считываются ВСЕГДА, независимо от категории
+    const needsColdCheck = document.getElementById('editNeedsCold');
+    const expiryDate = document.getElementById('editExpiryDate');
+
+    if (needsColdCheck) {
+        needsColdCheck.checked = product.refrigerationRequired === true;
+    }
+    if (expiryDate) {
+        expiryDate.value = product.expiryDate
+            ? new Date(product.expiryDate).toISOString().split('T')[0]
+            : '';
+    }
+
+    // Заполняем остальные специфичные медицинские поля, только если товар - медикамент
     if (isMedicine) {
         const seriesInput = document.getElementById('editMedicineSeries');
         const manufacturerInput = document.getElementById('editMedicineManufacturer');
         const dosageInput = document.getElementById('editMedicineDosage');
         const typeSelect = document.getElementById('editMedicineType');
         const recipeSelect = document.getElementById('editMedicineRecipe');
-        const needsColdCheck = document.getElementById('editNeedsCold');
-        const expiryDate = document.getElementById('editExpiryDate');
 
         if (seriesInput) seriesInput.value = product.medicineSeries || '';
         if (manufacturerInput) manufacturerInput.value = product.medicineManufacturer || '';
@@ -171,24 +182,12 @@ function openEditModal(productId) {
         // Преобразуем boolean в текст для select
         const recipeValue = product.prescriptionRequired === true ? 'По рецепту' : 'Без рецепта';
         if (recipeSelect) recipeSelect.value = recipeValue;
-        
-        // ИСПРАВЛЕНО: правильно устанавливаем состояние чекбокса
-        if (needsColdCheck) needsColdCheck.checked = product.refrigerationRequired === true;
-        if (expiryDate) {
-            expiryDate.value = product.expiryDate
-                ? new Date(product.expiryDate).toISOString().split('T')[0]
-                : '';
-        }
     }
 
-    const saveBtn =
-    document.getElementById(
-        'saveEditBtn'
-    );
-
-if (saveBtn) {
-    saveBtn.onclick = saveEditedProduct;
-}
+    const saveBtn = document.getElementById('saveEditBtn');
+    if (saveBtn) {
+        saveBtn.onclick = saveEditedProduct;
+    }
 
     if (overlay) overlay.style.display = 'flex';
 }
@@ -227,11 +226,13 @@ async function saveEditedProduct() {
 
     const expiryDateInput = document.getElementById('editExpiryDate');
 
-    // ИСПРАВЛЕНО: правильно определяем refrigerationRequired
-    const refrigerationRequired =
-    document.getElementById(
-        'editNeedsCold'
-    )?.checked === true;
+    // [ИСПРАВЛЕНО]: Позволяет сохранять статус холодильника для Продуктов и Медикаментов
+    const currentCategory = document.getElementById('editCategory')?.value?.toLowerCase()?.trim() || '';
+    const allowedCategories = ['медикаменты', 'продукты', 'замороженные продукты'];
+    
+    const refrigerationRequired = allowedCategories.includes(currentCategory)
+        ? document.getElementById('editNeedsCold')?.checked === true
+        : false;
 
     console.log('Итоговое refrigerationRequired:', refrigerationRequired);
 
