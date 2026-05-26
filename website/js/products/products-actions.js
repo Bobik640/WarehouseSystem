@@ -1,37 +1,25 @@
-// ===== ДЕЙСТВИЯ С ТОВАРАМИ (СПИСАНИЕ/ДОБАВЛЕНИЕ/УДАЛЕНИЕ) =====
+// ===== ДЕЙСТВИЯ С ТОВАРАМИ =====
 
-let currentAction = null;
-let currentProductId = null;
-
-/* ===== OPEN ===== */
 function openActionModal(type, productId) {
-    currentAction = type;
-    currentProductId = productId;
-
+    AppState.currentAction = type;
+    AppState.currentProductId = productId;
+    
     const title = document.getElementById('actionModalTitle');
     const content = document.getElementById('actionModalContent');
     const overlay = document.getElementById('actionModalOverlay');
-
-    // На всякий случай проверяем существование элементов модалки в DOM
-    if (!title || !content || !overlay) {
-        console.error('❌ Элементы actionModal не найдены в DOM');
-        return;
-    }
-
+    
+    if (!title || !content || !overlay) return;
+    
     const product = AppState.products.find(p => p._id === productId);
     if (!product) {
-        showStatus('Товар не найден в локальном состоянии', 'error');
+        showStatus('Товар не найден', 'error');
         return;
     }
-
-    /* ===== DELETE ===== */
+    
     if (type === 'delete') {
         title.innerHTML = '<i class="fas fa-trash-alt"></i> Удаление товара';
         content.innerHTML = `<div class="modal-confirm-text">Вы уверены, что хотите удалить товар <b>${escapeHtml(product.name)}</b>?</div>`;
-    }
-
-    /* ===== REDUCE ===== */
-    if (type === 'reduce') {
+    } else if (type === 'reduce') {
         title.innerHTML = '<i class="fas fa-minus-circle"></i> Списание товара';
         content.innerHTML = `
             <div class="modal-info-text">Товар: <b>${escapeHtml(product.name)}</b> (Доступно: ${product.quantity} шт.)</div>
@@ -39,10 +27,7 @@ function openActionModal(type, productId) {
                 <input type="number" id="actionAmountInput" class="form-control" min="1" max="${product.quantity}" placeholder="Сколько списать">
             </div>
         `;
-    }
-
-    /* ===== ADD ===== */
-    if (type === 'add') {
+    } else if (type === 'add') {
         title.innerHTML = '<i class="fas fa-plus-circle"></i> Пополнение товара';
         content.innerHTML = `
             <div class="modal-info-text">Товар: <b>${escapeHtml(product.name)}</b></div>
@@ -51,47 +36,39 @@ function openActionModal(type, productId) {
             </div>
         `;
     }
-
-    overlay.classList.add('active');
     
-    // Фокусируемся на инпуте, если он есть
+    overlay.classList.add('active');
     setTimeout(() => {
         const input = document.getElementById('actionAmountInput');
         if (input) input.focus();
     }, 50);
 }
 
-/* ===== CLOSE ===== */
 function closeActionModal() {
     const overlay = document.getElementById('actionModalOverlay');
-    if (overlay) {
-        overlay.classList.remove('active');
-    }
-    currentAction = null;
-    currentProductId = null;
+    if (overlay) overlay.classList.remove('active');
+    AppState.currentAction = null;
+    AppState.currentProductId = null;
 }
 
-/* ===== CONFIRM ===== */
 async function confirmAction() {
-    if (!currentProductId || !currentAction) return;
-
+    if (!AppState.currentProductId || !AppState.currentAction) return;
+    
     const confirmBtn = document.getElementById('confirmActionBtn');
-    const product = AppState.products.find(p => p._id === currentProductId);
+    const product = AppState.products.find(p => p._id === AppState.currentProductId);
     if (!product) return;
-
-    // Функция для безопасной блокировки интерфейса на время запроса
+    
     const setSubmitting = (isSubmitting) => {
         if (confirmBtn) {
             confirmBtn.disabled = isSubmitting;
             confirmBtn.innerHTML = isSubmitting ? '<i class="fas fa-spinner fa-spin"></i> ...' : 'Подтвердить';
         }
     };
-
-    /* ===== DELETE ===== */
-    if (currentAction === 'delete') {
+    
+    if (AppState.currentAction === 'delete') {
         try {
             setSubmitting(true);
-            await deleteProduct(currentProductId); // Предполагаем, что функция сама обновляет UI/лоадер
+            await deleteProduct(AppState.currentProductId);
             closeActionModal();
         } catch (error) {
             console.error(error);
@@ -101,25 +78,23 @@ async function confirmAction() {
         }
         return;
     }
-
-    // Для ADD и REDUCE вытаскиваем и валидируем введенное количество
+    
     const amountInput = document.getElementById('actionAmountInput');
     const amount = amountInput ? Number(amountInput.value) : 0;
-
+    
     if (!amount || amount <= 0 || !Number.isInteger(amount)) {
         showStatus('Введите корректное целое число больше нуля', 'error');
         return;
     }
-
-    /* ===== REDUCE ===== */
-    if (currentAction === 'reduce') {
+    
+    if (AppState.currentAction === 'reduce') {
         if (amount > product.quantity) {
             showStatus(`Нельзя списать больше, чем есть (${product.quantity} шт.)`, 'error');
             return;
         }
         try {
             setSubmitting(true);
-            await reduceQuantity(currentProductId, amount); // Предполагаем, что функция описана в products-api.js
+            await reduceQuantity(AppState.currentProductId, amount);
             closeActionModal();
         } catch (error) {
             console.error(error);
@@ -129,32 +104,26 @@ async function confirmAction() {
         }
         return;
     }
-
-    /* ===== ADD ===== */
-    if (currentAction === 'add') {
+    
+    if (AppState.currentAction === 'add') {
         try {
             setSubmitting(true);
-            const response = await fetch(`${APP_CONFIG.API_URL}/${currentProductId}`, {
+            const response = await fetch(`${APP_CONFIG.API_URL}/${AppState.currentProductId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    ...product, // Изящно копируем все старые свойства объекта
-                    quantity: Number(product.quantity) + amount // Перезаписываем только количество
+                    ...product,
+                    quantity: Number(product.quantity) + amount
                 })
             });
-
+            
             const data = await response.json();
-
+            
             if (data.success) {
-                if (typeof saveHistory === 'function') {
-                    saveHistory('Пополнение товара', `${product.name} добавлено: ${amount} шт.`);
-                }
+                saveHistory('Пополнение товара', `${product.name} добавлено: ${amount} шт.`);
                 showStatus('Товар успешно пополнен', 'success');
                 closeActionModal();
-                
-                if (typeof loadProducts === 'function') {
-                    loadProducts();
-                }
+                loadProducts();
             } else {
                 showStatus(data.error || 'Не удалось обновить данные на сервере', 'error');
             }
@@ -167,20 +136,6 @@ async function confirmAction() {
     }
 }
 
-// ===== ИНИЦИАЛИЗАЦИЯ СЛУШАТЕЛЕЙ СОБЫТИЙ =====
-document.addEventListener('DOMContentLoaded', () => {
-    const cancelBtn = document.getElementById('cancelActionBtn');
-    const confirmBtn = document.getElementById('confirmActionBtn');
-    const closeBtn = document.getElementById('closeActionModal'); // Кнопка-крестик, если она есть
-
-    if (cancelBtn) cancelBtn.addEventListener('click', closeActionModal);
-    if (confirmBtn) confirmBtn.addEventListener('click', confirmAction);
-    if (closeBtn) closeBtn.addEventListener('click', closeActionModal);
-});
-
-// ===== ЭКСПОРТ ФУНКЦИЙ В ГЛОБАЛЬНУЮ ОБЛАСТЬ =====
 window.openActionModal = openActionModal;
 window.closeActionModal = closeActionModal;
 window.confirmAction = confirmAction;
-
-console.log('✅ products-actions.js загружен, функции экспортированы');

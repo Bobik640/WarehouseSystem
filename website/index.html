@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/base/reset.css">
     <link rel="stylesheet" href="css/base/variables.css">
 
-    <!-- Layout (без дублирования иконок!) -->
+    <!-- Layout -->
     <link rel="stylesheet" href="css/layout/app.css">
     <link rel="stylesheet" href="css/layout/header.css">
     <link rel="stylesheet" href="css/layout/sidebar.css">
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="css/layout/cards.css">
     <link rel="stylesheet" href="css/layout/dashboard.css">
     <link rel="stylesheet" href="components/search-filters.css">
-    <link rel="stylesheet" href="css/layout/hero-icons.css">    <!-- ← БАЗОВЫЕ стили иконок -->
+    <link rel="stylesheet" href="css/layout/hero-icons.css">
     <link rel="stylesheet" href="css/layout/modal.css">
     <link rel="stylesheet" href="css/layout/responsive.css">
     <link rel="stylesheet" href="css/layout/product-tooltip.css">
@@ -36,20 +36,19 @@
     <link rel="stylesheet" href="css/themes/light-theme.css">
     <link rel="stylesheet" href="css/themes/dark-theme.css">
     <link rel="stylesheet" href="css/themes/purple-theme.css">
-    <link rel="stylesheet" href="css/themes/themes hero-icons.css">    <!-- ← ЦВЕТА иконок для тем -->
+    <link rel="stylesheet" href="css/themes/themes hero-icons.css">
     <link rel="stylesheet" href="/components/category-filter-themes.css">
 
     <!-- SCROLLBARS -->
     <link rel="stylesheet" href="css/layout/scrollbar.css">
 
+    <!-- Ambient styles -->
     <link rel="stylesheet" href="css/ambient/ambient-base.css">
-
     <link rel="stylesheet" href="css/ambient/ambient-dark.css">
-
     <link rel="stylesheet" href="css/ambient/ambient-light.css">
-
     <link rel="stylesheet" href="css/ambient/ambient-purple.css">
 
+    <!-- Responsive -->
     <link rel="stylesheet" href="css/responsive/mobile.css">
     <link rel="stylesheet" href="css/responsive/tablet.css">
 </head>
@@ -58,48 +57,23 @@
     <div class="ambient-icons"></div>
     <article class="app-container">
         <header>
-
             <!-- LEFT ACTION BUTTONS -->
             <div class="left-action-buttons">
-
-                <!-- HISTORY -->
-                <button
-                    class="left-circle-btn"
-                    id="historyBtn"
-                    title="История склада"
-                >
+                <button class="left-circle-btn" id="historyBtn" title="История склада">
                     <i class="fas fa-clock-rotate-left"></i>
                 </button>
 
-                <!-- SECOND BUTTON -->
                 <div class="notification-wrapper">
-                    <button
-                        class="left-circle-btn"
-                        id="notificationBtn"
-                        title="Оповещения"
-                    >
+                    <button class="left-circle-btn" id="notificationBtn" title="Оповещения">
                         <i class="fas fa-bell"></i>
                     </button>
-
-                    <div
-                        class="notification-badge"
-                        id="notificationCount"
-                    >
-                        0
-                    </div>
+                    <div class="notification-badge" id="notificationCount">0</div>
                 </div>
-
             </div>
 
             <div class="header-content">
-                <h1>
-                    <i class="fas fa-warehouse"></i>
-                    Управление складом
-                </h1>
-
-                <p>
-                    Система контроля запасов в реальном времени
-                </p>
+                <h1><i class="fas fa-warehouse"></i> Управление складом</h1>
+                <p>Система контроля запасов в реальном времени</p>
             </div>
 
             <div class="login-widget">
@@ -120,25 +94,20 @@
 
             <!-- STATS -->
             <div class="dashboard-cards">
-
-                <!-- LEFT CARD -->
                 <div class="overview-card">
                     <div class="overview-top">
                         <span>СОСТОЯНИЕ СКЛАДА</span>
                         <i class="fas fa-chart-line"></i>
                     </div>
-
                     <div class="overview-stats">
                         <div class="overview-item">
                             <strong id="totalProducts">0</strong>
                             <span>Товаров</span>
                         </div>
-
                         <div class="overview-item warning">
                             <strong id="lowStock">0</strong>
                             <span>Низкий запас</span>
                         </div>
-
                         <div class="overview-item success">
                             <strong id="totalValue">0</strong>
                             <span>Стоимость</span>
@@ -146,7 +115,6 @@
                     </div>
                 </div>
 
-                <!-- RIGHT CARD -->
                 <div class="analytics-card">
                     <div class="analytics-header">
                         <div>
@@ -154,468 +122,183 @@
                             <h3>Статистика склада</h3>
                         </div>
                     </div>
-
                     <div class="analytics-content">
                         <div class="analytics-chart">
-                            <div class="chart-item">
-                                <span>Электроника</span>
-                                <div class="chart-line">
-                                    <div id="electronicsBar" class="chart-fill electronics"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Одежда</span>
-                                <div class="chart-line">
-                                    <div id="clothingBar" class="chart-fill clothes"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Продукты</span>
-                                <div class="chart-line">
-                                    <div id="productsBar" class="chart-fill products"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Спорт</span>
-                                <div class="chart-line">
-                                    <div id="sportsBar" class="chart-fill sports"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Другое</span>
-                                <div class="chart-line">
-                                    <div id="otherBar" class="chart-fill other"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Автозапчасти</span>
-                                <div class="chart-line">
-                                    <div id="autoBar" class="chart-fill auto"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Бытовая техника</span>
-                                <div class="chart-line">
-                                    <div id="appliancesBar" class="chart-fill appliances"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Канцелярия</span>
-                                <div class="chart-line">
-                                    <div id="officeBar" class="chart-fill office"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Мебель</span>
-                                <div class="chart-line">
-                                    <div id="furnitureBar" class="chart-fill furniture"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Строительные материалы</span>
-                                <div class="chart-line">
-                                    <div id="buildBar" class="chart-fill build"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Медикаменты</span>
-                                <div class="chart-line">
-                                    <div id="medicalBar" class="chart-fill medical"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Косметика</span>
-                                <div class="chart-line">
-                                    <div id="beautyBar" class="chart-fill beauty"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Бытовая химия</span>
-                                <div class="chart-line">
-                                    <div id="chemBar" class="chart-fill chem"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Игрушки</span>
-                                <div class="chart-line">
-                                    <div id="toysBar" class="chart-fill toys"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Комплектующие ПК</span>
-                                <div class="chart-line">
-                                    <div id="pcBar" class="chart-fill pc"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Аксессуары</span>
-                                <div class="chart-line">
-                                    <div id="accessoriesBar" class="chart-fill accessories"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Инструменты</span>
-                                <div class="chart-line">
-                                    <div id="toolsBar" class="chart-fill tools"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Освещение</span>
-                                <div class="chart-line">
-                                    <div id="lightBar" class="chart-fill light"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Сантехника</span>
-                                <div class="chart-line">
-                                    <div id="plumbingBar" class="chart-fill plumbing"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Товары для дома</span>
-                                <div class="chart-line">
-                                    <div id="homeBar" class="chart-fill home"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Сад и огород</span>
-                                <div class="chart-line">
-                                    <div id="gardenBar" class="chart-fill garden"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Зоотовары</span>
-                                <div class="chart-line">
-                                    <div id="petsBar" class="chart-fill pets"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Напитки</span>
-                                <div class="chart-line">
-                                    <div id="drinksBar" class="chart-fill drinks"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Замороженные продукты</span>
-                                <div class="chart-line">
-                                    <div id="frozenBar" class="chart-fill frozen"></div>
-                                </div>
-                            </div>
-
-                            <div class="chart-item">
-                                <span>Премиум товары</span>
-                                <div class="chart-line">
-                                    <div id="vipBar" class="chart-fill vip"></div>
-                                </div>
-                            </div>
+                            <div class="chart-item"><span>Электроника</span><div class="chart-line"><div id="electronicsBar" class="chart-fill electronics"></div></div></div>
+                            <div class="chart-item"><span>Одежда</span><div class="chart-line"><div id="clothingBar" class="chart-fill clothes"></div></div></div>
+                            <div class="chart-item"><span>Продукты</span><div class="chart-line"><div id="productsBar" class="chart-fill products"></div></div></div>
+                            <div class="chart-item"><span>Спорт</span><div class="chart-line"><div id="sportsBar" class="chart-fill sports"></div></div></div>
+                            <div class="chart-item"><span>Другое</span><div class="chart-line"><div id="otherBar" class="chart-fill other"></div></div></div>
+                            <div class="chart-item"><span>Автозапчасти</span><div class="chart-line"><div id="autoBar" class="chart-fill auto"></div></div></div>
+                            <div class="chart-item"><span>Бытовая техника</span><div class="chart-line"><div id="appliancesBar" class="chart-fill appliances"></div></div></div>
+                            <div class="chart-item"><span>Канцелярия</span><div class="chart-line"><div id="officeBar" class="chart-fill office"></div></div></div>
+                            <div class="chart-item"><span>Мебель</span><div class="chart-line"><div id="furnitureBar" class="chart-fill furniture"></div></div></div>
+                            <div class="chart-item"><span>Строительные материалы</span><div class="chart-line"><div id="buildBar" class="chart-fill build"></div></div></div>
+                            <div class="chart-item"><span>Медикаменты</span><div class="chart-line"><div id="medicalBar" class="chart-fill medical"></div></div></div>
+                            <div class="chart-item"><span>Косметика</span><div class="chart-line"><div id="beautyBar" class="chart-fill beauty"></div></div></div>
+                            <div class="chart-item"><span>Бытовая химия</span><div class="chart-line"><div id="chemBar" class="chart-fill chem"></div></div></div>
+                            <div class="chart-item"><span>Игрушки</span><div class="chart-line"><div id="toysBar" class="chart-fill toys"></div></div></div>
+                            <div class="chart-item"><span>Комплектующие ПК</span><div class="chart-line"><div id="pcBar" class="chart-fill pc"></div></div></div>
+                            <div class="chart-item"><span>Аксессуары</span><div class="chart-line"><div id="accessoriesBar" class="chart-fill accessories"></div></div></div>
+                            <div class="chart-item"><span>Инструменты</span><div class="chart-line"><div id="toolsBar" class="chart-fill tools"></div></div></div>
+                            <div class="chart-item"><span>Освещение</span><div class="chart-line"><div id="lightBar" class="chart-fill light"></div></div></div>
+                            <div class="chart-item"><span>Сантехника</span><div class="chart-line"><div id="plumbingBar" class="chart-fill plumbing"></div></div></div>
+                            <div class="chart-item"><span>Товары для дома</span><div class="chart-line"><div id="homeBar" class="chart-fill home"></div></div></div>
+                            <div class="chart-item"><span>Сад и огород</span><div class="chart-line"><div id="gardenBar" class="chart-fill garden"></div></div></div>
+                            <div class="chart-item"><span>Зоотовары</span><div class="chart-line"><div id="petsBar" class="chart-fill pets"></div></div></div>
+                            <div class="chart-item"><span>Напитки</span><div class="chart-line"><div id="drinksBar" class="chart-fill drinks"></div></div></div>
+                            <div class="chart-item"><span>Замороженные продукты</span><div class="chart-line"><div id="frozenBar" class="chart-fill frozen"></div></div></div>
+                            <div class="chart-item"><span>Премиум товары</span><div class="chart-line"><div id="vipBar" class="chart-fill vip"></div></div></div>
                         </div>
 
                         <div class="analytics-info">
-                            <div>
-                                <span>Популярная категория</span>
-                                <strong id="topCategory">Загрузка...</strong>
-                            </div>
-
-                            <div>
-                                <span>Самый дорогой товар</span>
-                                <div class="marquee-wrapper">
-                                    <strong id="expensiveProduct" class="marquee-text">Загрузка...</strong>
-                                </div>
-                            </div>
-
-                            <div>
-                                <span>Товары которые заканчиваются</span>
-                                <div class="marquee-wrapper">
-                                    <strong id="lowStockProducts" class="marquee-text">Загрузка...</strong>
-                                </div>
-                            </div>
-
-                            <div>
-                                <span>Заканчивается срок годности</span>
-                                <div class="marquee-wrapper">
-                                    <strong id="expiryProducts" class="marquee-text">Загрузка...</strong>
-                                </div>
-                            </div>
+                            <div><span>Популярная категория</span><strong id="topCategory">Загрузка...</strong></div>
+                            <div><span>Самый дорогой товар</span><div class="marquee-wrapper"><strong id="expensiveProduct" class="marquee-text">Загрузка...</strong></div></div>
+                            <div><span>Товары которые заканчиваются</span><div class="marquee-wrapper"><strong id="lowStockProducts" class="marquee-text">Загрузка...</strong></div></div>
+                            <div><span>Заканчивается срок годности</span><div class="marquee-wrapper"><strong id="expiryProducts" class="marquee-text">Загрузка...</strong></div></div>
                         </div>
                     </div>
                 </div>
-
-            </div> <!-- Исправлено: Добавлен закрывающий тег для .dashboard-cards -->
+            </div>
         </header>
 
         <main>
             <aside>
                 <div class="product-form">
-                <section>
-                    <h3><i class="fas fa-plus-circle"></i> Добавить товар</h3>
+                    <section>
+                        <h3><i class="fas fa-plus-circle"></i> Добавить товар</h3>
 
-                    <div class="form-group">
-                        <label for="productName"><i class="fas fa-box"></i> Название товара</label>
-                        <input type="text" id="productName" class="form-control" placeholder="Введите название товара" disabled>
-                    </div>
+                        <div class="form-group">
+                            <label for="productName"><i class="fas fa-box"></i> Название товара</label>
+                            <input type="text" id="productName" class="form-control" placeholder="Введите название товара" disabled>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="productDescription"><i class="fas fa-align-left"></i> Описание</label>
-                        <textarea id="productDescription" class="form-control" rows="3" placeholder="Описание товара" disabled></textarea>
-                    </div>
+                        <div class="form-group">
+                            <label for="productDescription"><i class="fas fa-align-left"></i> Описание</label>
+                            <textarea id="productDescription" class="form-control" rows="3" placeholder="Описание товара" disabled></textarea>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="productCategory"><i class="fas fa-tags"></i> Категория</label>
-                        <select id="productCategory" class="form-control" disabled>
-                            <option value="Электроника">Электроника</option>
-                            <option value="Одежда">Одежда</option>
-                            <option value="Продукты">Продукты</option>
-                            <option value="Автозапчасти">Автозапчасти</option>
-                            <option value="Бытовая техника">Бытовая техника</option>
-                            <option value="Канцелярия">Канцелярия</option>
-                            <option value="Мебель">Мебель</option>
-                            <option value="Строительные материалы">Строительные материалы</option>
-                            <option value="Медикаменты">Медикаменты</option>
-                            <option value="Косметика">Косметика</option>
-                            <option value="Бытовая химия">Бытовая химия</option>
-                            <option value="Игрушки">Игрушки</option>
-                            <option value="Комплектующие ПК">Комплектующие ПК</option>
-                            <option value="Аксессуары">Аксессуары</option>
-                            <option value="Инструменты">Инструменты</option>
-                            <option value="Освещение">Освещение</option>
-                            <option value="Сантехника">Сантехника</option>
-                            <option value="Товары для дома">Товары для дома</option>
-                            <option value="Сад и огород">Сад и огород</option>
-                            <option value="Зоотовары">Зоотовары</option>
-                            <option value="Напитки">Напитки</option>
-                            <option value="Замороженные продукты">Замороженные продукты</option>
-                            <option value="Премиум товары">Премиум товары</option>
-                            <option value="Спорт">Спорт</option>
-                            <option value="Другое">Другое</option>
-                        </select>
-                    </div>
+                        <div class="form-group">
+                            <label for="productCategory"><i class="fas fa-tags"></i> Категория</label>
+                            <select id="productCategory" class="form-control" disabled>
+                                <option value="Электроника">Электроника</option>
+                                <option value="Одежда">Одежда</option>
+                                <option value="Продукты">Продукты</option>
+                                <option value="Автозапчасти">Автозапчасти</option>
+                                <option value="Бытовая техника">Бытовая техника</option>
+                                <option value="Канцелярия">Канцелярия</option>
+                                <option value="Мебель">Мебель</option>
+                                <option value="Строительные материалы">Строительные материалы</option>
+                                <option value="Медикаменты">Медикаменты</option>
+                                <option value="Косметика">Косметика</option>
+                                <option value="Бытовая химия">Бытовая химия</option>
+                                <option value="Игрушки">Игрушки</option>
+                                <option value="Комплектующие ПК">Комплектующие ПК</option>
+                                <option value="Аксессуары">Аксессуары</option>
+                                <option value="Инструменты">Инструменты</option>
+                                <option value="Освещение">Освещение</option>
+                                <option value="Сантехника">Сантехника</option>
+                                <option value="Товары для дома">Товары для дома</option>
+                                <option value="Сад и огород">Сад и огород</option>
+                                <option value="Зоотовары">Зоотовары</option>
+                                <option value="Напитки">Напитки</option>
+                                <option value="Замороженные продукты">Замороженные продукты</option>
+                                <option value="Премиум товары">Премиум товары</option>
+                                <option value="Спорт">Спорт</option>
+                                <option value="Другое">Другое</option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="productQuantity"><i class="fas fa-cubes"></i> Количество</label>
-                        <input type="number" id="productQuantity" class="form-control" min="1" value="1" disabled>
-                    </div>
+                        <div class="form-group">
+                            <label for="productQuantity"><i class="fas fa-cubes"></i> Количество</label>
+                            <input type="number" id="productQuantity" class="form-control" min="1" value="1" disabled>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="productMinStock"><i class="fas fa-exclamation-triangle"></i> Минимальный остаток</label>
-                        <input type="number" id="productMinStock" class="form-control" min="1" value="5" disabled>
-                    </div>
+                        <div class="form-group">
+                            <label for="productMinStock"><i class="fas fa-exclamation-triangle"></i> Минимальный остаток</label>
+                            <input type="number" id="productMinStock" class="form-control" min="1" value="5" disabled>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="productPrice"><i class="fas fa-money-bill-wave"></i> Цена (сом)</label>
-                        <input type="number" id="productPrice" class="form-control" value="0" min="0" step="0.01" disabled>
-                    </div>
+                        <div class="form-group">
+                            <label for="productPrice"><i class="fas fa-money-bill-wave"></i> Цена (сом)</label>
+                            <input type="number" id="productPrice" class="form-control" value="0" min="0" step="0.01" disabled>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="productSupplier"><i class="fas fa-truck"></i> Поставщик</label>
-                        <input type="text" id="productSupplier" class="form-control" placeholder="Название поставщика" disabled>
-                    </div>
+                        <div class="form-group">
+                            <label for="productSupplier"><i class="fas fa-truck"></i> Поставщик</label>
+                            <input type="text" id="productSupplier" class="form-control" placeholder="Название поставщика" disabled>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="productLocation"><i class="fas fa-map-marker-alt"></i> Местоположение</label>
-                        <input type="text" id="productLocation" class="form-control" placeholder="Например: Склад A / Полка B2" disabled>
-                    </div>
+                        <div class="form-group">
+                            <label for="productLocation"><i class="fas fa-map-marker-alt"></i> Местоположение</label>
+                            <input type="text" id="productLocation" class="form-control" placeholder="Например: Склад A / Полка B2" disabled>
+                        </div>
 
-                    <!-- ===================================================== -->
-<!-- ================= MEDICINE FIELDS =================== -->
-<!-- ===================================================== -->
+                        <!-- MEDICINE FIELDS -->
+                        <div id="medicineFields" style="display:none;">
+                            <div class="form-group">
+                                <label><i class="fas fa-capsules"></i> Серия препарата</label>
+                                <input type="text" id="medicineSeries" class="form-control" placeholder="Например: A-542" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-industry"></i> Производитель</label>
+                                <input type="text" id="medicineManufacturer" class="form-control" placeholder="Pfizer / Bayer" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-prescription-bottle"></i> Дозировка</label>
+                                <input type="text" id="medicineDosage" class="form-control" placeholder="500mg" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-tablets"></i> Тип</label>
+                                <select id="medicineType" class="form-control" disabled>
+                                    <option>Таблетки</option>
+                                    <option>Сироп</option>
+                                    <option>Ампулы</option>
+                                    <option>Капсулы</option>
+                                    <option>Мазь</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-file-medical"></i> Рецептурный</label>
+                                <select id="prescriptionRequired" class="form-control" disabled>
+                                    <option value="false">Без рецепта</option>
+                                    <option value="true">По рецепту</option>
+                                </select>
+                            </div>
+                            <div class="medicine-switches">
+                                <label class="medical-switch">
+                                    <input type="checkbox" id="refrigerationRequired" class="form-control">
+                                    <span class="medical-slider"></span>
+                                    <span class="medical-switch-text">❄ Требует холодильник</span>
+                                </label>
+                            </div>
+                        </div>
 
-<div id="medicineFields" style="display:none;">
+                        <div class="form-group">
+                            <label><i class="fas fa-image"></i> Фото товара</label>
+                            <div class="upload-zone" id="uploadZone">
+                                <input type="file" id="productImage" hidden accept="image/*" disabled>
+                                <div class="upload-zone-content">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Перетащите фото товара</p>
+                                    <span>или нажмите для выбора</span>
+                                </div>
+                            </div>
+                            <div class="image-preview-wrapper" id="imagePreviewWrapper">
+                                <img id="imagePreview" class="product-preview-image">
+                            </div>
+                        </div>
 
-    <div class="form-group">
-        <label>
-            <i class="fas fa-capsules"></i>
-            Серия препарата
-        </label>
+                        <div class="form-group" id="expiryDateGroup" style="display:none;">
+                            <label for="productExpiryDate"><i class="fas fa-calendar-alt"></i> Срок годности</label>
+                            <input type="date" id="productExpiryDate" class="form-control" disabled>
+                        </div>
 
-        <input
-            type="text"
-            id="medicineSeries"
-            class="form-control"
-            placeholder="Например: A-542"
-            disabled
-        >
-    </div>
-
-
-    <div class="form-group">
-        <label>
-            <i class="fas fa-industry"></i>
-            Производитель
-        </label>
-
-        <input
-            type="text"
-            id="medicineManufacturer"
-            class="form-control"
-            placeholder="Pfizer / Bayer"
-            disabled
-        >
-    </div>
-
-
-    <div class="form-group">
-        <label>
-            <i class="fas fa-prescription-bottle"></i>
-            Дозировка
-        </label>
-
-        <input
-            type="text"
-            id="medicineDosage"
-            class="form-control"
-            placeholder="500mg"
-            disabled
-        >
-    </div>
-
-
-    <div class="form-group">
-        <label>
-            <i class="fas fa-tablets"></i>
-            Тип
-        </label>
-
-        <select
-            id="medicineType"
-            class="form-control"
-            disabled
-        >
-            <option>Таблетки</option>
-            <option>Сироп</option>
-            <option>Ампулы</option>
-            <option>Капсулы</option>
-            <option>Мазь</option>
-        </select>
-    </div>
-
-
-    <div class="form-group">
-        <label>
-            <i class="fas fa-file-medical"></i>
-            Рецептурный
-        </label>
-
-        <select
-            id="prescriptionRequired"
-            class="form-control"
-            disabled
-        >
-            <option value="false">Без рецепта</option>
-            <option value="true">По рецепту</option>
-        </select>
-    </div>
-
-
-    <div class="medicine-switches">
-
-        <label class="medical-switch">
-
-            <input
-            type="checkbox"
-            id="refrigerationRequired"
-            class="form-control"
-            >
-
-            <span class="medical-slider"></span>
-
-            <span class="medical-switch-text">
-
-                
-
-                ❄ Требует холодильник
-
-            </span>
-
-        </label>
-
-    </div>
-
-</div>
-
-                    <div class="form-group">
-
-    <label>
-        <i class="fas fa-image"></i>
-        Фото товара
-    </label>
-
-    <div
-        class="upload-zone"
-        id="uploadZone"
-    >
-
-        <input
-            type="file"
-            id="productImage"
-            hidden
-            accept="image/*"
-            disabled
-        >
-
-        <div class="upload-zone-content">
-
-            <i class="fas fa-cloud-upload-alt"></i>
-
-            <p>
-                Перетащите фото товара
-            </p>
-
-            <span>
-                или нажмите для выбора
-            </span>
-
-        </div>
-
-    </div>
-
-    <div
-        class="image-preview-wrapper"
-        id="imagePreviewWrapper"
-    >
-
-        <img
-            id="imagePreview"
-            class="product-preview-image"
-        >
-
-    </div>
-
-</div>
-
-                    <div class="form-group" id="expiryDateGroup" style="display:none;">
-                        <label for="productExpiryDate"><i class="fas fa-calendar-alt"></i> Срок годности</label>
-                        <input type="date" id="productExpiryDate" class="form-control" disabled>
-                    </div>
-
-                    <button class="btn btn-primary" id="btnAdd" disabled>
-                        <i class="fas fa-plus"></i>
-                        <span>Добавить товар</span>
-                    </button>
-                    <!-- Исправлено: Удален лишний непарный </div>, ломавший разметку -->
-                </section>
+                        <button class="btn btn-primary" id="btnAdd" disabled>
+                            <i class="fas fa-plus"></i>
+                            <span>Добавить товар</span>
+                        </button>
+                    </section>
                 </div>
             </aside>
 
@@ -630,59 +313,40 @@
                     </div>
 
                     <div class="table-controls">
+                        <div class="search-filter-wrapper">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="searchInput" class="search-input" placeholder="Поиск товара...">
+                            <select id="categoryFilter" class="category-filter">
+                                <option value="all">Все</option>
+                                <option value="Электроника">Электроника</option>
+                                <option value="Одежда">Одежда</option>
+                                <option value="Продукты">Продукты</option>
+                                <option value="Автозапчасти">Автозапчасти</option>
+                                <option value="Бытовая техника">Бытовая техника</option>
+                                <option value="Канцелярия">Канцелярия</option>
+                                <option value="Мебель">Мебель</option>
+                                <option value="Строительные материалы">Строительные материалы</option>
+                                <option value="Медикаменты">Медикаменты</option>
+                                <option value="Косметика">Косметика</option>
+                                <option value="Бытовая химия">Бытовая химия</option>
+                                <option value="Игрушки">Игрушки</option>
+                                <option value="Комплектующие ПК">Комплектующие ПК</option>
+                                <option value="Аксессуары">Аксессуары</option>
+                                <option value="Инструменты">Инструменты</option>
+                                <option value="Освещение">Освещение</option>
+                                <option value="Сантехника">Сантехника</option>
+                                <option value="Товары для дома">Товары для дома</option>
+                                <option value="Сад и огород">Сад и огород</option>
+                                <option value="Зоотовары">Зоотовары</option>
+                                <option value="Напитки">Напитки</option>
+                                <option value="Замороженные продукты">Замороженные продукты</option>
+                                <option value="Премиум товары">Премиум товары</option>
+                                <option value="Спорт">Спорт</option>
+                                <option value="Другое">Другое</option>
+                            </select>
+                        </div>
 
-    <div class="search-filter-wrapper">
-
-    <i class="fas fa-search search-icon"></i>
-
-    <input
-        type="text"
-        id="searchInput"
-        class="search-input"
-        placeholder="Поиск товара..."
-    >
-
-    <select
-        id="categoryFilter"
-        class="category-filter"
-    >
-
-        <option value="all">Все</option>
-        <option value="Электроника">Электроника</option>
-        <option value="Одежда">Одежда</option>
-        <option value="Продукты">Продукты</option>
-        <option value="Автозапчасти">Автозапчасти</option>
-        <option value="Бытовая техника">Бытовая техника</option>
-        <option value="Канцелярия">Канцелярия</option>
-        <option value="Мебель">Мебель</option>
-        <option value="Строительные материалы">Строительные материалы</option>
-        <option value="Медикаменты">Медикаменты</option>
-        <option value="Косметика">Косметика</option>
-        <option value="Бытовая химия">Бытовая химия</option>
-        <option value="Игрушки">Игрушки</option>
-        <option value="Комплектующие ПК">Комплектующие ПК</option>
-        <option value="Аксессуары">Аксессуары</option>
-        <option value="Инструменты">Инструменты</option>
-        <option value="Освещение">Освещение</option>
-        <option value="Сантехника">Сантехника</option>
-        <option value="Товары для дома">Товары для дома</option>
-        <option value="Сад и огород">Сад и огород</option>
-        <option value="Зоотовары">Зоотовары</option>
-        <option value="Напитки">Напитки</option>
-        <option value="Замороженные продукты">Замороженные продукты</option>
-        <option value="Премиум товары">Премиум товары</option>
-        <option value="Спорт">Спорт</option>
-        <option value="Другое">Другое</option>
-
-    </select>
-
-</div>
-
-    <button
-        class="btn btn-secondary"
-        id="refreshBtn"
-        style="width:auto;padding:8px 15px;"
-    >
+                        <button class="btn btn-secondary" id="refreshBtn" style="width:auto;padding:8px 15px;">
                             <i class="fas fa-sync-alt"></i> Обновить
                         </button>
 
@@ -690,7 +354,6 @@
                             <button class="btn btn-export" id="exportBtn">
                                 <i class="fas fa-download"></i>
                             </button>
-
                             <div class="export-menu" id="exportMenu">
                                 <button id="exportExcelBtn"><i class="fas fa-file-excel"></i> Excel (.xlsx)</button>
                                 <button id="exportPdfBtn"><i class="fas fa-file-pdf"></i> PDF (.pdf)</button>
@@ -709,14 +372,29 @@
         </main>
     </article>
 
-    <!-- Подключаем модальное окно из компонента -->
+    <!-- MODAL CONTAINERS -->
     <div id="modalContainer"></div>
+    <div id="editModalContainer"></div>
 
+    <!-- ===================================================== -->
+    <!-- ============ ПРАВИЛЬНОЕ ПОДКЛЮЧЕНИЕ JS ============= -->
+    <!-- ===================================================== -->
+    
+    <!-- 1. КОНФИГУРАЦИЯ И СОСТОЯНИЕ -->
     <script src="js/api.js"></script>
+    
+    <!-- 2. БАЗОВЫЕ УТИЛИТЫ -->
+    <script src="js/utils.js"></script>
+    
+    <!-- 3. UI КОМПОНЕНТЫ -->
     <script src="js/notifications.js"></script>
     <script src="js/modal.js"></script>
+    <script src="js/theme.js"></script>
+    
+    <!-- 4. АВТОРИЗАЦИЯ -->
     <script src="js/auth.js"></script>
-    <script src="js/products/products-utils.js"></script>
+    
+    <!-- 5. ОСНОВНАЯ ЛОГИКА ПРОДУКТОВ -->
     <script src="js/products/products-api.js"></script>
     <script src="js/products/products-render.js"></script>
     <script src="js/products/products-filters.js"></script>
@@ -725,17 +403,17 @@
     <script src="js/products/products-modal.js"></script>
     <script src="js/products/products-edit.js"></script>
     <script src="js/products/products-actions.js"></script>
-    <script src="js/products/products-export.js"></script>
-    <script src="js/products/products-notifications.js"></script>
-    <script src="js/products/products-init.js"></script>
-    <script src="history.js/history.js"></script>
-    <script src="js/theme.js"></script>
+    
+    <!-- 6. ДОПОЛНИТЕЛЬНЫЙ ФУНКЦИОНАЛ -->
     <script src="js/ambient.js"></script>
     <script src="js/upload/upload-zone.js"></script>
     <script src="js/upload/upload-preview.js"></script>
+    <script src="history.js/history.js"></script>
     
+    <!-- 7. ГЛАВНАЯ ИНИЦИАЛИЗАЦИЯ (ВСЕГДА ПОСЛЕДНЯЯ!) -->
     <script src="js/app.js"></script>
 
+    <!-- СКРЫТЫЕ КНОПКИ ДЛЯ ЛОГИКИ -->
     <button id="btnLogin" style="display:none;"></button>
     <button id="btnLogout" style="display:none;"></button>
 
@@ -747,35 +425,28 @@
                     <span class="history-label">ОПОВЕЩЕНИЯ</span>
                     <h2>Уведомления склада</h2>
                 </div>
-
                 <div class="history-actions">
                     <button id="clearNotificationsBtn"><i class="fas fa-trash"></i></button>
                     <button id="closeNotificationsBtn"><i class="fas fa-xmark"></i></button>
                 </div>
             </div>
-
             <div class="history-content" id="notificationsContent"></div>
         </div>
     </div>
 
     <!-- HISTORY MODAL -->
-    <!-- Исправлено: Блок перенесен внутрь тега body для валидности структуры страницы -->
     <div class="history-overlay" id="historyOverlay">
         <div class="history-modal">
-            <!-- HEADER -->
             <div class="history-header">
                 <div>
                     <span class="history-label">ИСТОРИЯ СКЛАДА</span>
                     <h2>Действия системы</h2>
                 </div>
-
                 <div class="history-actions">
                     <button id="clearHistoryBtn"><i class="fas fa-trash"></i></button>
                     <button id="closeHistoryBtn"><i class="fas fa-xmark"></i></button>
                 </div>
             </div>
-
-            <!-- CONTENT -->
             <div class="history-content" id="historyContent">
                 <div class="history-empty">
                     <i class="fas fa-clock"></i>
@@ -786,297 +457,36 @@
     </div>
 
     <!-- PRODUCT MODAL -->
-
-<div
-    class="product-modal-overlay"
-    id="productModalOverlay"
->
-
-    <div class="product-modal">
-
-        <!-- CLOSE -->
-
-        <button
-            class="product-modal-close"
-            id="closeProductModal"
-        >
-            <i class="fas fa-xmark"></i>
-        </button>
-
-
-        <!-- LEFT -->
-
-        <button
-            class="product-modal-arrow left"
-            id="prevProductBtn"
-        >
-            <i class="fas fa-chevron-left"></i>
-        </button>
-
-
-        <!-- RIGHT -->
-
-        <button
-            class="product-modal-arrow right"
-            id="nextProductBtn"
-        >
-            <i class="fas fa-chevron-right"></i>
-        </button>
-
-
-        <!-- CONTENT -->
-
-        <div
-            class="product-modal-content"
-            id="productModalContent"
-        ></div>
-
-    </div>
-
-</div>
-
-<!-- EDIT PRODUCT MODAL -->
-
-<div class="edit-modal-overlay" id="editModalOverlay">
-
-    <div class="edit-modal">
-
-        <div class="edit-modal-container">
-
-            <div class="edit-modal-header">
-
-                <div>
-                    <span class="edit-modal-label">
-                        РЕДАКТИРОВАНИЕ ТОВАРА
-                    </span>
-
-                    <h2 class="edit-modal-title" id="editModalTitle">
-                        Товар
-                    </h2>
-                </div>
-
-                <button class="edit-close-btn" id="closeEditModalBtn">
-                    <i class="fas fa-xmark"></i>
-                </button>
-
-            </div>
-
-            <div class="edit-modal-body">
-
-                <!-- LEFT -->
-
-                <div class="edit-preview-section">
-
-                    <img
-                        id="editPreviewImage"
-                        class="edit-preview-image"
-                        src=""
-                    >
-
-                </div>
-
-                <!-- RIGHT -->
-
-                <div class="edit-form">
-
-                    <div class="edit-section">
-
-                        <div class="edit-section-title">
-                            Основная информация
-                        </div>
-
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="editName"
-                            placeholder="Название"
-                        >
-
-                        <textarea
-                            class="form-control"
-                            id="editDescription"
-                            placeholder="Описание"
-                        ></textarea>
-
-                    </div>
-
-                    <div class="edit-grid">
-
-                        <input
-                            type="number"
-                            class="form-control"
-                            id="editQuantity"
-                            placeholder="Количество"
-                        >
-
-                        <input
-                            type="number"
-                            class="form-control"
-                            id="editPrice"
-                            placeholder="Цена"
-                        >
-
-                    </div>
-
-                    <div class="edit-grid">
-
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="editSupplier"
-                            placeholder="Поставщик"
-                        >
-
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="editLocation"
-                            placeholder="Склад"
-                        >
-
-                    </div>
-
-                        <select
-                        class="form-control"
-                        id="editCategory"
-                    >
-                        <option>Электроника</option>
-                        <option>Одежда</option>
-                        <option>Продукты</option>
-                        <option>Автозапчасти</option>
-                        <option>Бытовая техника</option>
-                        <option>Канцелярия</option>
-                        <option>Мебель</option>
-                        <option>Строительные материалы</option>
-                        <option>Медикаменты</option>
-                        <option>Косметика</option>
-                        <option>Бытовая химия</option>
-                        <option>Игрушки</option>
-                        <option>Комплектующие ПК</option>
-                        <option>Аксессуары</option>
-                        <option>Инструменты</option>
-                        <option>Освещение</option>
-                        <option>Сантехника</option>
-                        <option>Товары для дома</option>
-                        <option>Сад и огород</option>
-                        <option>Зоотовары</option>
-                        <option>Напитки</option>
-                        <option>Замороженные продукты</option>
-                        <option>Премиум товары</option>
-                        <option>Спорт</option>
-                        <option>Другое</option>
-                    </select>
-
-                    <div class="edit-section">
-
-                        <div class="edit-section-title">
-                            Фото товара
-                        </div>
-
-                        <div class="edit-upload-zone">
-
-                            <input
-                                type="file"
-                                id="editImage"
-                                accept="image/*"
-                                hidden
-                            >
-
-                            <div class="edit-upload-icon">
-                                <i class="fas fa-cloud-arrow-up"></i>
-                            </div>
-
-                            <div class="edit-upload-title">
-                                Выберите фото
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <button class="edit-save-btn" id="saveEditBtn">
-
-                        <i class="fas fa-check"></i>
-
-                        Сохранить
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- ACTION MODAL -->
-
-<div
-    class="action-modal-overlay"
-    id="actionModalOverlay"
->
-
-    <div class="action-modal">
-
-        <!-- CLOSE -->
-
-        <button
-            class="action-modal-close"
-            id="closeActionModal"
-        >
-            <i class="fas fa-xmark"></i>
-        </button>
-
-
-        <!-- TITLE -->
-
-        <h2
-            class="action-modal-title"
-            id="actionModalTitle"
-        >
-            Действие
-        </h2>
-
-
-        <!-- CONTENT -->
-
-        <div
-            class="action-modal-content"
-            id="actionModalContent"
-        ></div>
-
-
-        <!-- BUTTONS -->
-
-        <div class="action-modal-buttons">
-
-            <button
-                class="action-btn cancel"
-                id="cancelActionBtn"
-            >
-
-                Отмена
-
+    <div class="product-modal-overlay" id="productModalOverlay">
+        <div class="product-modal">
+            <button class="product-modal-close" id="closeProductModal">
+                <i class="fas fa-xmark"></i>
             </button>
-
-
-            <button
-                class="action-btn confirm"
-                id="confirmActionBtn"
-            >
-
-                Подтвердить
-
+            <button class="product-modal-arrow left" id="prevProductBtn">
+                <i class="fas fa-chevron-left"></i>
             </button>
-
+            <button class="product-modal-arrow right" id="nextProductBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="product-modal-content" id="productModalContent"></div>
         </div>
-
     </div>
 
-</div>
+    <!-- ACTION MODAL -->
+    <div class="action-modal-overlay" id="actionModalOverlay">
+        <div class="action-modal">
+            <button class="action-modal-close" id="closeActionModal">
+                <i class="fas fa-xmark"></i>
+            </button>
+            <h2 class="action-modal-title" id="actionModalTitle">Действие</h2>
+            <div class="action-modal-content" id="actionModalContent"></div>
+            <div class="action-modal-buttons">
+                <button class="action-btn cancel" id="cancelActionBtn">Отмена</button>
+                <button class="action-btn confirm" id="confirmActionBtn">Подтвердить</button>
+            </div>
+        </div>
+    </div>
 
+    <!-- EDIT MODAL (будет заполнен через JS) -->
 </body>
 </html>

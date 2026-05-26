@@ -1,72 +1,35 @@
 // ===== МОДАЛЬНОЕ ОКНО ТОВАРА =====
 
-let currentProductIndex = 0;
-
-/* ===== OPEN ===== */
-
-function openProductModal(index){
-
-    currentProductIndex = index;
-
+function openProductModal(index) {
+    AppState.currentProductIndex = index;
     renderProductModal();
-
-    const overlay =
-
-        document.getElementById(
-            'productModalOverlay'
-        );
-
-    if(overlay){
-
-        overlay.classList.add('active');
-    }
+    
+    const overlay = document.getElementById('productModalOverlay');
+    if (overlay) overlay.classList.add('active');
 }
 
-/* ===== CLOSE ===== */
-
-function closeProductModal(){
-
-    const overlay =
-
-        document.getElementById(
-            'productModalOverlay'
-        );
-
-    if(overlay){
-
-        overlay.classList.remove('active');
-    }
+function closeProductModal() {
+    const overlay = document.getElementById('productModalOverlay');
+    if (overlay) overlay.classList.remove('active');
 }
 
-/* ===== NEXT ===== */
-
-function nextProduct(){
-
-    currentProductIndex++;
-
-    if(
-        currentProductIndex >=
-        AppState.products.length
-    ){
-
-        currentProductIndex = 0;
+function nextProduct() {
+    AppState.currentProductIndex++;
+    if (AppState.currentProductIndex >= AppState.products.length) {
+        AppState.currentProductIndex = 0;
     }
-
     renderProductModal();
 }
 
-/* ===== PREV ===== */
-
-function prevProduct(){
-
-    currentProductIndex--;
-
-    if(currentProductIndex < 0){
-
-        currentProductIndex =
-
-            AppState.products.length - 1;
+function prevProduct() {
+    AppState.currentProductIndex--;
+    if (AppState.currentProductIndex < 0) {
+        AppState.currentProductIndex = AppState.products.length - 1;
     }
-
     renderProductModal();
 }
+
+window.openProductModal = openProductModal;
+window.closeProductModal = closeProductModal;
+window.nextProduct = nextProduct;
+window.prevProduct = prevProduct;
