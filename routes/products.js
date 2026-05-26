@@ -238,6 +238,34 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+// 🆕 ПРОСРОЧЕННЫЕ ТОВАРЫ
+router.get('/expired', async (req, res) => {
+    try {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        const expiredProducts = await Product.find({
+            category: 'Продукты',
+            expiryDate: { $lt: today, $ne: null }
+        }).sort({ expiryDate: 1 });
+        
+        console.log(`⚠️ Найдено просроченных товаров: ${expiredProducts.length}`);
+        
+        res.json({
+            success: true,
+            count: expiredProducts.length,
+            data: expiredProducts,
+            message: expiredProducts.length > 0 ? 'Обнаружены просроченные товары' : 'Просроченных товаров нет'
+        });
+    } catch (error) {
+        console.error('❌ Ошибка получения просроченных товаров:', error);
+        res.status(500).json({
+            success: false,
+            error: "Ошибка сервера"
+        });
+    }
+});
+
 // 🔍 ПОИСК ТОВАРОВ
 router.get('/search/:query', async (req, res) => {
     try {
@@ -263,34 +291,6 @@ router.get('/search/:query', async (req, res) => {
         res.status(500).json({
             success: false,
             error: "Ошибка сервера при поиске"
-        });
-    }
-});
-
-// 🆕 ПРОСРОЧЕННЫЕ ТОВАРЫ
-router.get('/expired', async (req, res) => {
-    try {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        
-        const expiredProducts = await Product.find({
-            category: 'Продукты',
-            expiryDate: { $lt: today, $ne: null }
-        }).sort({ expiryDate: 1 });
-        
-        console.log(`⚠️ Найдено просроченных товаров: ${expiredProducts.length}`);
-        
-        res.json({
-            success: true,
-            count: expiredProducts.length,
-            data: expiredProducts,
-            message: expiredProducts.length > 0 ? 'Обнаружены просроченные товары' : 'Просроченных товаров нет'
-        });
-    } catch (error) {
-        console.error('❌ Ошибка получения просроченных товаров:', error);
-        res.status(500).json({
-            success: false,
-            error: "Ошибка сервера"
         });
     }
 });
@@ -335,97 +335,72 @@ router.get('/expiring-soon', async (req, res) => {
 /* ===================================================== */
 
 router.put('/:id', async (req, res) => {
+    
+    console.log('UPDATE ROUTE WORKS');
 
-    try{
+    try {
 
-        const productId = req.params.id;
-
-        console.log(
-            `✏️ Обновление товара: ${productId}`
+        const product = await Product.findById(
+            req.params.id
         );
 
-
-        const updatedProduct =
-
-            await Product.findByIdAndUpdate(
-
-                productId,
-
-                {
-
-                    name:
-                        req.body.name,
-
-                    quantity:
-                        req.body.quantity,
-
-                    category:
-                        req.body.category,
-
-                    price:
-                        req.body.price,
-
-                    description:
-                        req.body.description || '',
-
-                    supplier:
-                        req.body.supplier || '',
-
-                    location:
-                        req.body.location || '',
-
-                    image:
-                        req.body.image || '',
-
-                    expiryDate:
-                        req.body.expiryDate || null,
-
-                    lastUpdated:
-                        new Date()
-                },
-
-                {
-
-                    new:true,
-
-                    runValidators:true
-                }
-            );
-
-
-        if(!updatedProduct){
+        if (!product) {
 
             return res.status(404).json({
 
                 success:false,
-
                 error:'Товар не найден'
             });
         }
 
+        product.name = req.body.name;
+        product.description = req.body.description;
+        product.quantity = req.body.quantity;
+        product.price = req.body.price;
+        product.category = req.body.category;
+        product.supplier = req.body.supplier;
+        product.location = req.body.location;
+        product.image = req.body.image;
 
-        console.log(
-            `✅ Товар обновлён: ${updatedProduct.name}`
-        );
+        product.medicineSeries =
+            req.body.medicineSeries || '';
 
+        product.medicineManufacturer =
+            req.body.medicineManufacturer || '';
+
+        product.medicineDosage =
+            req.body.medicineDosage || '';
+
+        product.medicineType =
+            req.body.medicineType || '';
+
+        product.prescriptionRequired =
+            req.body.prescriptionRequired === true;
+
+        product.refrigerationRequired =
+            req.body.refrigerationRequired === true;
+
+        product.expiryDate =
+            req.body.expiryDate || null;
+
+        product.lastUpdated =
+            new Date();
+
+        await product.save();
 
         res.json({
 
             success:true,
-
-            message:'Товар обновлён',
-
-            data:updatedProduct
+            data:product
         });
 
-    }catch(error){
+    } catch(error) {
 
         console.error(error);
 
         res.status(500).json({
 
             success:false,
-
             error:'Ошибка сервера'
         });
     }

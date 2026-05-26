@@ -60,12 +60,77 @@ function displayProducts(products) {
                     <div class="product-stock ${isLowStock ? 'low' : ''}">${product.quantity} шт.</div>
                 </div>
                 <div class="product-card-footer">
-                    <div class="product-category">${escapeHtml(product.category)}</div>
+                    <div class="product-category">
+                        ${escapeHtml(product.category)}
+                    </div>
                     <div class="product-status-group">
-                        ${product.expiryDate && new Date(product.expiryDate) < new Date() ? 
-                            '<div class="product-danger-badge"><i class="fas fa-skull"></i></div>' : ''}
-                        ${product.refrigerationRequired === true ? 
-                            '<div class="product-fridge-badge"><i class="fas fa-snowflake"></i></div>' : ''}
+                        ${
+                        product.expiryDate
+                        ? (
+                            new Date(product.expiryDate)
+                            < new Date()
+                            ?
+                            `
+                                <div class="product-danger-badge">
+                                    <i class="fas fa-skull"></i>
+                                </div>
+                            `
+                            :
+                            `
+                                <div class="product-tooltip-wrapper">
+                                    <div class="product-expiry-badge">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="product-tooltip">
+                                        <div class="product-tooltip-title">
+                                            Добавлен
+                                        </div>
+                                        <div class="product-tooltip-date">
+                                            ${
+                                                new Date(
+                                                    product.createdAt ||
+                                                    Date.now()
+                                                ).toLocaleDateString()
+                                            }
+                                        </div>
+                                        <div class="product-tooltip-title">
+                                            Годен до
+                                        </div>
+                                        <div class="product-tooltip-date">
+                                            ${
+                                                new Date(
+                                                    product.expiryDate
+                                                ).toLocaleDateString()
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            `
+                        )
+                        : ''
+                    }
+                    ${
+                        product.refrigerationRequired
+                        ?
+                        `
+                            <div class="product-fridge-badge">
+                                <i class="fas fa-snowflake"></i>
+                            </div>
+                        `
+                        : ''
+                    }
+                    ${
+                        product.category ===
+                        'Премиум товары'
+                        ?
+                        `
+                            <div class="product-vip-badge">
+                                <i class="fas fa-gem"></i>
+                                VIP
+                            </div>
+                        `
+                        : ''
+                    }
                     </div>
                 </div>
             </div>

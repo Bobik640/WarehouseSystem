@@ -1,0 +1,574 @@
+<div class="edit-modal-overlay" id="editModalOverlay">
+    <div class="edit-modal">
+        <div class="edit-modal-container">
+            <div class="edit-modal-header">
+                <div>
+                    <span class="edit-modal-label">РЕДАКТИРОВАНИЕ ТОВАРА</span>
+                    <h2 class="edit-modal-title" id="editModalTitle">Товар</h2>
+                </div>
+                <button class="edit-close-btn" id="closeEditModalBtn">
+                    <i class="fas fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="edit-modal-body">
+                <!-- LEFT - ФОТО (БОЛЬШЕ) -->
+                <div class="edit-preview-section">
+                    <img id="editPreviewImage" class="edit-preview-image" src="">
+                    <div class="edit-upload-zone" id="editUploadZone">
+                        <input type="file" id="editImage" accept="image/*" hidden>
+                        <div class="edit-upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <div class="edit-upload-title">Перетащите фото товара</div>
+                        <div class="edit-upload-hint">или нажмите для выбора</div>
+                    </div>
+                </div>
+
+                <!-- RIGHT - ФОРМА (МЕНЬШЕ) -->
+                <div class="edit-form">
+                    <div class="edit-section">
+                        <span class="edit-section-title">ОСНОВНАЯ ИНФОРМАЦИЯ</span>
+                        <input type="text" id="editName" class="form-control" placeholder="Название товара">
+                        <textarea id="editDescription" class="form-control" placeholder="Описание товара"></textarea>
+                    </div>
+
+                    <div class="edit-grid">
+                        <input type="number" id="editQuantity" class="form-control" placeholder="Количество">
+                        <input type="number" id="editPrice" class="form-control" placeholder="Цена">
+                    </div>
+
+                    <div class="edit-grid">
+                        <input type="text" id="editSupplier" class="form-control" placeholder="Поставщик">
+                        <input type="text" id="editLocation" class="form-control" placeholder="Локация">
+                    </div>
+
+                    <select id="editCategory" class="form-control">
+                        <option>Электроника</option>
+                        <option>Одежда</option>
+                        <option>Продукты</option>
+                        <option>Автозапчасти</option>
+                        <option>Бытовая техника</option>
+                        <option>Канцелярия</option>
+                        <option>Мебель</option>
+                        <option>Строительные материалы</option>
+                        <option>Медикаменты</option>
+                        <option>Косметика</option>
+                        <option>Бытовая химия</option>
+                        <option>Игрушки</option>
+                        <option>Комплектующие ПК</option>
+                        <option>Аксессуары</option>
+                        <option>Инструменты</option>
+                        <option>Освещение</option>
+                        <option>Сантехника</option>
+                        <option>Товары для дома</option>
+                        <option>Сад и огород</option>
+                        <option>Зоотовары</option>
+                        <option>Напитки</option>
+                        <option>Замороженные продукты</option>
+                        <option>Премиум товары</option>
+                        <option>Спорт</option>
+                        <option>Другое</option>
+                    </select>
+
+                    <!-- MEDICINE FIELDS -->
+
+<div
+    id="editMedicineFields"
+    class="medicine-fields"
+    style="display:none;"
+>
+
+    <div class="edit-section">
+
+        <label class="medicine-label">
+
+            <i class="fas fa-capsules"></i>
+
+            Серия препарата
+
+        </label>
+
+        <input
+            type="text"
+            id="editMedicineSeries"
+            class="form-control"
+            placeholder="Например: A-542"
+        >
+
+    </div>
+
+    <div class="edit-section">
+
+        <label class="medicine-label">
+
+            <i class="fas fa-industry"></i>
+
+            Производитель
+
+        </label>
+
+        <input
+            type="text"
+            id="editMedicineManufacturer"
+            class="form-control"
+            placeholder="Pfizer / Bayer"
+        >
+
+    </div>
+
+    <div class="edit-section">
+
+        <label class="medicine-label">
+
+            <i class="fas fa-prescription-bottle"></i>
+
+            Дозировка
+
+        </label>
+
+        <input
+            type="text"
+            id="editMedicineDosage"
+            class="form-control"
+            placeholder="500mg"
+        >
+
+    </div>
+
+    <div class="edit-section">
+
+        <label class="medicine-label">
+
+            <i class="fas fa-pills"></i>
+
+            Тип
+
+        </label>
+
+        <select
+            id="editMedicineType"
+            class="form-control"
+        >
+
+            <option>Таблетки</option>
+            <option>Сироп</option>
+            <option>Ампулы</option>
+            <option>Капсулы</option>
+            <option>Мазь</option>
+
+        </select>
+
+    </div>
+
+    <div class="edit-section">
+
+        <label class="medicine-label">
+
+            <i class="fas fa-file-medical"></i>
+
+            Рецептурный
+
+        </label>
+
+        <select
+            id="editMedicineRecipe"
+            class="form-control"
+        >
+
+            <option>Без рецепта</option>
+            <option>По рецепту</option>
+
+        </select>
+
+    </div>
+
+    <div class="medicine-toggle">
+
+        <div class="edit-section">
+
+    <label class="medicine-label">
+
+        <i class="fas fa-calendar-times"></i>
+
+        Срок годности
+
+    </label>
+
+    <input
+        type="date"
+        id="editExpiryDate"
+        class="form-control"
+    >
+
+</div>
+
+        <label
+    class="switch"
+    for="editNeedsCold"
+>
+
+    <input
+        type="checkbox"
+        id="editNeedsCold"
+    >
+
+    <span class="slider"></span>
+
+</label>
+
+        <span class="medicine-toggle-text">
+
+            ❄ Требует холодильник
+
+        </span>
+
+    </div>
+
+</div>
+
+                    <button class="edit-save-btn" id="saveEditBtn">
+                        <i class="fas fa-check"></i>
+                        Сохранить изменения
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* ОСНОВНЫЕ СТИЛИ */
+.edit-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .72);
+    backdrop-filter: blur(14px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 26px;
+}
+
+.edit-modal {
+    width: min(1450px, 96vw);
+    max-height: 94vh;
+    overflow-y: auto;
+    border-radius: 38px;
+    position: relative;
+}
+
+.edit-modal-container {
+    padding: 34px;
+}
+
+.edit-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.edit-modal-label {
+    font-size: .75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #7c8aa5;
+}
+
+/* ИСПРАВЛЕНО: размер заголовка уменьшен */
+.edit-modal-title {
+    font-size: 3.8rem;
+    line-height: .95;
+    font-weight: 900;
+    letter-spacing: -2px;
+    max-width: 680px;
+    margin-top: 8px;
+}
+
+.edit-close-btn {
+    width: 58px;
+    height: 58px;
+    border: none;
+    border-radius: 22px;
+    cursor: pointer;
+    transition: .25s;
+    flex-shrink: 0;
+}
+
+/* ИСПРАВЛЕНО: пропорции колонок */
+.edit-modal-body {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 28px;
+    align-items: start;
+}
+
+/* ИСПРАВЛЕНО: убран огромный низ */
+.edit-preview-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-self: start;
+}
+
+/* ИСПРАВЛЕНО: высота картинки уменьшена */
+.edit-preview-image {
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+    border-radius: 28px;
+    background: #f4f7fb;
+    padding: 20px;
+}
+
+/* ИСПРАВЛЕНО: зона загрузки компактнее */
+.edit-upload-zone {
+    height: 120px;
+    border-radius: 24px;
+    border: 2px dashed rgba(255, 255, 255, .08);
+    background: rgba(255, 255, 255, .02);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.edit-upload-zone:hover {
+    transform: translateY(-2px);
+}
+
+.edit-upload-zone.dragover {
+    transform: scale(1.02);
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.edit-upload-icon {
+    width: 76px;
+    height: 76px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+}
+
+.edit-upload-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.edit-upload-hint {
+    font-size: .9rem;
+    opacity: .7;
+}
+
+/* ИСПРАВЛЕНО: форма уже */
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+.edit-section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.edit-section-title {
+    font-size: .82rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #7c8aa5;
+}
+
+.edit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-control {
+    width: 100%;
+    height: 62px;
+    border: none;
+    border-radius: 20px;
+    padding: 0 18px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* ИСПРАВЛЕНО: textarea компактнее */
+textarea.form-control {
+    min-height: 110px;
+    max-height: 110px;
+    resize: none;
+    overflow: auto;
+    padding: 18px;
+}
+
+/* ИСПРАВЛЕНО: кнопка сохранения */
+.edit-save-btn {
+    height: 60px;
+    border: none;
+    border-radius: 20px;
+    font-size: .95rem;
+    font-weight: 800;
+    margin-top: 6px;
+    cursor: pointer;
+    transition: .25s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.edit-save-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.medicine-fields{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    margin-top:6px;
+}
+
+.medicine-label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:.95rem;
+
+    font-weight:700;
+
+    color:#dbe4ff;
+}
+
+.medicine-toggle{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-top:6px;
+}
+
+.medicine-toggle-text{
+
+    font-weight:700;
+
+    color:#dbe4ff;
+}
+
+.switch{
+
+    position:relative;
+
+    width:54px;
+
+    height:30px;
+}
+
+.switch input{
+
+    opacity:0;
+
+    width:0;
+    height:0;
+}
+
+.slider{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#334155;
+
+    border-radius:999px;
+
+    transition:.25s;
+
+    cursor:pointer;
+}
+
+.slider::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:22px;
+    height:22px;
+
+    left:4px;
+    top:4px;
+
+    background:white;
+
+    border-radius:50%;
+
+    transition:.25s;
+}
+
+.switch input:checked + .slider{
+
+    background:#2563eb;
+}
+
+.switch input:checked + .slider::before{
+
+    transform:translateX(24px);
+}
+
+/* АДАПТИВ */
+@media (max-width: 1100px) {
+    .edit-modal-body {
+        grid-template-columns: 1fr;
+    }
+    
+    .edit-preview-image {
+        height: 360px;
+    }
+    
+    .edit-modal-title {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .edit-modal-container {
+        padding: 20px;
+    }
+    
+    .edit-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .edit-modal-title {
+        font-size: 2rem;
+    }
+}
+</style>

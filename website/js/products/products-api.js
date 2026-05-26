@@ -81,8 +81,32 @@ async function addNewProduct() {
     }
     
     try {
-        const requestBody = { name, quantity, category, price, expiryDate, description, supplier, location };
-        if (image) requestBody.image = image;
+
+        const coldCheckbox =
+    document.getElementById(
+        'refrigerationRequired'
+    );
+
+const refrigerationRequired =
+    coldCheckbox
+    ? coldCheckbox.checked
+    : false;
+
+const requestBody = {
+    name,
+    quantity,
+    category,
+    price,
+    expiryDate,
+    refrigerationRequired,
+    description,
+    supplier,
+    location
+};
+
+if (image) {
+    requestBody.image = image;
+}
         
         const response = await fetch(APP_CONFIG.API_URL, {
             method: 'POST',
