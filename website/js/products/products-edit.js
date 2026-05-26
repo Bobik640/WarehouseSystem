@@ -222,74 +222,170 @@ document.addEventListener(
     }
 );
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener(
 
-    const uploadZone =
-        document.querySelector('.edit-upload-zone');
+    'DOMContentLoaded',
 
-    const fileInput =
-        document.getElementById('editImage');
+    function(){
 
-    const preview =
-        document.getElementById('editPreviewImage');
+        const closeBtn =
+            document.getElementById(
+                'closeEditModalBtn'
+            );
 
-    if(!uploadZone || !fileInput) return;
+        const saveBtn =
+            document.getElementById(
+                'saveEditBtn'
+            );
 
-    uploadZone.onclick = () => {
+        const overlay =
+            document.getElementById(
+                'editModalOverlay'
+            );
 
-    fileInput.click();
-};
+        if(closeBtn){
 
-    uploadZone.addEventListener('dragover', (e) => {
+            closeBtn.addEventListener(
+                'click',
+                closeEditModal
+            );
+        }
 
-        e.preventDefault();
+        if(saveBtn){
 
-        uploadZone.classList.add('dragover');
-    });
+            saveBtn.addEventListener(
+                'click',
+                saveEditedProduct
+            );
+        }
 
-    uploadZone.addEventListener('dragleave', () => {
+        if(overlay){
 
-        uploadZone.classList.remove('dragover');
-    });
+            overlay.addEventListener(
+                'click',
+                function(e){
 
-    uploadZone.addEventListener('drop', async (e) => {
+                    if(
+                        e.target.id ===
+                        'editModalOverlay'
+                    ){
 
-        e.preventDefault();
+                        closeEditModal();
+                    }
+                }
+            );
+        }
 
-        uploadZone.classList.remove('dragover');
 
-        const file = e.dataTransfer.files[0];
+        /* ===== UPLOAD ===== */
 
-        if(!file) return;
+        const uploadZone =
+            document.querySelector(
+                '.edit-upload-zone'
+            );
 
-        fileInput.files = e.dataTransfer.files;
+        const fileInput =
+            document.getElementById(
+                'editImage'
+            );
 
-        const reader = new FileReader();
+        const preview =
+            document.getElementById(
+                'editPreviewImage'
+            );
 
-        reader.onload = function(event){
+        if(
+            !uploadZone ||
+            !fileInput ||
+            !preview
+        ) return;
 
-            preview.src = event.target.result;
+
+        uploadZone.onclick = () => {
+
+            fileInput.click();
         };
 
-        reader.readAsDataURL(file);
-    });
 
-    fileInput.addEventListener('change', () => {
+        uploadZone.addEventListener(
+            'dragover',
+            (e) => {
 
-        const file = fileInput.files[0];
+                e.preventDefault();
 
-        if(!file) return;
+                uploadZone.classList.add(
+                    'dragover'
+                );
+            }
+        );
 
-        const reader = new FileReader();
 
-        reader.onload = function(event){
+        uploadZone.addEventListener(
+            'dragleave',
+            () => {
 
-            preview.src = event.target.result;
-        };
+                uploadZone.classList.remove(
+                    'dragover'
+                );
+            }
+        );
 
-        reader.readAsDataURL(file);
-    });
-});
+
+        uploadZone.addEventListener(
+            'drop',
+            (e) => {
+
+                e.preventDefault();
+
+                uploadZone.classList.remove(
+                    'dragover'
+                );
+
+                const file =
+                    e.dataTransfer.files[0];
+
+                if(!file) return;
+
+                fileInput.files =
+                    e.dataTransfer.files;
+
+                const reader =
+                    new FileReader();
+
+                reader.onload = function(event){
+
+                    preview.src =
+                        event.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            }
+        );
+
+
+        fileInput.addEventListener(
+            'change',
+            () => {
+
+                const file =
+                    fileInput.files[0];
+
+                if(!file) return;
+
+                const reader =
+                    new FileReader();
+
+                reader.onload = function(event){
+
+                    preview.src =
+                        event.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            }
+        );
+    }
+);
 
 window.openEditModal =
     openEditModal;
