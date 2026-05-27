@@ -24,7 +24,7 @@ function setupCategoryListener() {
     if (!categorySelect) return;
     
     categorySelect.addEventListener('change', function() {
-        if (this.value === 'Продукты' || this.value === 'Медикаменты' || this.value === 'Спорт') {
+        if (this.value === 'Продукты' || this.value === 'Медикаменты' || this.value === 'Спорт' || this.value === 'Сад и огород' || this.value === 'Косметика' || this.value === 'Бытовая химия' || this.value === 'Замороженные продукты' || this.value === 'Комплектующие ПК' || this.value === 'Строительные материалы') {
             if (expiryGroup) expiryGroup.style.display = 'block';
         } else {
             if (expiryGroup) expiryGroup.style.display = 'none';
