@@ -53,7 +53,7 @@ function initMedicineFields() {
     if (!categorySelect) return;
 
     // Список категорий, у которых должен быть календарь
-    const allowedExpiryCategories = ['Медикаменты', 'Продукты', 'Спорт'];
+    const allowedExpiryCategories = ['Медикаменты', 'Продукты', 'Спорт', 'Косметика', 'Бытовая химия', 'Комплектующие ПК', 'Сад и огород', 'Зоотовары', 'Напитки', 'Замороженные продукты'];
 
     // 1. ПРОВЕРКА ПРИ ОТКРЫТИИ МОДАЛКИ
     if (allowedExpiryCategories.includes(categorySelect.value)) {
@@ -245,17 +245,43 @@ function openEditModal(productId) {
     const medicineFields = document.getElementById('editMedicineFields'); // <-- ОБЪЯВИЛИ ПЕРЕМЕННУЮ ЗДЕСЬ
 
     // Управление блоком Срока Годности (для Медикаментов и Продуктов)
-    if (product.category === 'Медикаменты' || product.category === 'Продукты') {
-        if (expiryGroup) expiryGroup.style.display = 'block';
-        const expiryInput = document.getElementById('editExpiryDate');
-        if (expiryInput && product.expiryDate) {
-            expiryInput.value = product.expiryDate.split('T')[0];
-        }
-    } else {
-        if (expiryGroup) expiryGroup.style.display = 'none';
-        const expiryInput = document.getElementById('editExpiryDate');
-        if (expiryInput) expiryInput.value = '';
+    const allowedExpiryCategories = [
+    'Медикаменты',
+    'Продукты',
+    'Спорт',
+    'Косметика',
+    'Бытовая химия',
+    'Комплектующие ПК',
+    'Сад и огород',
+    'Зоотовары',
+    'Напитки',
+    'Замороженные продукты'
+];
+
+if (allowedExpiryCategories.includes(product.category)) {
+
+    if (expiryGroup) {
+        expiryGroup.style.display = 'block';
     }
+
+    const expiryInput = document.getElementById('editExpiryDate');
+
+    if (expiryInput && product.expiryDate) {
+        expiryInput.value = product.expiryDate.split('T')[0];
+    }
+
+} else {
+
+    if (expiryGroup) {
+        expiryGroup.style.display = 'none';
+    }
+
+    const expiryInput = document.getElementById('editExpiryDate');
+
+    if (expiryInput) {
+        expiryInput.value = '';
+    }
+}
 
     // Управление блоком Медикаментов (СТРОГО для Медикаментов)
     if (product.category === 'Медикаменты') {
