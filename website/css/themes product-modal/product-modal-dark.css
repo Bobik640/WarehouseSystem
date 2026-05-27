@@ -1,0 +1,248 @@
+/* ===================================================== */
+/* ================= DARK ============================== */
+/* ===================================================== */
+
+body.dark-theme .modern-product-modal {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15,23,42,.98),
+            rgba(17,24,39,.98)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.06);
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.45);
+}
+
+/* RIGHT */
+
+body.dark-theme .modern-product-right {
+
+    box-shadow:
+    inset 1px 0 rgba(255,255,255,.04);
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(17,24,39,.96),
+            rgba(15,23,42,.98)
+        );
+}
+
+body.dark-theme .modern-product-right::before {
+
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(99,102,241,.16),
+            transparent 35%
+        );
+
+    pointer-events: none;
+}
+
+/* TITLE */
+
+body.dark-theme .modern-product-title {
+
+    text-shadow:
+    0 10px 40px rgba(255,255,255,.08);
+
+    color: white;
+}
+
+/* TEXT */
+
+body.dark-theme .modern-product-description,
+body.dark-theme .modern-info-value {
+
+    color:
+        rgba(255,255,255,.92);
+}
+
+/* LABEL */
+
+body.dark-theme .modern-section-title,
+body.dark-theme .modern-product-category,
+body.dark-theme .modern-info-label {
+
+    color:
+        rgba(255,255,255,.6);
+}
+
+/* INFO CARD */
+
+body.dark-theme .modern-info-card {
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:
+        1px solid rgba(255,255,255,.05);
+
+    backdrop-filter:
+        blur(10px);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.16);
+
+    position: relative;
+}
+
+body.dark-theme .modern-info-card::before {
+
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.05),
+            transparent 40%
+        );
+
+    pointer-events: none;
+}
+
+/* HOVER */
+
+body.dark-theme .modern-info-card:hover {
+
+    background:
+        rgba(255,255,255,.06);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
+}
+
+/* READ MORE */
+
+body.dark-theme .modern-read-more {
+
+    color: #a78bfa;
+}
+
+body.dark-theme .modern-read-more {
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid rgba(255,255,255,.06);
+
+    box-shadow:
+        0 6px 20px rgba(0,0,0,.16);
+}
+
+body.dark-theme .modern-read-more:hover {
+
+    background:
+        rgba(255,255,255,.08);
+
+    transform:
+        translateY(-2px);
+}
+
+/* DESCRIPTION FADE */
+
+body.dark-theme
+.modern-product-description.collapsed::after {
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(15,23,42,1)
+        );
+}
+
+/* CLOSE */
+
+body.dark-theme .modern-product-close {
+
+    background:
+        rgba(255,255,255,.06);
+
+    color: white;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:
+        blur(10px);
+}
+
+/* SCROLLBAR (FIXED COLOR) */
+body.dark-theme .modern-product-right::-webkit-scrollbar {
+    width: 6px;
+}
+
+body.dark-theme .modern-product-right::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+body.dark-theme .modern-product-right::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.5);
+    border-radius: 10px;
+}
+
+body.dark-theme .modern-product-right::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.8);
+}
+
+body.dark-theme .modern-product-modal{
+
+    background:
+    linear-gradient(
+    180deg,
+    rgba(15,23,42,.98),
+    rgba(2,6,23,.98)
+    );
+}
+
+body.dark-theme .modern-product-content{
+
+    background:
+    linear-gradient(
+    180deg,
+    rgba(15,23,42,.75),
+    rgba(2,6,23,.92)
+    );
+}
+
+body.dark-theme .modern-info-card{
+
+    background:
+    rgba(255,255,255,.05);
+
+    border:
+    1px solid rgba(255,255,255,.06);
+}
+
+body.dark-theme .modern-product-close,
+body.dark-theme .modern-switch-btn{
+
+    background:
+    rgba(255,255,255,.08);
+
+    color:white;
+
+    border:
+    1px solid rgba(255,255,255,.08);
+}

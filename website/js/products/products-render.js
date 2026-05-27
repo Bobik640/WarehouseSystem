@@ -138,7 +138,9 @@ function displayProducts(products) {
         // Обработчики
         card.addEventListener('click', (e) => {
             if (!e.target.closest('.product-admin-actions')) {
-                openProductModal(index);
+                // ИЩЕМ РЕАЛЬНЫЙ ИНДЕКС ТОВАРА В ГЛАВНОМ МАССИВЕ
+                const realIndex = AppState.products.findIndex(p => p._id === product._id);
+                openModernProductModal(realIndex !== -1 ? realIndex : index);
             }
         });
         

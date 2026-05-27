@@ -1,0 +1,163 @@
+/* ===================================================== */
+/* ================= LIGHT ============================= */
+/* ===================================================== */
+
+body.light-theme .modern-product-modal {
+
+    background:
+        rgba(255,255,255,.98);
+
+    border:
+        1px solid rgba(15,23,42,.06);
+
+    box-shadow:
+        0 40px 100px rgba(15,23,42,.12);
+}
+
+/* RIGHT */
+
+body.light-theme .modern-product-right {
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.98),
+            rgba(248,250,252,.98)
+        );
+}
+
+/* TITLE */
+
+body.light-theme .modern-product-title {
+
+    color:
+        #0f172a;
+}
+
+/* TEXT */
+
+body.light-theme .modern-product-description,
+body.light-theme .modern-info-value {
+
+    color:
+        #334155;
+}
+
+/* LABEL */
+
+body.light-theme .modern-section-title,
+body.light-theme .modern-product-category,
+body.light-theme .modern-info-label {
+
+    color:
+        #64748b;
+}
+
+/* INFO */
+
+body.light-theme .modern-info-card {
+
+    background:
+        rgba(248,250,252,.95);
+
+    border:
+        1px solid rgba(15,23,42,.05);
+}
+
+/* HOVER */
+
+body.light-theme .modern-info-card:hover {
+
+    background:
+        white;
+
+    box-shadow:
+        0 12px 30px rgba(15,23,42,.08);
+}
+
+/* BUTTON */
+
+body.light-theme .modern-read-more {
+
+    color:
+        #7c3aed;
+}
+
+/* FADE */
+
+body.light-theme
+.modern-product-description.collapsed::after {
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(255,255,255,1)
+        );
+}
+
+/* CLOSE */
+
+body.light-theme .modern-product-close {
+
+    background:
+        rgba(255,255,255,.95);
+
+    color:
+        #0f172a;
+
+    border:
+        1px solid rgba(15,23,42,.06);
+}
+
+/* SCROLLBAR (FIXED COLOR) */
+body.light-theme .modern-product-right::-webkit-scrollbar {
+    width: 6px;
+}
+
+body.light-theme .modern-product-right::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.05);
+    border-radius: 10px;
+}
+
+body.light-theme .modern-product-right::-webkit-scrollbar-thumb {
+    background: rgba(100, 116, 139, 0.4);
+    border-radius: 10px;
+}
+
+body.light-theme .modern-product-right::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 116, 139, 0.6);
+}
+
+body.light-theme .modern-product-modal{
+
+    background:white;
+}
+
+body.light-theme .modern-product-content{
+
+    background:
+    linear-gradient(
+    180deg,
+    rgba(255,255,255,.85),
+    rgba(248,250,252,.96)
+    );
+}
+
+body.light-theme .modern-info-card{
+
+    background:
+    rgba(248,250,252,.95);
+
+    border:
+    1px solid rgba(15,23,42,.05);
+}
+
+body.light-theme .modern-product-close,
+body.light-theme .modern-switch-btn{
+
+    background:
+    rgba(255,255,255,.96);
+
+    color:#0f172a;
+}

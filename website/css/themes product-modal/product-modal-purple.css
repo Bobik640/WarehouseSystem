@@ -1,0 +1,175 @@
+/* ===================================================== */
+/* ================= PURPLE ============================ */
+/* ===================================================== */
+
+body.purple-theme .modern-product-modal {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(35,15,60,.98),
+            rgba(88,28,135,.98)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.06);
+
+    box-shadow:
+        0 40px 100px rgba(88,28,135,.35);
+}
+
+/* RIGHT */
+
+body.purple-theme .modern-product-right {
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(55,20,90,.96),
+            rgba(35,15,60,.98)
+        );
+}
+
+/* TITLE */
+
+body.purple-theme .modern-product-title {
+
+    color:
+        white;
+}
+
+/* TEXT */
+
+body.purple-theme .modern-product-description,
+body.purple-theme .modern-info-value {
+
+    color:
+        rgba(255,255,255,.92);
+}
+
+/* LABEL */
+
+body.purple-theme .modern-section-title,
+body.purple-theme .modern-product-category,
+body.purple-theme .modern-info-label {
+
+    color:
+        rgba(255,255,255,.65);
+}
+
+/* INFO */
+
+body.purple-theme .modern-info-card {
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid rgba(255,255,255,.05);
+
+    backdrop-filter:
+        blur(10px);
+}
+
+/* HOVER */
+
+body.purple-theme .modern-info-card:hover {
+
+    background:
+        rgba(255,255,255,.08);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.25);
+}
+
+/* BUTTON */
+
+body.purple-theme .modern-read-more {
+
+    color:
+        #c084fc;
+}
+
+/* FADE */
+
+body.purple-theme
+.modern-product-description.collapsed::after {
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(35,15,60,1)
+        );
+}
+
+/* CLOSE */
+
+body.purple-theme .modern-product-close {
+
+    background:
+        rgba(255,255,255,.06);
+
+    color:
+        white;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+}
+
+/* SCROLLBAR (FIXED COLOR) */
+body.purple-theme .modern-product-right::-webkit-scrollbar {
+    width: 6px;
+}
+
+body.purple-theme .modern-product-right::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+body.purple-theme .modern-product-right::-webkit-scrollbar-thumb {
+    background: rgba(192, 132, 252, 0.6);
+    border-radius: 10px;
+}
+
+body.purple-theme .modern-product-right::-webkit-scrollbar-thumb:hover {
+    background: rgba(192, 132, 252, 0.9);
+}
+
+body.purple-theme .modern-product-modal{
+
+    background:
+    linear-gradient(
+    180deg,
+    rgba(35,15,60,.98),
+    rgba(17,24,39,.98)
+    );
+}
+
+body.purple-theme .modern-product-content{
+
+    background:
+    linear-gradient(
+    180deg,
+    rgba(55,20,90,.78),
+    rgba(35,15,60,.94)
+    );
+}
+
+body.purple-theme .modern-info-card{
+
+    background:
+    rgba(255,255,255,.05);
+
+    border:
+    1px solid rgba(255,255,255,.06);
+}
+
+body.purple-theme .modern-product-close,
+body.purple-theme .modern-switch-btn{
+
+    background:
+    rgba(255,255,255,.08);
+
+    color:white;
+}

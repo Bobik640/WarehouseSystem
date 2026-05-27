@@ -1,0 +1,693 @@
+/* ===================================================== */
+/* ================= OVERLAY =========================== */
+/* ===================================================== */
+
+.modern-product-modal-overlay{
+
+    position:fixed;
+    inset:0;
+
+    background:
+    rgba(0,0,0,.78);
+
+    backdrop-filter:
+    blur(18px);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    z-index:999999;
+
+    padding:24px;
+
+    overflow:hidden;
+}
+
+.modern-product-modal-overlay.active{
+
+    display:flex;
+
+    animation:
+    overlayFade .35s ease;
+}
+
+/* ===================================================== */
+/* ================= MODAL ============================= */
+/* ===================================================== */
+
+.modern-product-modal{
+
+    width:min(980px,92vw);
+    height:92vh;
+
+    border-radius:38px;
+
+    overflow-x:hidden;
+
+    overflow-y:auto;
+
+    position:relative;
+
+    display:flex;
+    flex-direction:column;
+
+    backdrop-filter:
+    blur(30px);
+
+    isolation:isolate;
+
+    animation:
+    modalShow .45s cubic-bezier(.17,.84,.44,1);
+
+    border:
+    1px solid rgba(255,255,255,.06);
+}
+
+/* ===================================================== */
+/* ================= BACKGROUND ======================== */
+/* ===================================================== */
+
+.modern-product-bg{
+
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(
+    circle at top right,
+    rgba(139,92,246,.25),
+    transparent 28%
+    ),
+
+    radial-gradient(
+    circle at bottom left,
+    rgba(59,130,246,.18),
+    transparent 30%
+    );
+
+    pointer-events:none;
+
+    z-index:-1;
+}
+
+/* ===================================================== */
+/* ================= HERO ============================== */
+/* ===================================================== */
+
+.modern-product-hero{
+
+    position:relative;
+
+    height:320px;
+
+    min-height:340px;
+
+    overflow:hidden;
+
+    flex-shrink:0;
+
+    position:relative;
+    
+    z-index:1;
+}
+
+.modern-product-image-wrapper{
+
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+}
+
+.modern-product-image{
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    padding:40px;
+
+    transform:scale(1.02);
+
+    transition:
+    transform .9s ease;
+}
+
+.modern-product-modal:hover
+.modern-product-image{
+
+    transform:
+    scale(1.08);
+}
+
+.modern-image-shadow{
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+    to top,
+    rgba(0,0,0,.72),
+    transparent 45%
+    );
+
+    pointer-events:none;
+}
+
+/* ===================================================== */
+/* ================= CONTENT =========================== */
+/* ===================================================== */
+
+.modern-product-content{
+
+    padding-bottom:120px;
+
+    padding:
+    42px;
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:32px;
+}
+
+/* ===================================================== */
+/* ================= HEADER ============================ */
+/* ===================================================== */
+
+.modern-product-category{
+
+    font-size:.72rem;
+
+    letter-spacing:4px;
+
+    opacity:.7;
+
+    font-weight:800;
+}
+
+.modern-product-title{
+
+    margin-top:12px;
+
+    font-size:
+    clamp(2.2rem,4vw,4.5rem);
+
+    line-height:1;
+
+    font-weight:900;
+
+    letter-spacing:-.04em;
+
+    max-width:800px;
+}
+
+/* ===================================================== */
+/* ================= DESCRIPTION ======================= */
+/* ===================================================== */
+
+.modern-section-title{
+
+    font-size:1rem;
+
+    font-weight:800;
+
+    margin-bottom:18px;
+}
+
+.modern-product-description{
+
+    position:relative;
+
+    line-height:2;
+
+    font-size:1rem;
+
+    display:block;
+
+    overflow:hidden;
+
+    white-space:pre-wrap;
+
+    transition:
+    max-height .4s ease;
+
+    opacity:.92;
+}
+
+.modern-product-description.collapsed{
+
+    max-height:120px;
+}
+
+.modern-product-description.expanded{
+
+    max-height:1200px;
+}
+
+.modern-product-description.collapsed::after{
+
+    content:'';
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:70px;
+}
+
+/* ===================================================== */
+/* ================= BUTTON ============================ */
+/* ===================================================== */
+
+.modern-read-more{
+
+    margin-top:18px;
+
+    border:none;
+
+    padding:
+    14px 22px;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+    font-weight:800;
+
+    transition:.25s ease;
+
+    backdrop-filter:
+    blur(14px);
+}
+
+/* ===================================================== */
+/* ================= GRID ============================== */
+/* ===================================================== */
+
+.modern-product-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(240px,1fr));
+
+    gap:18px;
+}
+
+.modern-info-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:28px;
+
+    padding:24px;
+
+    transition:.35s ease;
+
+    backdrop-filter:
+    blur(16px);
+}
+
+.modern-info-card::before{
+
+    content:'';
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+    145deg,
+    rgba(255,255,255,.08),
+    transparent 40%
+    );
+
+    opacity:0;
+
+    transition:.35s ease;
+}
+
+.modern-info-card:hover::before{
+
+    opacity:1;
+}
+
+.modern-info-card:hover{
+
+    transform:
+    translateY(-6px)
+    scale(1.02);
+}
+
+.modern-info-label{
+
+    font-size:.72rem;
+
+    letter-spacing:2px;
+
+    opacity:.7;
+
+    margin-bottom:12px;
+
+    font-weight:700;
+}
+
+.modern-info-value{
+
+    font-size:1.1rem;
+
+    font-weight:800;
+
+    line-height:1.6;
+}
+
+/* ===================================================== */
+/* ================= CLOSE BUTTON ====================== */
+/* ===================================================== */
+
+.modern-product-close{
+
+    position:sticky;
+
+    top:18px;
+
+    margin-left:auto;
+
+    margin-right:18px;
+
+    width:54px;
+    height:54px;
+
+    flex-shrink:0;
+
+    border:none;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    z-index:99999;
+
+    color:white;
+
+    background:
+    linear-gradient(
+    145deg,
+    rgba(255,255,255,.14),
+    rgba(255,255,255,.05)
+    );
+
+    border:
+    1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:
+    blur(18px);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.28);
+
+    transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
+}
+
+/* ICON */
+
+.modern-product-close i{
+
+    font-size:1.15rem;
+
+    pointer-events:none;
+
+    will-change:transform;
+}
+
+/* HOVER */
+
+.modern-product-close:hover{
+
+    transform:
+    translateY(-2px)
+    rotate(90deg)
+    scale(1.06);
+
+    background:
+    linear-gradient(
+    145deg,
+    rgba(168,85,247,.45),
+    rgba(139,92,246,.22)
+    );
+
+    box-shadow:
+    0 16px 40px rgba(139,92,246,.28);
+}
+
+/* ACTIVE */
+
+.modern-product-close:active{
+
+    transform:
+    scale(.96);
+}
+
+/* ===================================================== */
+/* ================= SWITCH ============================ */
+/* ===================================================== */
+
+.modern-switch-btn{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:
+    translateY(-50%);
+
+    width:68px;
+    height:68px;
+
+    border:none;
+
+    border-radius:24px;
+
+    cursor:pointer;
+
+    z-index:9999;
+
+    transition:.25s ease;
+
+    backdrop-filter:
+    blur(18px);
+}
+
+.modern-switch-btn:hover{
+
+    transform:
+    translateY(-50%)
+    scale(1.12);
+}
+
+.modern-switch-btn.left{
+
+    left:26px;
+}
+
+.modern-switch-btn.right{
+
+    right:26px;
+}
+
+/* ===================================================== */
+/* ================= STATUS ============================ */
+/* ===================================================== */
+
+.modern-product-status{
+
+    position:absolute;
+
+    top:24px;
+    left:24px;
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    z-index:100;
+}
+
+/* ===================================================== */
+/* ================= SCROLLBAR ========================= */
+/* ===================================================== */
+
+.modern-product-modal::-webkit-scrollbar{
+
+    width:10px;
+}
+
+.modern-product-modal::-webkit-scrollbar-track{
+
+    background:
+    rgba(255,255,255,.04);
+
+    border-radius:999px;
+}
+
+.modern-product-modal::-webkit-scrollbar-thumb{
+
+    background:
+    linear-gradient(
+    180deg,
+    rgba(139,92,246,.85),
+    rgba(168,85,247,.65)
+    );
+
+    border-radius:999px;
+
+    border:
+    2px solid transparent;
+
+    background-clip:padding-box;
+}
+
+.modern-product-modal::-webkit-scrollbar-thumb:hover{
+
+    background:
+    linear-gradient(
+    180deg,
+    rgba(192,132,252,1),
+    rgba(139,92,246,.9)
+    );
+}
+
+/* ===================================================== */
+/* ================= ANIMATION ========================= */
+/* ===================================================== */
+
+@keyframes overlayFade{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes modalShow{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+        scale(.92)
+        translateY(40px);
+
+        filter:
+        blur(14px);
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:
+        scale(1)
+        translateY(0);
+
+        filter:
+        blur(0);
+    }
+}
+
+/* ===================================================== */
+/* ================= MOBILE ============================ */
+/* ===================================================== */
+
+@media(max-width:900px) {
+    .modern-product-modal {
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .modern-product-content {
+        padding: 26px;
+    }
+
+    .modern-product-title {
+        font-size: 2.2rem;
+    }
+
+    .modern-switch-btn {
+        width: 54px;
+        height: 54px;
+    }
+
+    .modern-product-close {
+        width: 50px;
+        height: 50px;
+        top: 16px;
+        right: 16px;
+    }
+
+    .modern-product-close i,
+    .modern-product-close svg {
+        font-size: 1.4rem;
+    }
+}
+.modern-product-modal::-webkit-scrollbar{
+
+    width:8px;
+}
+
+.modern-product-modal::-webkit-scrollbar-thumb{
+
+    background:
+    rgba(255,255,255,.18);
+
+    border-radius:999px;
+}
+
+/* ===================================================== */
+/* ================= MODAL STATUS ====================== */
+/* ===================================================== */
+
+.modern-product-status .product-danger-wrapper,
+.modern-product-status .product-tooltip-wrapper,
+.modern-product-status .product-fridge-wrapper,
+.modern-product-status .product-vip-wrapper{
+
+    all:unset;
+}
+
+.modern-product-status .product-danger-tooltip,
+.modern-product-status .product-expiry-tooltip,
+.modern-product-status .product-fridge-tooltip,
+.modern-product-status .product-vip-tooltip{
+
+    display:none !important;
+}

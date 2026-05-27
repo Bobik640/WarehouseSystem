@@ -177,31 +177,122 @@
 }
 
 .product-expiry-badge {
-    width: 34px;
-    height: 34px;
-    border-radius: 14px;  /* ← единый стиль скругления для значков */
-    background: rgba(245, 158, 11, 0.12);
-    color: #f59e0b;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f59e0b,
+            #f97316
+        );
+
+    color: white;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
-    font-size: 0.82rem;
-    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.18);
-    flex-shrink: 0;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 16px rgba(245,158,11,.45);
+
+    animation:
+        warningPulse 2s infinite;
+}
+
+/* CLOCK */
+
+.product-expiry-badge i {
+
+    position: relative;
+
+    z-index: 2;
+
+    animation:
+        clockRotate 4s linear infinite;
+}
+
+.product-expiry-badge:hover i {
+
+    animation:
+        clockRotate .8s linear infinite;
 }
 
 .product-vip-badge {
+
     display: flex;
+
     align-items: center;
+
     gap: 6px;
+
     padding: 7px 12px;
-    border-radius: 20px;  /* ← более плавный, чем 12px */
-    background: linear-gradient(135deg, #7c3aed, #c084fc);
+
+    border-radius: 20px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #c084fc
+        );
+
     color: white;
-    font-size: 0.72rem;
+
+    font-size: .72rem;
+
     font-weight: 700;
+
     letter-spacing: 1px;
-    box-shadow: 0 6px 18px rgba(124, 58, 237, 0.35);
+
+    box-shadow:
+        0 6px 18px rgba(124,58,237,.35);
+}
+
+/* SHINE */
+
+.product-vip-badge::after {
+
+    content: '';
+
+    position: absolute;
+
+    top: -30px;
+    left: -60px;
+
+    width: 42px;
+    height: 140%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.95),
+            transparent
+        );
+
+    transform:
+        rotate(25deg);
+
+    filter:
+        blur(6px);
+
+    opacity: .9;
+
+    animation:
+        vipShineSweep 2.8s linear infinite;
 }
 
 .product-vip-badge i {
@@ -215,19 +306,71 @@
 }
 
 .product-fridge-badge {
+
     width: 38px;
     height: 38px;
+
     border-radius: 14px;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
-    border: 2px solid var(--fridge-border, #0ea5e9);
-    background: linear-gradient(145deg, #0ea5e9, #2563eb);
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0ea5e9,
+            #2563eb
+        );
+
     color: white;
-    font-size: 0.95rem;
-    box-shadow: var(--fridge-shadow, 0 0 12px rgba(59, 130, 246, 0.35));
-    animation: fridgePulse 2.2s infinite;
-    flex-shrink: 0;
+
+    font-size: .95rem;
+
+    box-shadow:
+        0 0 16px rgba(59,130,246,.45);
+
+    animation:
+        fridgePulse 2.2s infinite;
+}
+
+/* SNOW */
+
+.product-fridge-badge::before,
+.product-fridge-badge::after {
+
+    content: '❄';
+
+    position: absolute;
+
+    font-size: 8px;
+
+    opacity: .8;
+
+    pointer-events: none;
+}
+
+.product-fridge-badge::before {
+
+    top: 8px;
+    right: 8px;
+
+    animation:
+        snowFloat1 2.6s linear infinite;
+}
+
+.product-fridge-badge::after {
+
+    bottom: 8px;
+    left: 8px;
+
+    animation:
+        snowFloat2 3.2s linear infinite;
 }
 
 .product-expiry-badge.status {
@@ -527,5 +670,100 @@
 
         transform: scale(1);
         filter: brightness(1);
+    }
+}
+
+/* CLOCK */
+
+@keyframes clockRotate {
+
+    from {
+
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+    }
+}
+
+/* SNOW */
+
+@keyframes snowFloat1 {
+
+    0% {
+
+        transform:
+            translate(0,0)
+            scale(.8);
+
+        opacity: 0;
+    }
+
+    30% {
+
+        opacity: 1;
+    }
+
+    100% {
+
+        transform:
+            translate(10px,-14px)
+            scale(1.2);
+
+        opacity: 0;
+    }
+}
+
+@keyframes snowFloat2 {
+
+    0% {
+
+        transform:
+            translate(0,0)
+            scale(.8);
+
+        opacity: 0;
+    }
+
+    30% {
+
+        opacity: 1;
+    }
+
+    100% {
+
+        transform:
+            translate(-10px,-16px)
+            scale(1.1);
+
+        opacity: 0;
+    }
+}
+
+/* VIP */
+
+@keyframes vipShineSweep {
+
+    0% {
+
+        left: -80px;
+
+        opacity: 0;
+    }
+
+    15% {
+
+        opacity: 1;
+    }
+
+    100% {
+
+        left: 180%;
+
+        opacity: 0;
     }
 }

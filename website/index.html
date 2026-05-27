@@ -51,6 +51,12 @@
     <link rel="stylesheet" href="css/themes expiry-tooltip/expiry-tooltip-purple.css">
     <link rel="stylesheet" href="css/layout/edit-product-modal.css">
 
+    <link rel="stylesheet" href="css/layout/product-modal-modern.css">
+
+    <link rel="stylesheet" href="css/themes product-modal/product-modal-dark.css">
+    <link rel="stylesheet" href="css/themes product-modal/product-modal-light.css">
+    <link rel="stylesheet" href="css/themes product-modal/product-modal-purple.css">
+
     <!-- Themes -->
     <link rel="stylesheet" href="css/themes/light-theme.css">
     <link rel="stylesheet" href="css/themes/dark-theme.css">
@@ -470,7 +476,7 @@
     <script src="js/products/products-filters.js"></script>
     <script src="js/products/products-stats.js"></script>
     <script src="js/products/products-analytics.js"></script>
-    <script src="js/products/products-modal.js"></script>
+    <script src="js/product-modal-ui.js"></script>
     <script src="js/load-edit-modal.js"></script>
     <script src="js/products/products-actions.js"></script>
     
@@ -527,21 +533,123 @@
         </div>
     </div>
 
-    <!-- PRODUCT MODAL -->
-    <div class="product-modal-overlay" id="productModalOverlay">
-        <div class="product-modal">
-            <button class="product-modal-close" id="closeProductModal">
-                <i class="fas fa-xmark"></i>
-            </button>
-            <button class="product-modal-arrow left" id="prevProductBtn">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="product-modal-arrow right" id="nextProductBtn">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            <div class="product-modal-content" id="productModalContent"></div>
+    <!-- MODERN PRODUCT MODAL -->
+
+<div
+    class="modern-product-modal-overlay"
+    id="modernProductModalOverlay"
+>
+
+    <div class="modern-product-modal">
+
+    <!-- BACKGROUND -->
+
+    <div class="modern-product-bg"></div>
+
+    <!-- CLOSE -->
+
+    <button
+        class="modern-product-close"
+        id="modernCloseProductModal"
+    >
+        <i class="fas fa-xmark"></i>
+    </button>
+
+    <!-- LEFT -->
+
+    <button
+        class="modern-switch-btn left"
+        id="modernPrevBtn"
+    >
+        <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <!-- RIGHT -->
+
+    <button
+        class="modern-switch-btn right"
+        id="modernNextBtn"
+    >
+        <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <!-- TOP IMAGE -->
+
+    <div class="modern-product-hero">
+
+        <div class="modern-product-image-wrapper">
+
+            <img
+                id="modernProductImage"
+                class="modern-product-image"
+            >
+
+            <div
+                class="modern-product-status"
+                id="modernProductStatus"
+            ></div>
+
+            <div class="modern-image-shadow"></div>
+
         </div>
+
     </div>
+
+    <!-- CONTENT -->
+
+    <div class="modern-product-content">
+
+        <!-- HEADER -->
+
+        <div class="modern-product-header">
+
+            <div>
+
+                <span class="modern-product-category">
+                    КАТЕГОРИЯ
+                </span>
+
+                <h2
+                    id="modernProductTitle"
+                    class="modern-product-title"
+                ></h2>
+
+            </div>
+
+        </div>
+
+        <!-- DESCRIPTION -->
+
+        <div class="modern-description-block">
+
+            <div class="modern-section-title">
+                Описание
+            </div>
+
+            <div
+                class="modern-product-description collapsed"
+                id="modernProductDescription"
+            ></div>
+
+            <button
+                class="modern-read-more"
+                id="modernReadMoreBtn"
+            >
+                Читать далее...
+            </button>
+
+        </div>
+
+        <!-- GRID -->
+
+        <div
+            class="modern-product-grid"
+            id="modernProductGrid"
+        ></div>
+
+    </div>
+
+</div>
 
     <!-- ACTION MODAL -->
     <div class="action-modal-overlay" id="actionModalOverlay">
