@@ -1,0 +1,38 @@
+body.light-theme .vip-tooltip {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.96),
+            rgba(255,248,220,.96)
+        );
+
+    border:
+        1px solid rgba(255,215,0,.18);
+
+    box-shadow:
+        0 20px 40px rgba(255,215,0,.12);
+}
+
+body.light-theme .vip-tooltip-title,
+body.light-theme .vip-percent,
+body.light-theme .vip-info {
+
+    color: #111827;
+}
+
+body.light-theme .vip-bar {
+
+    background:
+        rgba(15,23,42,.08);
+}
+
+body.light-theme .vip-bar-fill {
+
+    background:
+        linear-gradient(
+            90deg,
+            #facc15,
+            #fde047
+        );
+}

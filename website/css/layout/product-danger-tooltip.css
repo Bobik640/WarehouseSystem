@@ -1,0 +1,337 @@
+.product-danger-wrapper {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+}
+
+/* BADGE */
+
+.product-danger-badge {
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ff4d4d,
+            #dc2626
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 18px rgba(239,68,68,.55),
+        0 0 40px rgba(239,68,68,.25);
+
+    animation:
+        dangerBadgePulse 2.2s ease-in-out infinite;
+}
+
+/* SKULL */
+
+.product-danger-badge i {
+
+    position: relative;
+
+    z-index: 2;
+
+    animation:
+        skullGlitch 1.8s infinite;
+}
+
+/* TOOLTIP */
+
+.danger-tooltip {
+
+    width: 240px;
+
+    position: absolute;
+
+    right: 0;
+    bottom: 62px;
+
+    padding: 18px;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    z-index: 500;
+
+    backdrop-filter:
+        blur(18px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translateY(10px)
+        scale(.96);
+
+    transition:
+        .22s ease;
+}
+
+/* SHOW */
+
+.product-danger-wrapper:hover
+.danger-tooltip {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+/* BG */
+
+.danger-tooltip-bg {
+
+    position: absolute;
+
+    top: -20px;
+    right: -10px;
+
+    font-size: 120px;
+
+    opacity: .06;
+
+    animation:
+        dangerPulse 2s ease-in-out infinite;
+}
+
+/* TITLE */
+
+.danger-tooltip-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    margin-bottom: 16px;
+}
+
+/* BAR */
+
+.danger-bar {
+
+    height: 18px;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.danger-bar-fill {
+
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+}
+
+/* PARTICLES */
+
+.danger-particles {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        10px 10px;
+
+    animation:
+        dangerParticles 1.6s linear infinite;
+}
+
+/* PERCENT */
+
+.danger-percent {
+
+    margin-top: 16px;
+
+    font-size: 30px;
+
+    font-weight: 900;
+}
+
+/* INFO */
+
+.danger-info {
+
+    margin-top: 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+}
+
+/* ANIMATIONS */
+
+@keyframes dangerParticles {
+
+    from {
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+
+        transform:
+            translateX(-40px);
+    }
+}
+
+@keyframes dangerPulse {
+
+    0% {
+
+        opacity: .04;
+    }
+
+    50% {
+
+        opacity: .1;
+    }
+
+    100% {
+
+        opacity: .04;
+    }
+}
+
+@keyframes dangerBadgePulse {
+
+    0% {
+
+        transform: scale(1);
+
+        box-shadow:
+            0 0 18px rgba(239,68,68,.55),
+            0 0 40px rgba(239,68,68,.25);
+    }
+
+    50% {
+
+        transform: scale(1.05);
+
+        box-shadow:
+            0 0 24px rgba(239,68,68,.75),
+            0 0 55px rgba(239,68,68,.35);
+    }
+
+    100% {
+
+        transform: scale(1);
+
+        box-shadow:
+            0 0 18px rgba(239,68,68,.55),
+            0 0 40px rgba(239,68,68,.25);
+    }
+}
+
+@keyframes skullGlitch {
+
+    0% {
+
+        transform:
+            translate(0);
+    }
+
+    8% {
+
+        transform:
+            translate(-1px, 1px);
+    }
+
+    10% {
+
+        transform:
+            translate(1px, -1px);
+    }
+
+    12% {
+
+        transform:
+            translate(0);
+    }
+
+    60% {
+
+        transform:
+            translate(0);
+    }
+
+    62% {
+
+        transform:
+            translate(1px, 0);
+    }
+
+    64% {
+
+        transform:
+            translate(-1px, 0);
+    }
+
+    66% {
+
+        transform:
+            translate(0);
+    }
+
+    100% {
+
+        transform:
+            translate(0);
+    }
+}

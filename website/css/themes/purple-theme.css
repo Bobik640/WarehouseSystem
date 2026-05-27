@@ -542,3 +542,13 @@ body.purple-theme .edit-upload-zone.dragover{
     transform:
         scale(1.02);
 }
+
+/* ======================================== */
+/* PURPLE THEME */
+/* ======================================== */
+
+body.purple-theme .expiry-progress-ascii,
+body.purple-theme .expiry-progress-text {
+
+    color: white;
+}

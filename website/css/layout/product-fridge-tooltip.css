@@ -1,0 +1,183 @@
+.fridge-tooltip {
+
+    width: 240px;
+
+    position: absolute;
+
+    right: 0;
+    bottom: 52px;
+
+    padding: 18px;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    z-index: 400;
+
+    backdrop-filter:
+        blur(18px);
+
+    transition: .25s ease;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        translateY(10px)
+        scale(.96);
+}
+
+/* SHOW */
+
+.product-fridge-wrapper:hover
+.fridge-tooltip {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+/* BG SNOWFLAKE */
+
+.fridge-tooltip-bg {
+
+    position: absolute;
+
+    top: -20px;
+    right: -10px;
+
+    font-size: 120px;
+
+    opacity: .08;
+
+    pointer-events: none;
+
+    animation:
+        snowRotate 12s linear infinite;
+}
+
+/* TITLE */
+
+.fridge-tooltip-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    margin-bottom: 16px;
+}
+
+/* BAR */
+
+.fridge-bar {
+
+    height: 18px;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.fridge-bar-fill {
+
+    height: 100%;
+
+    border-radius: 999px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+/* PARTICLES */
+
+.fridge-particles {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        10px 10px;
+
+    animation:
+        fridgeParticles 2s linear infinite;
+}
+
+/* PERCENT */
+
+.fridge-percent {
+
+    margin-top: 14px;
+
+    font-family: monospace;
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+/* STATUS */
+
+.fridge-status {
+
+    margin-top: 14px;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    font-weight: 700;
+}
+
+/* ANIMATIONS */
+
+@keyframes fridgeParticles {
+
+    from {
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+
+        transform:
+            translateX(-40px);
+    }
+}
+
+@keyframes snowRotate {
+
+    from {
+
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+    }
+}

@@ -1,0 +1,38 @@
+body.purple-theme .danger-tooltip {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(50,0,20,.96),
+            rgba(88,28,135,.96)
+        );
+
+    border:
+        1px solid rgba(239,68,68,.18);
+
+    box-shadow:
+        0 25px 60px rgba(239,68,68,.22);
+}
+
+body.purple-theme .danger-tooltip-title,
+body.purple-theme .danger-percent,
+body.purple-theme .danger-info {
+
+    color: white;
+}
+
+body.purple-theme .danger-bar {
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+body.purple-theme .danger-bar-fill {
+
+    background:
+        linear-gradient(
+            90deg,
+            #dc2626,
+            #ef4444
+        );
+}

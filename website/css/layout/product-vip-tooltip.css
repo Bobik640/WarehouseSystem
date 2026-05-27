@@ -1,0 +1,195 @@
+.product-vip-wrapper {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+}
+
+/* BADGE */
+
+.product-vip-badge {
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+/* TOOLTIP */
+
+.vip-tooltip {
+
+    width: 240px;
+
+    position: absolute;
+
+    right: 0;
+    bottom: 62px;
+
+    padding: 18px;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    z-index: 500;
+
+    backdrop-filter:
+        blur(18px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translateY(10px)
+        scale(.96);
+
+    transition:
+        .22s ease;
+}
+
+/* SHOW */
+
+.product-vip-wrapper:hover
+.vip-tooltip {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+/* BG */
+
+.vip-tooltip-bg {
+
+    position: absolute;
+
+    top: -20px;
+    right: -10px;
+
+    font-size: 120px;
+
+    opacity: .08;
+
+    pointer-events: none;
+}
+
+/* TITLE */
+
+.vip-tooltip-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    margin-bottom: 16px;
+}
+
+/* BAR */
+
+.vip-bar {
+
+    height: 18px;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.vip-bar-fill {
+
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+}
+
+/* SHINE */
+
+.vip-shine {
+
+    position: absolute;
+
+    top: 0;
+    left: -40%;
+
+    width: 40%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.8),
+            transparent
+        );
+
+    filter:
+        blur(4px);
+
+    animation:
+        vipShine 2s linear infinite;
+}
+
+/* PERCENT */
+
+.vip-percent {
+
+    margin-top: 16px;
+
+    font-size: 30px;
+
+    font-weight: 900;
+}
+
+/* INFO */
+
+.vip-info {
+
+    margin-top: 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+}
+
+/* ANIMATION */
+
+@keyframes vipShine {
+
+    from {
+
+        left: -40%;
+    }
+
+    to {
+
+        left: 140%;
+    }
+}

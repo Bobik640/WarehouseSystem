@@ -901,3 +901,13 @@ body.dark-theme .edit-save-btn:hover{
     box-shadow:
         0 18px 42px rgba(37,99,235,.45);
 }
+
+/* ======================================== */
+/* DARK THEME */
+/* ======================================== */
+
+body.dark-theme .expiry-progress-ascii,
+body.dark-theme .expiry-progress-text {
+
+    color: white;
+}

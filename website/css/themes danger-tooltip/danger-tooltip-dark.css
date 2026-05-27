@@ -1,0 +1,38 @@
+body.dark-theme .danger-tooltip {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(60,0,0,.96),
+            rgba(15,23,42,.96)
+        );
+
+    border:
+        1px solid rgba(239,68,68,.18);
+
+    box-shadow:
+        0 25px 60px rgba(239,68,68,.25);
+}
+
+body.dark-theme .danger-tooltip-title,
+body.dark-theme .danger-percent,
+body.dark-theme .danger-info {
+
+    color: white;
+}
+
+body.dark-theme .danger-bar {
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+body.dark-theme .danger-bar-fill {
+
+    background:
+        linear-gradient(
+            90deg,
+            #dc2626,
+            #ef4444
+        );
+}

@@ -745,3 +745,13 @@ body.light-theme .edit-upload-zone.dragover{
     transform:
         scale(1.02);
 }
+
+/* ======================================== */
+/* LIGHT THEME */
+/* ======================================== */
+
+body.light-theme .expiry-progress-ascii,
+body.light-theme .expiry-progress-text {
+
+    color: #111827;
+}

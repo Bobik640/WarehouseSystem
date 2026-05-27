@@ -409,3 +409,123 @@
         width: 0;
     }
 }
+
+/* ===================================================== */
+/* ================= COMMON ============================= */
+/* ===================================================== */
+
+.expiry-progress-wrapper {
+
+    margin-top: 14px;
+}
+
+/* ASCII BAR */
+
+.expiry-progress-ascii {
+
+    position: relative;
+
+    display: inline-block;
+
+    overflow: hidden;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    font-family: monospace;
+
+    margin-bottom: 10px;
+
+    animation:
+        pulseGlow 2s ease-in-out infinite;
+}
+
+/* MOVING PARTICLES */
+
+.expiry-progress-ascii::after {
+
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+    left: -40%;
+
+    width: 40%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.9),
+            transparent
+        );
+
+    filter:
+        blur(4px);
+
+    animation:
+        timeFlow 2.4s linear infinite;
+}
+
+/* TEXT */
+
+.expiry-progress-text {
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+
+    opacity: .95;
+}
+
+/* ======================================== */
+/* ANIMATIONS */
+/* ======================================== */
+
+@keyframes timeFlow {
+
+    0% {
+
+        left: -40%;
+        opacity: 0;
+    }
+
+    20% {
+
+        opacity: 1;
+    }
+
+    100% {
+
+        left: 140%;
+        opacity: 0;
+    }
+}
+
+@keyframes pulseGlow {
+
+    0% {
+
+        transform: scale(1);
+        filter: brightness(1);
+    }
+
+    50% {
+
+        transform: scale(1.03);
+        filter: brightness(1.2);
+    }
+
+    100% {
+
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}

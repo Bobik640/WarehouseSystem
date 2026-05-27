@@ -1,0 +1,38 @@
+body.light-theme .fridge-tooltip {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(240,249,255,.96),
+            rgba(255,255,255,.96)
+        );
+
+    border:
+        1px solid rgba(14,165,233,.12);
+
+    box-shadow:
+        0 20px 40px rgba(14,165,233,.12);
+}
+
+body.light-theme .fridge-tooltip-title,
+body.light-theme .fridge-percent,
+body.light-theme .fridge-status {
+
+    color: #0f172a;
+}
+
+body.light-theme .fridge-bar {
+
+    background:
+        rgba(15,23,42,.08);
+}
+
+body.light-theme .fridge-bar-fill {
+
+    background:
+        linear-gradient(
+            90deg,
+            #0ea5e9,
+            #38bdf8
+        );
+}

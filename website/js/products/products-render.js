@@ -71,40 +71,27 @@ function displayProducts(products) {
                             < new Date()
                             ?
                             `
+                                <div class="product-danger-wrapper">
+
                                 <div class="product-danger-badge">
                                     <i class="fas fa-skull"></i>
                                 </div>
+
+                                ${createDangerTooltip(product)}
+
+                            </div>
                             `
                             :
                             `
                                 <div class="product-tooltip-wrapper">
-                                    <div class="product-expiry-badge">
-                                        <i class="fas fa-clock"></i>
-                                    </div>
-                                    <div class="product-tooltip">
-                                        <div class="product-tooltip-title">
-                                            Добавлен
-                                        </div>
-                                        <div class="product-tooltip-date">
-                                            ${
-                                                new Date(
-                                                    product.createdAt ||
-                                                    Date.now()
-                                                ).toLocaleDateString()
-                                            }
-                                        </div>
-                                        <div class="product-tooltip-title">
-                                            Годен до
-                                        </div>
-                                        <div class="product-tooltip-date">
-                                            ${
-                                                new Date(
-                                                    product.expiryDate
-                                                ).toLocaleDateString()
-                                            }
-                                        </div>
-                                    </div>
+
+                                <div class="product-expiry-badge">
+                                    <i class="fas fa-clock"></i>
                                 </div>
+
+                                ${createExpiryTooltip(product)}
+
+                            </div>
                             `
                         )
                         : ''
@@ -113,9 +100,15 @@ function displayProducts(products) {
                         product.refrigerationRequired
                         ?
                         `
+                            <div class="product-fridge-wrapper">
+
                             <div class="product-fridge-badge">
                                 <i class="fas fa-snowflake"></i>
                             </div>
+
+                            ${createFridgeTooltip()}
+
+                        </div>
                         `
                         : ''
                     }
@@ -124,10 +117,16 @@ function displayProducts(products) {
                         'Премиум товары'
                         ?
                         `
+                            <div class="product-vip-wrapper">
+
                             <div class="product-vip-badge">
                                 <i class="fas fa-gem"></i>
                                 VIP
                             </div>
+
+                            ${createVipTooltip()}
+
+                        </div>
                         `
                         : ''
                     }

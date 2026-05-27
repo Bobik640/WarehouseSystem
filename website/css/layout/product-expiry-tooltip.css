@@ -1,0 +1,220 @@
+.expiry-tooltip {
+
+    width: 240px;
+
+    padding: 16px;
+
+    border-radius: 24px;
+
+    backdrop-filter: blur(18px);
+
+    position: absolute;
+
+    bottom: 52px;
+    right: 0;
+
+    z-index: 300;
+
+    overflow: hidden;
+
+    animation:
+        expiryAppear .25s ease;
+}
+
+/* TOP */
+
+.expiry-tooltip-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 14px;
+}
+
+.expiry-days {
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+.expiry-percent {
+
+    font-size: 32px;
+
+    font-weight: 900;
+}
+
+/* BAR */
+
+.expiry-bar {
+
+    width: 100%;
+
+    height: 18px;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.expiry-bar-fill {
+
+    height: 100%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+}
+
+/* PARTICLES */
+
+.expiry-particles {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        10px 10px;
+
+    animation:
+        expiryParticles 2s linear infinite;
+}
+
+/* STATUS */
+
+.expiry-bar-fill.success {
+
+    background:
+        linear-gradient(
+            90deg,
+            #22c55e,
+            #4ade80
+        );
+}
+
+.expiry-bar-fill.warning {
+
+    background:
+        linear-gradient(
+            90deg,
+            #f59e0b,
+            #fbbf24
+        );
+}
+
+.expiry-bar-fill.danger {
+
+    background:
+        linear-gradient(
+            90deg,
+            #ef4444,
+            #f87171
+        );
+}
+
+/* BOTTOM */
+
+.expiry-tooltip-bottom {
+
+    margin-top: 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+/* ANIMATION */
+
+@keyframes expiryParticles {
+
+    from {
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+
+        transform:
+            translateX(-40px);
+    }
+}
+
+@keyframes expiryAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(8px)
+            scale(.96);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.product-tooltip-wrapper {
+
+    position: relative;
+}
+
+/* ПО УМОЛЧАНИЮ СКРЫТ */
+
+.expiry-tooltip {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        .22s ease;
+
+    transform:
+        translateY(10px)
+        scale(.96);
+}
+
+/* ПОЯВЛЕНИЕ ПРИ HOVER */
+
+.product-tooltip-wrapper:hover
+.expiry-tooltip {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
