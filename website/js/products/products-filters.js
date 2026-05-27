@@ -28,12 +28,21 @@ function setupCategoryListener() {
             if (expiryGroup) expiryGroup.style.display = 'block';
         } else {
             if (expiryGroup) expiryGroup.style.display = 'none';
+            // Дополнительно: сбрасываем дату срока годности, если скрыли её
+            const expiryDateInput = document.getElementById('productExpiryDate');
+            if (expiryDateInput) expiryDateInput.value = '';
         }
         
         if (this.value === 'Медикаменты') {
             if (medicineFields) medicineFields.style.display = 'block';
         } else {
             if (medicineFields) medicineFields.style.display = 'none';
+            
+            // ЧИТОК: Находим чекбокс холодильника внутри скрываемого блока и выключаем его
+            const coldCheckbox = document.getElementById('refrigerationRequired');
+            if (coldCheckbox) {
+                coldCheckbox.checked = false;
+            }
         }
     });
 }
