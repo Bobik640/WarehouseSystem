@@ -20,7 +20,7 @@ function setupCategoryListener() {
     const categorySelect = document.getElementById('productCategory');
     const expiryGroup = document.getElementById('expiryDateGroup');
     const medicineFields = document.getElementById('medicineFields');
-    const coldGroup = document.getElementById('coldGroup'); // Наш новый контейнер из HTML
+    const coldGroup = document.getElementById('coldGroup'); // Наш отдельный контейнер для холодильника
     const coldCheckbox = document.getElementById('refrigerationRequired');
     
     if (!categorySelect) return;
@@ -41,20 +41,19 @@ function setupCategoryListener() {
             if (expiryDateInput) expiryDateInput.value = '';
         }
         
-        // 2. Управление медицинскими полями (СТРОГО ДЛЯ МЕДИКАМЕНТОВ)
-        if (this.value === 'Медикаменты' || this.value === 'Замороженные продукты') {
-            if (coldGroup) coldGroup.style.display = 'block';
+        // 2. Управление медицинскими полями (ПОКАЗЫВАЕМ ТОЛЬКО ДЛЯ МЕДИКАМЕНТОВ)
+        if (this.value === 'Медикаменты') {
+            if (medicineFields) medicineFields.style.display = 'block';
         } else {
-            if (coldGroup) coldGroup.style.display = 'none';
-            if (coldCheckbox) coldCheckbox.checked = false;
+            if (medicineFields) medicineFields.style.display = 'none';
         }
 
-        // 3. Управление видимостью контейнера Холодильника
+        // 3. Управление видимостью кнопки Холодильника (Для Медикаментов и Заморозки)
         if (this.value === 'Медикаменты' || this.value === 'Замороженные продукты') {
             if (coldGroup) coldGroup.style.display = 'block';
         } else {
             if (coldGroup) coldGroup.style.display = 'none';
-            if (coldCheckbox) coldCheckbox.checked = false; // сбрасываем, если выбрали другую категорию
+            if (coldCheckbox) coldCheckbox.checked = false; // Сбрасываем галочку, если выбрали другую категорию
         }
     });
 }
