@@ -19,30 +19,35 @@ function applyFilters() {
 function setupCategoryListener() {
     const categorySelect = document.getElementById('productCategory');
     const expiryGroup = document.getElementById('expiryDateGroup');
+    const expiryDateInput = document.getElementById('productExpiryDate');
     const medicineFields = document.getElementById('medicineFields');
     
     if (!categorySelect) return;
     
+    // Разрешенные категории для срока годности (Белый список)
+    const allowedExpiryCategories = ['Продукты', 'Медикаменты', 'Спорт'];
+    
     categorySelect.addEventListener('change', function() {
-        if (this.value === 'Продукты' || this.value === 'Медикаменты') {
+        const currentCategory = this.value;
+
+        // Блокировка и отображение поля срока годности
+        if (allowedExpiryCategories.includes(currentCategory)) {
             if (expiryGroup) expiryGroup.style.display = 'block';
+            if (expiryDateInput) expiryDateInput.disabled = false;
         } else {
             if (expiryGroup) expiryGroup.style.display = 'none';
-            // Дополнительно: сбрасываем дату срока годности, если скрыли её
-            const expiryDateInput = document.getElementById('productExpiryDate');
-            if (expiryDateInput) expiryDateInput.value = '';
+            // Принудительно очищаем и блокируем поле, чтобы дата не отправилась скрытно
+            if (expiryDateInput) {
+                expiryDateInput.value = '';
+                expiryDateInput.disabled = true;
+            }
         }
         
-        if (this.value === 'Медикаменты') {
+        // Отображение дополнительных полей для Медикаментов
+        if (currentCategory === 'Медикаменты') {
             if (medicineFields) medicineFields.style.display = 'block';
         } else {
             if (medicineFields) medicineFields.style.display = 'none';
-            
-            // ЧИТОК: Находим чекбокс холодильника внутри скрываемого блока и выключаем его
-            const coldCheckbox = document.getElementById('refrigerationRequired');
-            if (coldCheckbox) {
-                coldCheckbox.checked = false;
-            }
         }
     });
 }
