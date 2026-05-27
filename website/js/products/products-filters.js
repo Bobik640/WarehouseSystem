@@ -49,7 +49,7 @@ function setupCategoryListener() {
         }
 
         // 3. Управление видимостью кнопки Холодильника (Для Медикаментов и Заморозки)
-        if (this.value === 'Медикаменты' || this.value === 'Замороженные продукты') {
+        if (this.value === 'Медикаменты' || this.value === 'Замороженные продукты' || this.value === 'Продукты' || this.value === 'Напитки') {
             if (coldGroup) coldGroup.style.display = 'block';
         } else {
             if (coldGroup) coldGroup.style.display = 'none';
