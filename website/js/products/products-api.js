@@ -53,9 +53,13 @@ async function addNewProduct() {
     const category = categorySelect.value;
     const price = parseFloat(priceInput.value);
     
+    // Обработка изображения (если есть)
     let image = '';
-    if (imageInput && imageInput.files[0]) {
+    if (imageInput && imageInput.files && imageInput.files[0]) {
         image = await convertImageToBase64(imageInput.files[0]);
+    }
+    if (!image && window.uploadedImageUrl) {
+        image = window.uploadedImageUrl;
     }
     
     const description = descriptionInput ? descriptionInput.value.trim() : '';
@@ -65,6 +69,7 @@ async function addNewProduct() {
     const expiryDateInput = document.getElementById('productExpiryDate');
     const expiryDate = expiryDateInput ? expiryDateInput.value || null : null;
     
+    // Валидация
     if (!name) {
         showStatus('Введите название', 'error');
         return;
@@ -81,32 +86,42 @@ async function addNewProduct() {
     }
     
     try {
-
-        const coldCheckbox =
-    document.getElementById(
-        'refrigerationRequired'
-    );
-
-const refrigerationRequired =
-    coldCheckbox
-    ? coldCheckbox.checked
-    : false;
-
-const requestBody = {
-    name,
-    quantity,
-    category,
-    price,
-    expiryDate,
-    refrigerationRequired,
-    description,
-    supplier,
-    location
-};
-
-if (image) {
-    requestBody.image = image;
-}
+        // Сбор медицинских полей
+        const medicineSeries = document.getElementById('medicineSeries')?.value || '';
+        const medicineManufacturer = document.getElementById('medicineManufacturer')?.value || '';
+        const medicineDosage = document.getElementById('medicineDosage')?.value || '';
+        const medicineType = document.getElementById('medicineType')?.value || '';
+        const prescriptionRequired = document.getElementById('medicineRecipe')?.value === 'По рецепту';
+        
+        // [ИСПРАВЛЕНО]: Переводим в нижний регистр и убираем пробелы, чтобы проверка всегда срабатывала корректно
+        const currentCategoryClean = category.trim().toLowerCase();
+        let refrigerationRequired = false;
+        
+        if (currentCategoryClean === 'медикаменты') {
+            const needsColdCheck = document.getElementById('needsCold');
+            refrigerationRequired = needsColdCheck ? needsColdCheck.checked === true : false;
+        }
+        
+        const requestBody = {
+            name,
+            quantity,
+            category,
+            price,
+            expiryDate,
+            refrigerationRequired,
+            description,
+            supplier,
+            location,
+            medicineSeries,
+            medicineManufacturer,
+            medicineDosage,
+            medicineType,
+            prescriptionRequired
+        };
+        
+        if (image) {
+            requestBody.image = image;
+        }
         
         const response = await fetch(APP_CONFIG.API_URL, {
             method: 'POST',
@@ -120,6 +135,7 @@ if (image) {
             saveHistory('Добавление товара', `Товар: ${name}\nКоличество: ${quantity}\nКатегория: ${category}\nЦена: ${price} сом`);
             showStatus('Товар добавлен', 'success');
             
+            // Очистка формы
             nameInput.value = '';
             quantityInput.value = '1';
             priceInput.value = '0';
@@ -128,6 +144,25 @@ if (image) {
             if (descriptionInput) descriptionInput.value = '';
             if (supplierInput) supplierInput.value = '';
             if (locationInput) locationInput.value = '';
+            
+            // Очистка медицинских полей
+            const medicineSeriesInput = document.getElementById('medicineSeries');
+            const medicineManufacturerInput = document.getElementById('medicineManufacturer');
+            const medicineDosageInput = document.getElementById('medicineDosage');
+            const medicineTypeSelect = document.getElementById('medicineType');
+            const medicineRecipeSelect = document.getElementById('medicineRecipe');
+            const needsColdCheck = document.getElementById('needsCold');
+            
+            if (medicineSeriesInput) medicineSeriesInput.value = '';
+            if (medicineManufacturerInput) medicineManufacturerInput.value = '';
+            if (medicineDosageInput) medicineDosageInput.value = '';
+            if (medicineTypeSelect) medicineTypeSelect.value = '';
+            if (medicineRecipeSelect) medicineRecipeSelect.value = 'Без рецепта';
+            if (needsColdCheck) needsColdCheck.checked = false;
+            
+            if (window.uploadedImageUrl) {
+                window.uploadedImageUrl = '';
+            }
             
             const previewWrapper = document.getElementById('imagePreviewWrapper');
             if (previewWrapper) previewWrapper.style.display = 'none';

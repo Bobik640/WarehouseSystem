@@ -5,7 +5,9 @@ const Product = require('../models/Product');
 // 📦 ПОЛУЧИТЬ ВСЕ ТОВАРЫ
 router.get('/', async (req, res) => {
     try {
-        const products = await Product.find().sort({ createdAt: -1 });
+        const products = await Product.find()
+        .sort({ _id: -1 })
+        .lean();
         console.log(`📦 Загружено товаров из MongoDB: ${products.length}`);
         
         res.json({
