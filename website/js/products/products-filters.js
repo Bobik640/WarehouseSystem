@@ -24,7 +24,7 @@ function setupCategoryListener() {
     if (!categorySelect) return;
     
     categorySelect.addEventListener('change', function() {
-        if (this.value === 'Продукты' || this.value === 'Медикаменты' || this.value === 'Спорт' || this.value === 'Сад и огород' || this.value === 'Косметика' || this.value === 'Бытовая химия' || this.value === 'Замороженные продукты' || this.value === 'Комплектующие ПК' || this.value === 'Строительные материалы') {
+        if (this.value === 'Продукты' || this.value === 'Медикаменты' || this.value === 'Спорт' || this.value === 'Сад и огород' || this.value === 'Косметика' || this.value === 'Бытовая химия' || this.value === 'Замороженные продукты' || this.value === 'Комплектующие ПК' || this.value === 'Строительные материалы' || this.value === 'Напитки' || this.value === 'Зоотовары') {
             if (expiryGroup) expiryGroup.style.display = 'block';
         } else {
             if (expiryGroup) expiryGroup.style.display = 'none';
@@ -33,7 +33,7 @@ function setupCategoryListener() {
             if (expiryDateInput) expiryDateInput.value = '';
         }
         
-        if (this.value === 'Медикаменты') {
+        if (this.value === 'Медикаменты' || this.value === 'Замороженные продукты') {
             if (medicineFields) medicineFields.style.display = 'block';
         } else {
             if (medicineFields) medicineFields.style.display = 'none';
