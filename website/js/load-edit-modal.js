@@ -52,27 +52,50 @@ function initMedicineFields() {
     if (!categorySelect) return;
 
     categorySelect.addEventListener('change', function() {
-        if (this.value === 'Медикаменты' || this.value === 'Продукты') {
-            if (expiryGroup) expiryGroup.style.display = 'block';
-        } else {
-            if (expiryGroup) expiryGroup.style.display = 'none';
-            const expiryInput = document.getElementById('editExpiryDate');
-            if (expiryInput) expiryInput.value = '';
+
+    const category =
+        this.value.trim().toLowerCase();
+
+    // ===== СРОК ГОДНОСТИ =====
+
+    if (
+        category === 'продукты' ||
+        category === 'медикаменты'
+    ) {
+
+        if (expiryGroup) {
+            expiryGroup.style.display = 'block';
         }
 
-        if (this.value === 'Медикаменты') {
-            if (medicineFields) medicineFields.style.display = 'block';
-        } else {
-            if (medicineFields) medicineFields.style.display = 'none';
-            
-            // ЧИТОК: Если переключились с Медикаментов на другую категорию, 
-            // принудительно выключаем тумблер холодильника!
-            const coldCheckbox = document.getElementById('editRefrigerationRequired');
-            if (coldCheckbox) {
-                coldCheckbox.checked = false;
-            }
+    } else {
+
+        if (expiryGroup) {
+            expiryGroup.style.display = 'none';
         }
-    });
+
+        const expiryInput =
+            document.getElementById('editExpiryDate');
+
+        if (expiryInput) {
+            expiryInput.value = '';
+        }
+    }
+
+    // ===== МЕДИКАМЕНТЫ =====
+
+    if (category === 'медикаменты') {
+
+        if (medicineFields) {
+            medicineFields.style.display = 'flex';
+        }
+
+    } else {
+
+        if (medicineFields) {
+            medicineFields.style.display = 'none';
+        }
+    }
+});
 }
 
 function openEditModal(productId) {
@@ -300,56 +323,61 @@ function closeEditModal() {
 }
 
 async function saveEditedProduct() {
+
     if (!AppState.editingProductId) return;
 
-    // Ищем старый товар в состоянии
     const oldProduct = AppState.products.find(
         p => p._id === AppState.editingProductId
     );
+
     if (!oldProduct) return;
 
-    // Сборка изображения
     let image = oldProduct.image || '';
+
     const imageInput = document.getElementById('editImage');
+
     if (imageInput && imageInput.files && imageInput.files[0]) {
         image = await convertImageToBase64(imageInput.files[0]);
-    } else if (AppState.editImageBase64) {
-        image = AppState.editImageBase64;
     }
 
-    // Получаем текущую категорию из селекта модалки
-    const categorySelect = document.getElementById('editCategory');
-    const currentCategory = categorySelect ? categorySelect.value : '';
-
-    // Ищем тумблер охлаждения по правильному ID (как в HTML)
-    const coldCheckbox = document.getElementById('editRefrigerationRequired');
+    // ИСПРАВЛЕНО: правильно получаем значение чекбокса холодильника
+    const needsColdCheck = document.getElementById('editNeedsCold');
     
-    // ЖЕСТКАЯ ПРОВЕРКА: Холодильник будет true ТОЛЬКО для категории "Медикаменты"
-    // Если выбрана другая категория, то даже если тумблер нажат, запишется false
-    const refrigerationRequired = (coldCheckbox && currentCategory === 'Медикаменты') 
-        ? coldCheckbox.checked 
-        : false;
+    // ИСПРАВЛЕНО: лог для отладки
+    console.log('CHECKBOX элемент:', needsColdCheck);
+    console.log('CHECKBOX значение (checked):', needsColdCheck ? needsColdCheck.checked : 'элемент не найден');
 
-    // Получаем поле даты
     const expiryDateInput = document.getElementById('editExpiryDate');
 
-    // Формируем чистый объект для отправки на сервер
+    // [ИСПРАВЛЕНО]: Позволяет сохранять статус холодильника для Продуктов и Медикаментов
+    const currentCategory = document.getElementById('editCategory')?.value?.toLowerCase()?.trim() || '';
+    const allowedCategories = ['медикаменты', 'продукты', 'замороженные продукты'];
+    
+    const refrigerationRequired = allowedCategories.includes(currentCategory)
+        ? document.getElementById('editNeedsCold')?.checked === true
+        : false;
+
+    console.log('Итоговое refrigerationRequired:', refrigerationRequired);
+
     const updatedData = {
-        name: document.getElementById('editName')?.value?.trim() || '',
-        description: document.getElementById('editDescription')?.value?.trim() || '',
-        quantity: parseInt(document.getElementById('editQuantity')?.value || 0),
-        price: parseFloat(document.getElementById('editPrice')?.value || 0),
-        supplier: document.getElementById('editSupplier')?.value?.trim() || '',
-        location: document.getElementById('editLocation')?.value?.trim() || '',
-        category: currentCategory,
+        name: document.getElementById('editName')?.value || '',
+        description: document.getElementById('editDescription')?.value || '',
+        quantity: Number(document.getElementById('editQuantity')?.value || 0),
+        price: Number(document.getElementById('editPrice')?.value || 0),
+        supplier: document.getElementById('editSupplier')?.value || '',
+        location: document.getElementById('editLocation')?.value || '',
+        category: document.getElementById('editCategory')?.value || '',
         image: image,
-        refrigerationRequired: refrigerationRequired, // Наше безопасное значение
-        expiryDate: expiryDateInput && expiryDateInput.value ? expiryDateInput.value : null
+        refrigerationRequired: refrigerationRequired,
+        expiryDate:
+    expiryDateInput &&
+    expiryDateInput.value
+    ? expiryDateInput.value
+    : oldProduct.expiryDate || null
     };
 
     // ===== MEDICINE EXTRA DATA =====
-    // Специфичные поля добавляем в объект ТОЛЬКО если выбрана категория «Медикаменты»
-    if (currentCategory === 'Медикаменты') {
+    if (updatedData.category?.trim()?.toLowerCase() === 'медикаменты') {
         updatedData.medicineSeries = document.getElementById('editMedicineSeries')?.value || '';
         updatedData.medicineManufacturer = document.getElementById('editMedicineManufacturer')?.value || '';
         updatedData.medicineDosage = document.getElementById('editMedicineDosage')?.value || '';
@@ -359,10 +387,9 @@ async function saveEditedProduct() {
         updatedData.prescriptionRequired = recipeSelect?.value === 'По рецепту';
     }
 
-    // Логи для контроля в консоли разработчика
-    console.log('Отправляемые данные после редактирования:', updatedData);
-
     try {
+        console.log('Отправляемые данные:', updatedData);
+
         const response = await fetch(`${APP_CONFIG.API_URL}/${AppState.editingProductId}`, {
             method: 'PUT',
             headers: {
@@ -373,18 +400,18 @@ async function saveEditedProduct() {
 
         const data = await response.json();
         console.log('Ответ сервера:', data);
-        
+
         if (data.success) {
             closeEditModal();
-            loadProducts(); // Перезагружаем список, чтобы увидеть обновленные данные
+            loadProducts();
             showStatus('Товар обновлён', 'success');
         } else {
             showStatus(data.error || 'Ошибка обновления', 'error');
         }
 
     } catch (error) {
-        console.error('Ошибка при сохранении товара:', error);
-        showStatus('Ошибка сервера при сохранении', 'error');
+        console.error(error);
+        showStatus('Ошибка сервера', 'error');
     }
 }
 
