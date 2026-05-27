@@ -52,15 +52,15 @@ function initMedicineFields() {
 
     if (!categorySelect) return;
 
-    // Безопасный список категорий, у которых ДОЛЖЕН быть срок годности
+    // Список категорий, у которых должен быть календарь
     const allowedExpiryCategories = ['Медикаменты', 'Продукты', 'Спорт'];
 
-    // 1. ПРОВЕРКА ПРИ ОТКРЫТИИ МОДАЛКИ (чтобы сразу правильно скрыть/показать)
+    // 1. ПРОВЕРКА ПРИ ОТКРЫТИИ МОДАЛКИ
     if (allowedExpiryCategories.includes(categorySelect.value)) {
         if (expiryGroup) expiryGroup.style.display = 'block';
     } else {
         if (expiryGroup) expiryGroup.style.display = 'none';
-        if (expiryInput) expiryInput.value = ''; // Сразу стираем, если категория "левая"
+        if (expiryInput) expiryInput.value = ''; 
     }
 
     if (categorySelect.value === 'Медикаменты') {
@@ -69,56 +69,128 @@ function initMedicineFields() {
         if (medicineFields) medicineFields.style.display = 'none';
     }
 
-    // 2. ОТСЛЕЖИВАНИЕ ИЗМЕНЕНИЯ КАТЕГОРИИ (КЛИКИ ПОЛЬЗОВАТЕЛЯ)
+    // 2. ОТСЛЕЖИВАНИЕ ИЗМЕНЕНИЯ КАТЕГОРИИ ПОЛЬЗОВАТЕЛЕМ
     categorySelect.addEventListener('change', function() {
         const currentCategory = this.value;
 
-        // Управление сроком годности (Календарь)
         if (allowedExpiryCategories.includes(currentCategory)) {
-            if (expiryGroup) {
-                expiryGroup.style.display = 'block';
-                expiryGroup.style.opacity = '1';
-                expiryGroup.style.pointerEvents = 'auto';
-            }
+            if (expiryGroup) expiryGroup.style.display = 'block';
             if (expiryInput) expiryInput.disabled = false;
         } else {
-            // ЖЕСТКИЙ СБРОС: если категория не Продукты/Медикаменты/Спорт
+            // Если категория "левая" — ПРИНУДИТЕЛЬНО СТИРАЕМ дату на экране и скрываем блок
             if (expiryInput) {
-                expiryInput.value = '';       // ОЧИЩАЕМ ТЕКСТ ДАТЫ (чтобы не отправился на сервер)
-                expiryInput.disabled = true;   // Выключаем инпут
+                expiryInput.value = ''; 
+                expiryInput.disabled = true;
             }
-            if (expiryGroup) {
-                expiryGroup.style.display = 'none'; // Полностью скрываем блок с экрана
-            }
+            if (expiryGroup) expiryGroup.style.display = 'none';
         }
 
-        // Управление специфичными полями медикаментов (Серия, производитель и т.д.)
+        // Управление медицинскими полями
         if (currentCategory === 'Медикаменты') {
             if (medicineFields) medicineFields.style.display = 'block';
         } else {
             if (medicineFields) medicineFields.style.display = 'none';
         }
 
-        // Блокировка и сброс холодильника (Только для Медикаментов)
+        // Управление холодильником
         const coldCheckbox = document.getElementById('editRefrigerationRequired') || document.getElementById('editNeedsCold');
         if (coldCheckbox) {
-            const coldWrapper = coldCheckbox.closest('.medicine-toggle-wrapper');
             if (currentCategory === 'Медикаменты') {
                 coldCheckbox.disabled = false;
-                if (coldWrapper) {
-                    coldWrapper.style.opacity = '1';
-                    coldWrapper.style.pointerEvents = 'auto';
-                }
             } else {
-                coldCheckbox.checked = false; // Сбрасываем тумблер в false
+                coldCheckbox.checked = false;
                 coldCheckbox.disabled = true;
-                if (coldWrapper) {
-                    coldWrapper.style.opacity = '0.5';
-                    coldWrapper.style.pointerEvents = 'none';
-                }
             }
         }
     });
+}
+
+async function saveEditedProduct() {
+    if (!AppState.editingProductId) return;
+
+    const oldProduct = AppState.products.find(
+        p => p._id === AppState.editingProductId
+    );
+    if (!oldProduct) return;
+
+    // Сборка изображения
+    let image = oldProduct.image || '';
+    const imageInput = document.getElementById('editImage');
+    if (imageInput && imageInput.files && imageInput.files[0]) {
+        image = await convertImageToBase64(imageInput.files[0]);
+    } else if (AppState.editImageBase64) {
+        image = AppState.editImageBase64;
+    }
+
+    const categorySelect = document.getElementById('editCategory');
+    const currentCategory = categorySelect ? categorySelect.value : '';
+
+    // Проверка холодильника
+    const coldCheckbox = document.getElementById('editRefrigerationRequired') || document.getElementById('editNeedsCold');
+    const refrigerationRequired = (coldCheckbox && currentCategory === 'Медикаменты') 
+        ? coldCheckbox.checked 
+        : false;
+
+    // ИСПРАВЛЕННЫЙ СБОР ДАТЫ:
+    // Если категория НЕ входит в разрешенные, или инпут очищен — отправляем строго null!
+    const allowedExpiryCategories = ['Медикаменты', 'Продукты', 'Спорт'];
+    const expiryInput = document.getElementById('editExpiryDate');
+    
+    let finalExpiryDate = null;
+    if (allowedExpiryCategories.includes(currentCategory) && expiryInput && expiryInput.value) {
+        finalExpiryDate = expiryInput.value;
+    }
+
+    const updatedData = {
+        name: document.getElementById('editName')?.value?.trim() || '',
+        description: document.getElementById('editDescription')?.value?.trim() || '',
+        quantity: parseInt(document.getElementById('editQuantity')?.value || 0),
+        price: parseFloat(document.getElementById('editPrice')?.value || 0),
+        supplier: document.getElementById('editSupplier')?.value?.trim() || '',
+        location: document.getElementById('editLocation')?.value?.trim() || '',
+        category: currentCategory,
+        image: image,
+        refrigerationRequired: refrigerationRequired,
+        expiryDate: finalExpiryDate // Теперь сюда уходит строго null, если дата стёрта!
+    };
+
+    // Дополнительные поля для медикаментов
+    if (currentCategory === 'Медикаменты') {
+        updatedData.medicineSeries = document.getElementById('editMedicineSeries')?.value || '';
+        updatedData.medicineManufacturer = document.getElementById('editMedicineManufacturer')?.value || '';
+        updatedData.medicineDosage = document.getElementById('editMedicineDosage')?.value || '';
+        updatedData.medicineType = document.getElementById('editMedicineType')?.value || '';
+
+        const recipeSelect = document.getElementById('editMedicineRecipe');
+        updatedData.prescriptionRequired = recipeSelect?.value === 'По рецепту';
+    }
+
+    console.log('Отправляемые данные после редактирования:', updatedData);
+
+    try {
+        const response = await fetch(`${APP_CONFIG.API_URL}/${AppState.editingProductId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedData)
+        });
+
+        const data = await response.json();
+        console.log('Ответ сервера:', data);
+
+        if (data.success) {
+            closeEditModal();
+            loadProducts(); // Перезагружаем список товаров на главной странице
+            showStatus('Товар обновлён', 'success');
+        } else {
+            showStatus(data.error || 'Ошибка обновления', 'error');
+        }
+
+    } catch (error) {
+        console.error('Ошибка при сохранении товара:', error);
+        showStatus('Ошибка сервера при сохранении', 'error');
+    }
 }
 
 function openEditModal(productId) {
