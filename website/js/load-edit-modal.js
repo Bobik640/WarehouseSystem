@@ -48,14 +48,19 @@ function initMedicineFields() {
     const categorySelect = document.getElementById('editCategory');
     const medicineFields = document.getElementById('editMedicineFields');
     const expiryGroup = document.getElementById('editExpiryDateGroup');
+    const expiryInput = document.getElementById('editExpiryDate');
 
     if (!categorySelect) return;
 
-    // Показываем или скрываем блок срока годности при открытии модалки
-    if (categorySelect.value === 'Продукты' || categorySelect.value === 'Медикаменты' || categorySelect.value === 'Спорт') {
+    // Безопасный список категорий, у которых ДОЛЖЕН быть срок годности
+    const allowedExpiryCategories = ['Медикаменты', 'Продукты', 'Спорт'];
+
+    // 1. ПРОВЕРКА ПРИ ОТКРЫТИИ МОДАЛКИ (чтобы сразу правильно скрыть/показать)
+    if (allowedExpiryCategories.includes(categorySelect.value)) {
         if (expiryGroup) expiryGroup.style.display = 'block';
     } else {
         if (expiryGroup) expiryGroup.style.display = 'none';
+        if (expiryInput) expiryInput.value = ''; // Сразу стираем, если категория "левая"
     }
 
     if (categorySelect.value === 'Медикаменты') {
@@ -64,49 +69,38 @@ function initMedicineFields() {
         if (medicineFields) medicineFields.style.display = 'none';
     }
 
-    // Слушатель изменения категории
+    // 2. ОТСЛЕЖИВАНИЕ ИЗМЕНЕНИЯ КАТЕГОРИИ (КЛИКИ ПОЛЬЗОВАТЕЛЯ)
     categorySelect.addEventListener('change', function() {
         const currentCategory = this.value;
 
-        // =================================================================
-        // 1. БЛОКИРОВКА И СБРОС СРОКА ГОДНОСТИ (ПРОДУКТЫ, МЕДИКАМЕНТЫ, СПОРТ)
-        // =================================================================
-        const allowedExpiryCategories = ['Медикаменты', 'Продукты', 'Спорт'];
-        const expiryInput = document.getElementById('editExpiryDate');
-
-        if (expiryGroup && expiryInput) {
-            if (allowedExpiryCategories.includes(currentCategory)) {
-                // Если категория разрешена — показываем блок и полностью разблокируем инпут
+        // Управление сроком годности (Календарь)
+        if (allowedExpiryCategories.includes(currentCategory)) {
+            if (expiryGroup) {
                 expiryGroup.style.display = 'block';
-                expiryInput.disabled = false;
                 expiryGroup.style.opacity = '1';
                 expiryGroup.style.pointerEvents = 'auto';
-            } else {
-                // Если любая другая категория — принудительно очищаем, блокируем инпут и делаем серым
-                expiryInput.value = ''; 
-                expiryInput.disabled = true;
-                expiryGroup.style.opacity = '0.5'; // Визуально блеклый элемент
-                expiryGroup.style.pointerEvents = 'none'; // Запрещаем клики
-                
-                // Если ты хочешь, чтобы блок полностью исчезал (как раньше), раскомментируй строку ниже:
-                // expiryGroup.style.display = 'none';
+            }
+            if (expiryInput) expiryInput.disabled = false;
+        } else {
+            // ЖЕСТКИЙ СБРОС: если категория не Продукты/Медикаменты/Спорт
+            if (expiryInput) {
+                expiryInput.value = '';       // ОЧИЩАЕМ ТЕКСТ ДАТЫ (чтобы не отправился на сервер)
+                expiryInput.disabled = true;   // Выключаем инпут
+            }
+            if (expiryGroup) {
+                expiryGroup.style.display = 'none'; // Полностью скрываем блок с экрана
             }
         }
 
-        // =================================================================
-        // 2. УПРАВЛЕНИЕ СПЕЦИФИЧНЫМИ ПОЛЯМИ МЕДИКАМЕНТОВ
-        // =================================================================
+        // Управление специфичными полями медикаментов (Серия, производитель и т.д.)
         if (currentCategory === 'Медикаменты') {
             if (medicineFields) medicineFields.style.display = 'block';
         } else {
             if (medicineFields) medicineFields.style.display = 'none';
         }
 
-        // =================================================================
-        // 3. БЛОКИРОВКА И СБРОС ХОЛОДИЛЬНИКА (ТОЛЬКО ДЛЯ МЕДИКАМЕНТОВ)
-        // =================================================================
+        // Блокировка и сброс холодильника (Только для Медикаментов)
         const coldCheckbox = document.getElementById('editRefrigerationRequired') || document.getElementById('editNeedsCold');
-        
         if (coldCheckbox) {
             const coldWrapper = coldCheckbox.closest('.medicine-toggle-wrapper');
             if (currentCategory === 'Медикаменты') {
@@ -116,7 +110,7 @@ function initMedicineFields() {
                     coldWrapper.style.pointerEvents = 'auto';
                 }
             } else {
-                coldCheckbox.checked = false; 
+                coldCheckbox.checked = false; // Сбрасываем тумблер в false
                 coldCheckbox.disabled = true;
                 if (coldWrapper) {
                     coldWrapper.style.opacity = '0.5';
