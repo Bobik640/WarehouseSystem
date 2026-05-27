@@ -20,28 +20,48 @@ function setupCategoryListener() {
     const categorySelect = document.getElementById('productCategory');
     const expiryGroup = document.getElementById('expiryDateGroup');
     const medicineFields = document.getElementById('medicineFields');
+    const coldCheckbox = document.getElementById('refrigerationRequired');
     
     if (!categorySelect) return;
     
     categorySelect.addEventListener('change', function() {
-        if (this.value === 'Продукты' || this.value === 'Медикаменты' || this.value === 'Спорт' || this.value === 'Сад и огород' || this.value === 'Косметика' || this.value === 'Бытовая химия' || this.value === 'Замороженные продукты' || this.value === 'Комплектующие ПК' || this.value === 'Строительные материалы' || this.value === 'Напитки' || this.value === 'Зоотовары') {
+        // 1. Управление Сроком Годности
+        const allowedExpiry = [
+            'Продукты', 'Медикаменты', 'Спорт', 'Сад и огород', 
+            'Косметика', 'Бытовая химия', 'Замороженные продукты', 
+            'Комплектующие ПК', 'Строительные материалы', 'Напитки', 'Зоотовары'
+        ];
+
+        if (allowedExpiry.includes(this.value)) {
             if (expiryGroup) expiryGroup.style.display = 'block';
         } else {
             if (expiryGroup) expiryGroup.style.display = 'none';
-            // Дополнительно: сбрасываем дату срока годности, если скрыли её
             const expiryDateInput = document.getElementById('productExpiryDate');
             if (expiryDateInput) expiryDateInput.value = '';
         }
         
-        if (this.value === 'Медикаменты' || this.value === 'Замороженные продукты') {
+        // 2. Управление медицинскими полями (СЕРИЯ, ДОЗИРОВКА И Т.Д.)
+        // ТЕПЕРЬ СТРОГО ДЛЯ МЕДИКАМЕНТОВ
+        if (this.value === 'Медикаменты') {
             if (medicineFields) medicineFields.style.display = 'block';
         } else {
             if (medicineFields) medicineFields.style.display = 'none';
-            
-            // ЧИТОК: Находим чекбокс холодильника внутри скрываемого блока и выключаем его
-            const coldCheckbox = document.getElementById('refrigerationRequired');
+        }
+
+        // 3. Управление кнопкой Холодильника (для Медикаментов и Заморозки)
+        // Если у вас в HTML чекбокс лежит внутри medicineFields, мы выносим управление его видимостью/активностью отдельно:
+        if (this.value === 'Медикаменты' || this.value === 'Замороженные продукты') {
+            // Если в вашей верстке чекбокс обернут в отдельный контейнер, 
+            // можно показывать его. Если нет — просто делаем его доступным:
+            if (coldCheckbox) {
+                coldCheckbox.disabled = false;
+                // Если у контейнера кнопки холодильника есть свой id (например, 'coldGroup'), 
+                // то здесь можно прописать: document.getElementById('coldGroup').style.display = 'block';
+            }
+        } else {
             if (coldCheckbox) {
                 coldCheckbox.checked = false;
+                coldCheckbox.disabled = true;
             }
         }
     });
