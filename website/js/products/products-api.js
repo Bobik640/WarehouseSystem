@@ -80,33 +80,47 @@ async function addNewProduct() {
         return;
     }
     
+    if (isNaN(price) || price < 0) {
+        showStatus('Цена не может быть отрицательной', 'error');
+        return;
+    }
+    
     try {
+        const coldCheckbox = document.getElementById('refrigerationRequired');
+        const currentCategory = categorySelect.value;
+        const allowedColdCategories = ['Медикаменты', 'Продукты', 'Замороженные продукты'];
 
-        const coldCheckbox =
-    document.getElementById(
-        'refrigerationRequired'
-    );
+        const refrigerationRequired = allowedColdCategories.includes(currentCategory)
+            ? (coldCheckbox ? coldCheckbox.checked : false)
+            : false;
 
-const refrigerationRequired =
-    coldCheckbox
-    ? coldCheckbox.checked
-    : false;
+        const requestBody = {
+            name,
+            quantity,
+            category: currentCategory,
+            price,
+            expiryDate,
+            refrigerationRequired,
+            description,
+            supplier,
+            location
+        };
 
-const requestBody = {
-    name,
-    quantity,
-    category,
-    price,
-    expiryDate,
-    refrigerationRequired,
-    description,
-    supplier,
-    location
-};
+        // ЕСЛИ ЭТО МЕДИКАМЕНТЫ — добавляем медицинские поля. 
+        // Для Замороженных продуктов они НЕ добавятся и отправляться не будут!
+        if (currentCategory === 'Медикаменты') {
+            requestBody.medicineSeries = document.getElementById('medicineSeries')?.value || '';
+            requestBody.medicineManufacturer = document.getElementById('medicineManufacturer')?.value || '';
+            requestBody.medicineDosage = document.getElementById('medicineDosage')?.value || '';
+            requestBody.medicineType = document.getElementById('medicineType')?.value || '';
+            
+            const recipeSelect = document.getElementById('medicineRecipe');
+            requestBody.prescriptionRequired = recipeSelect?.value === 'По рецепту';
+        }
 
-if (image) {
-    requestBody.image = image;
-}
+        if (image) {
+            requestBody.image = image;
+        }
         
         const response = await fetch(APP_CONFIG.API_URL, {
             method: 'POST',
