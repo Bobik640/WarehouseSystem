@@ -42,10 +42,11 @@ function setupCategoryListener() {
         }
         
         // 2. Управление медицинскими полями (СТРОГО ДЛЯ МЕДИКАМЕНТОВ)
-        if (this.value === 'Медикаменты') {
-            if (medicineFields) medicineFields.style.display = 'block';
+        if (this.value === 'Медикаменты' || this.value === 'Замороженные продукты') {
+            if (coldGroup) coldGroup.style.display = 'block';
         } else {
-            if (medicineFields) medicineFields.style.display = 'none';
+            if (coldGroup) coldGroup.style.display = 'none';
+            if (coldCheckbox) coldCheckbox.checked = false;
         }
 
         // 3. Управление видимостью контейнера Холодильника
