@@ -183,21 +183,39 @@ async function deleteProduct(productId) {
     
     const product = AppState.products.find(p => p._id === productId);
     const productName = product ? product.name : 'Товар';
+
+    // --- ОПТИМИСТИЧНЫЙ ШАГ: Удаляем товар из локального состояния СРАЗУ ---
+    const originalProducts = [...AppState.products]; // Сохраняем копию на случай ошибки
+    AppState.products = AppState.products.filter(p => p._id !== productId);
     
+    // Сразу обновляем интерфейс, не дожидаясь сервера!
+    applyFilters(); 
+    updateStats();
+    showStatus('Товар удаляется...', 'success');
+
     try {
+        // Отправляем запрос в бэкграунде
         const response = await fetch(`${APP_CONFIG.API_URL}/${productId}`, { method: 'DELETE' });
         const data = await response.json();
         
         if (data.success) {
             saveHistory('Удаление товара', `Товар: ${productName}\nТовар удалён со склада`);
             showStatus('Товар удалён', 'success');
-            loadProducts();
+            // loadProducts(); <-- ЭТУ СТРОКУ УДАЛЯЕМ! Нам больше не нужно перекачивать всю базу!
         } else {
-            showStatus(data.error || 'Ошибка', 'error');
+            // Если сервер вернул ошибку — возвращаем товар на место
+            AppState.products = originalProducts;
+            applyFilters();
+            updateStats();
+            showStatus(data.error || 'Ошибка при удалении', 'error');
         }
     } catch (error) {
         console.error(error);
-        showStatus('Ошибка сервера', 'error');
+        // Если легла сеть — тоже возвращаем товар на место
+        AppState.products = originalProducts;
+        applyFilters();
+        updateStats();
+        showStatus('Ошибка сервера, товар не удален', 'error');
     }
 }
 
