@@ -47,6 +47,7 @@ function initEditModal() {
 function initMedicineFields() {
     const categorySelect = document.getElementById('editCategory');
     const medicineFields = document.getElementById('editMedicineFields');
+    const coldGroup = document.getElementById('editColdGroup');
     const expiryGroup = document.getElementById('editExpiryDateGroup');
     const expiryInput = document.getElementById('editExpiryDate');
 
@@ -100,11 +101,22 @@ function initMedicineFields() {
         const allowedColdCategories = ['медикаменты', 'продукты', 'замороженные продукты', 'напитки'];
 
         if (allowedColdCategories.includes(currentCategoryLower)) {
-            coldCheckbox.disabled = false;
-        } else {
-            coldCheckbox.checked = false;
-            coldCheckbox.disabled = true;
-        }
+
+    if (coldGroup) {
+        coldGroup.style.display = 'flex';
+    }
+
+    coldCheckbox.disabled = false;
+
+} else {
+
+    if (coldGroup) {
+        coldGroup.style.display = 'none';
+    }
+
+    coldCheckbox.checked = false;
+    coldCheckbox.disabled = true;
+}
     }
     });
 }
@@ -137,7 +149,7 @@ async function saveEditedProduct() {
 
     // ИСПРАВЛЕННЫЙ СБОР ДАТЫ:
     // Если категория НЕ входит в разрешенные, или инпут очищен — отправляем строго null!
-    const allowedExpiryCategories = ['Медикаменты', 'Продукты', 'Спорт'];
+    const allowedExpiryCategories = ['Медикаменты', 'Продукты', 'Спорт', 'Косметика', 'Бытовая химия', 'Комплектующие ПК', 'Сад и огород', 'Зоотовары', 'Напитки', 'Замороженные продукты'];
     const expiryInput = document.getElementById('editExpiryDate');
     
     let finalExpiryDate = null;
@@ -250,41 +262,32 @@ function openEditModal(productId) {
 
     // Управление блоком Срока Годности (для Медикаментов и Продуктов)
     const allowedExpiryCategories = [
-    'Медикаменты',
-    'Продукты',
-    'Спорт',
-    'Косметика',
-    'Бытовая химия',
-    'Комплектующие ПК',
-    'Сад и огород',
-    'Зоотовары',
-    'Напитки',
-    'Замороженные продукты'
+    'медикаменты',
+    'продукты',
+    'спорт',
+    'косметика',
+    'бытовая химия',
+    'комплектующие пк',
+    'сад и огород',
+    'зоотовары',
+    'напитки',
+    'замороженные продукты'
 ];
 
-if (allowedExpiryCategories.includes(product.category)) {
+const normalizedCategory =
+    document.getElementById('editCategory')
+    ?.value
+    ?.toLowerCase()
+    ?.trim();
 
-    if (expiryGroup) {
-        expiryGroup.style.display = 'block';
-    }
+let finalExpiryDate = null;
 
-    const expiryInput = document.getElementById('editExpiryDate');
-
-    if (expiryInput && product.expiryDate) {
-        expiryInput.value = product.expiryDate.split('T')[0];
-    }
-
-} else {
-
-    if (expiryGroup) {
-        expiryGroup.style.display = 'none';
-    }
-
-    const expiryInput = document.getElementById('editExpiryDate');
-
-    if (expiryInput) {
-        expiryInput.value = '';
-    }
+if (
+    allowedExpiryCategories.includes(normalizedCategory) &&
+    expiryDateInput &&
+    expiryDateInput.value
+) {
+    finalExpiryDate = expiryDateInput.value;
 }
 
     // Управление блоком Медикаментов (СТРОГО для Медикаментов)
@@ -448,7 +451,6 @@ function closeEditModal() {
 }
 
 async function saveEditedProduct() {
-
     if (!AppState.editingProductId) return;
 
     const oldProduct = AppState.products.find(
@@ -458,17 +460,13 @@ async function saveEditedProduct() {
     if (!oldProduct) return;
 
     let image = oldProduct.image || '';
-
     const imageInput = document.getElementById('editImage');
 
     if (imageInput && imageInput.files && imageInput.files[0]) {
         image = await convertImageToBase64(imageInput.files[0]);
     }
 
-    // ИСПРАВЛЕНО: правильно получаем значение чекбокса холодильника
     const needsColdCheck = document.getElementById('editNeedsCold');
-    
-    // ИСПРАВЛЕНО: лог для отладки
     console.log('CHECKBOX элемент:', needsColdCheck);
     console.log('CHECKBOX значение (checked):', needsColdCheck ? needsColdCheck.checked : 'элемент не найден');
 
@@ -479,10 +477,17 @@ async function saveEditedProduct() {
     const allowedColdCategories = ['медикаменты', 'продукты', 'замороженные продукты', 'напитки'];
 
     const refrigerationRequired = allowedColdCategories.includes(currentCategory)
-        ? document.getElementById('editNeedsCold')?.checked === true
+        ? (needsColdCheck?.checked === true)
         : false;
 
     console.log('Итоговое refrigerationRequired:', refrigerationRequired);
+
+    // ИСПРАВЛЕНО: Сборка даты срока годности, чтобы finalExpiryDate существовала
+    const allowedExpiryCategories = ['медикаменты', 'продукты', 'спорт', 'косметика', 'бытовая химия', 'комплектующие пк', 'сад и огород', 'зоотовары', 'напитки', 'замороженные продукты'];
+    let finalExpiryDate = null;
+    if (allowedExpiryCategories.includes(currentCategory) && expiryDateInput && expiryDateInput.value) {
+        finalExpiryDate = expiryDateInput.value;
+    }
 
     const updatedData = {
         name: document.getElementById('editName')?.value || '',
@@ -494,11 +499,7 @@ async function saveEditedProduct() {
         category: document.getElementById('editCategory')?.value || '',
         image: image,
         refrigerationRequired: refrigerationRequired,
-        expiryDate:
-    expiryDateInput &&
-    expiryDateInput.value
-    ? expiryDateInput.value
-    : oldProduct.expiryDate || null
+        expiryDate: finalExpiryDate // ТЕПЕРЬ ПЕРЕМЕННАЯ СУЩЕСТВУЕТ И ПЕРЕДАЕТСЯ КОРРЕКТНО
     };
 
     // ===== MEDICINE EXTRA DATA =====
