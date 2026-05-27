@@ -52,20 +52,50 @@ function initMedicineFields() {
     if (!categorySelect) return;
 
     categorySelect.addEventListener('change', function() {
-        if (this.value === 'Медикаменты' || this.value === 'Продукты') {
-            if (expiryGroup) expiryGroup.style.display = 'block';
-        } else {
-            if (expiryGroup) expiryGroup.style.display = 'none';
-            const expiryInput = document.getElementById('editExpiryDate');
-            if (expiryInput) expiryInput.value = '';
+
+    const category =
+        this.value.trim().toLowerCase();
+
+    // ===== СРОК ГОДНОСТИ =====
+
+    if (
+        category === 'продукты' ||
+        category === 'медикаменты'
+    ) {
+
+        if (expiryGroup) {
+            expiryGroup.style.display = 'block';
         }
 
-        if (this.value === 'Медикаменты') {
-            if (medicineFields) medicineFields.style.display = 'block';
-        } else {
-            if (medicineFields) medicineFields.style.display = 'none';
+    } else {
+
+        if (expiryGroup) {
+            expiryGroup.style.display = 'none';
         }
-    });
+
+        const expiryInput =
+            document.getElementById('editExpiryDate');
+
+        if (expiryInput) {
+            expiryInput.value = '';
+        }
+    }
+
+    // ===== МЕДИКАМЕНТЫ =====
+
+    if (category === 'медикаменты') {
+
+        if (medicineFields) {
+            medicineFields.style.display = 'flex';
+        }
+
+    } else {
+
+        if (medicineFields) {
+            medicineFields.style.display = 'none';
+        }
+    }
+});
 }
 
 function openEditModal(productId) {
