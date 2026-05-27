@@ -52,50 +52,46 @@ function initMedicineFields() {
     if (!categorySelect) return;
 
     categorySelect.addEventListener('change', function() {
-
-    const category =
-        this.value.trim().toLowerCase();
-
-    // ===== СРОК ГОДНОСТИ =====
-
-    if (
-        category === 'продукты' ||
-        category === 'медикаменты'
-    ) {
-
-        if (expiryGroup) {
-            expiryGroup.style.display = 'block';
+        // 1. Управление блоком срока годности (для Медикаментов и Продуктов)
+        if (this.value === 'Медикаменты' || this.value === 'Продукты') {
+            if (expiryGroup) expiryGroup.style.display = 'block';
+        } else {
+            if (expiryGroup) expiryGroup.style.display = 'none';
+            const expiryInput = document.getElementById('editExpiryDate');
+            if (expiryInput) expiryInput.value = '';
         }
 
-    } else {
-
-        if (expiryGroup) {
-            expiryGroup.style.display = 'none';
+        // 2. Управление специфичными полями медикаментов
+        if (this.value === 'Медикаменты') {
+            if (medicineFields) medicineFields.style.display = 'block';
+        } else {
+            if (medicineFields) medicineFields.style.display = 'none';
         }
 
-        const expiryInput =
-            document.getElementById('editExpiryDate');
-
-        if (expiryInput) {
-            expiryInput.value = '';
+        // 3. БЛОКИРОВКА И СБРОС ХОЛОДИЛЬНИКА ДЛЯ ДРУГИХ КАТЕГОРИЙ
+        // Ищем чекбокс по ID, который прописан в вашем HTML
+        const coldCheckbox = document.getElementById('editRefrigerationRequired') || document.getElementById('editNeedsCold');
+        
+        if (coldCheckbox) {
+            if (this.value === 'Медикаменты') {
+                // Если выбраны Медикаменты — разблокируем тумблер
+                coldCheckbox.disabled = false;
+                coldCheckbox.closest('.medicine-toggle-wrapper').style.opacity = '1';
+                coldCheckbox.closest('.medicine-toggle-wrapper').style.pointerEvents = 'auto';
+            } else {
+                // Если любая другая категория — принудительно выключаем и блокируем!
+                coldCheckbox.checked = false; 
+                coldCheckbox.disabled = true;
+                
+                // Делаем блок визуально серым (неактивным), чтобы пользователь видел блокировку
+                const wrapper = coldCheckbox.closest('.medicine-toggle-wrapper');
+                if (wrapper) {
+                    wrapper.style.opacity = '0.5';
+                    wrapper.style.pointerEvents = 'none'; // Запрещает клики мышкой
+                }
+            }
         }
-    }
-
-    // ===== МЕДИКАМЕНТЫ =====
-
-    if (category === 'медикаменты') {
-
-        if (medicineFields) {
-            medicineFields.style.display = 'flex';
-        }
-
-    } else {
-
-        if (medicineFields) {
-            medicineFields.style.display = 'none';
-        }
-    }
-});
+    });
 }
 
 function openEditModal(productId) {
