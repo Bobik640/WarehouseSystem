@@ -47,19 +47,112 @@ function initEditModal() {
 function initMedicineFields() {
     const categorySelect = document.getElementById('editCategory');
     const medicineFields = document.getElementById('editMedicineFields');
+    const expiryGroup = document.getElementById('editExpiryDateGroup');
 
-    if (!categorySelect || !medicineFields) return;
+    if (!categorySelect) return;
 
-    function toggleMedicineFields() {
-        if (categorySelect.value === 'Медикаменты') {
-            medicineFields.style.display = 'flex';
+    categorySelect.addEventListener('change', function() {
+        if (this.value === 'Медикаменты' || this.value === 'Продукты') {
+            if (expiryGroup) expiryGroup.style.display = 'block';
         } else {
-            medicineFields.style.display = 'none';
+            if (expiryGroup) expiryGroup.style.display = 'none';
+            const expiryInput = document.getElementById('editExpiryDate');
+            if (expiryInput) expiryInput.value = '';
         }
+
+        if (this.value === 'Медикаменты') {
+            if (medicineFields) medicineFields.style.display = 'block';
+        } else {
+            if (medicineFields) medicineFields.style.display = 'none';
+        }
+    });
+}
+
+function openEditModal(productId) {
+    const product = AppState.products.find(p => p._id === productId);
+    if (!product) {
+        showStatus('Товар не найден', 'error');
+        return;
     }
 
-    categorySelect.addEventListener('change', toggleMedicineFields);
-    toggleMedicineFields();
+    AppState.editingProductId = productId;
+
+    const overlay = document.getElementById('editModalOverlay');
+    if (overlay) overlay.classList.add('active');
+
+    // Заполнение базовых полей
+    if (document.getElementById('editModalTitle')) {
+        document.getElementById('editModalTitle').textContent = product.name;
+    }
+    if (document.getElementById('editName')) {
+        document.getElementById('editName').value = product.name;
+    }
+    if (document.getElementById('editQuantity')) {
+        document.getElementById('editQuantity').value = product.quantity;
+    }
+    if (document.getElementById('editPrice')) {
+        document.getElementById('editPrice').value = product.price;
+    }
+    if (document.getElementById('editDescription')) {
+        document.getElementById('editDescription').value = product.description || '';
+    }
+    if (document.getElementById('editSupplier')) {
+        document.getElementById('editSupplier').value = product.supplier || '';
+    }
+    if (document.getElementById('editLocation')) {
+        document.getElementById('editLocation').value = product.location || '';
+    }
+
+    const categorySelect = document.getElementById('editCategory');
+    if (categorySelect) {
+        categorySelect.value = product.category;
+    }
+
+    // Обработка превью изображения
+    const previewImage = document.getElementById('editPreviewImage');
+    if (previewImage) {
+        previewImage.src = product.image || 'https://placehold.co/600x400/e2e8f0/475569?text=No+Image';
+    }
+    AppState.editImageBase64 = product.image || '';
+
+    // Находим блоки UI для специфичных полей
+    const expiryGroup = document.getElementById('editExpiryDateGroup');
+    const medicineFields = document.getElementById('editMedicineFields'); // <-- ОБЪЯВИЛИ ПЕРЕМЕННУЮ ЗДЕСЬ
+
+    // Управление блоком Срока Годности (для Медикаментов и Продуктов)
+    if (product.category === 'Медикаменты' || product.category === 'Продукты') {
+        if (expiryGroup) expiryGroup.style.display = 'block';
+        const expiryInput = document.getElementById('editExpiryDate');
+        if (expiryInput && product.expiryDate) {
+            expiryInput.value = product.expiryDate.split('T')[0];
+        }
+    } else {
+        if (expiryGroup) expiryGroup.style.display = 'none';
+        const expiryInput = document.getElementById('editExpiryDate');
+        if (expiryInput) expiryInput.value = '';
+    }
+
+    // Управление блоком Медикаментов (СТРОГО для Медикаментов)
+    if (product.category === 'Медикаменты') {
+        if (medicineFields) medicineFields.style.display = 'block';
+        
+        if (document.getElementById('editMedicineManufacturer')) {
+            document.getElementById('editMedicineManufacturer').value = product.medicineManufacturer || '';
+        }
+        if (document.getElementById('editMedicineDosage')) {
+            document.getElementById('editMedicineDosage').value = product.medicineDosage || '';
+        }
+        if (document.getElementById('editMedicineType')) {
+            document.getElementById('editMedicineType').value = product.medicineType || '';
+        }
+        
+        const recipeSelect = document.getElementById('editMedicineRecipe');
+        if (recipeSelect) {
+            recipeSelect.value = product.prescriptionRequired ? 'По рецепту' : 'Без рецепта';
+        }
+    } else {
+        if (medicineFields) medicineFields.style.display = 'none';
+    }
 }
 
 function initEditUpload() {
