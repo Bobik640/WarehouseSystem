@@ -19,35 +19,30 @@ function applyFilters() {
 function setupCategoryListener() {
     const categorySelect = document.getElementById('productCategory');
     const expiryGroup = document.getElementById('expiryDateGroup');
-    const expiryDateInput = document.getElementById('productExpiryDate');
     const medicineFields = document.getElementById('medicineFields');
     
     if (!categorySelect) return;
     
-    // Разрешенные категории для срока годности (Белый список)
-    const allowedExpiryCategories = ['Продукты', 'Медикаменты', 'Спорт'];
-    
     categorySelect.addEventListener('change', function() {
-        const currentCategory = this.value;
-
-        // Блокировка и отображение поля срока годности
-        if (allowedExpiryCategories.includes(currentCategory)) {
+        if (this.value === 'Продукты' || this.value === 'Медикаменты' || this.value === 'Спорт') {
             if (expiryGroup) expiryGroup.style.display = 'block';
-            if (expiryDateInput) expiryDateInput.disabled = false;
         } else {
             if (expiryGroup) expiryGroup.style.display = 'none';
-            // Принудительно очищаем и блокируем поле, чтобы дата не отправилась скрытно
-            if (expiryDateInput) {
-                expiryDateInput.value = '';
-                expiryDateInput.disabled = true;
-            }
+            // Дополнительно: сбрасываем дату срока годности, если скрыли её
+            const expiryDateInput = document.getElementById('productExpiryDate');
+            if (expiryDateInput) expiryDateInput.value = '';
         }
         
-        // Отображение дополнительных полей для Медикаментов
-        if (currentCategory === 'Медикаменты') {
+        if (this.value === 'Медикаменты') {
             if (medicineFields) medicineFields.style.display = 'block';
         } else {
             if (medicineFields) medicineFields.style.display = 'none';
+            
+            // ЧИТОК: Находим чекбокс холодильника внутри скрываемого блока и выключаем его
+            const coldCheckbox = document.getElementById('refrigerationRequired');
+            if (coldCheckbox) {
+                coldCheckbox.checked = false;
+            }
         }
     });
 }
