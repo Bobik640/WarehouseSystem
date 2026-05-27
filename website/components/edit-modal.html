@@ -71,18 +71,15 @@
                         <option>Другое</option>
                     </select>
 
-                    <div
+                    <!-- СРОК ГОДНОСТИ -->
+<div
     id="editExpiryDateGroup"
     class="edit-section"
     style="display:none;"
 >
-
     <label class="medicine-label">
-
         <i class="fas fa-calendar-times"></i>
-
         Срок годности
-
     </label>
 
     <input
@@ -90,11 +87,9 @@
         id="editExpiryDate"
         class="form-control"
     >
-
 </div>
 
-                    <!-- MEDICINE FIELDS -->
-
+<!-- MEDICINE FIELDS -->
 <div
     id="editMedicineFields"
     class="medicine-fields"
@@ -102,13 +97,9 @@
 >
 
     <div class="edit-section">
-
         <label class="medicine-label">
-
             <i class="fas fa-capsules"></i>
-
             Серия препарата
-
         </label>
 
         <input
@@ -117,17 +108,12 @@
             class="form-control"
             placeholder="Например: A-542"
         >
-
     </div>
 
     <div class="edit-section">
-
         <label class="medicine-label">
-
             <i class="fas fa-industry"></i>
-
             Производитель
-
         </label>
 
         <input
@@ -136,17 +122,12 @@
             class="form-control"
             placeholder="Pfizer / Bayer"
         >
-
     </div>
 
     <div class="edit-section">
-
         <label class="medicine-label">
-
             <i class="fas fa-prescription-bottle"></i>
-
             Дозировка
-
         </label>
 
         <input
@@ -155,72 +136,74 @@
             class="form-control"
             placeholder="500mg"
         >
-
     </div>
 
     <div class="edit-section">
-
         <label class="medicine-label">
-
             <i class="fas fa-pills"></i>
-
             Тип
-
         </label>
 
         <select
             id="editMedicineType"
             class="form-control"
         >
-
             <option>Таблетки</option>
             <option>Сироп</option>
             <option>Ампулы</option>
             <option>Капсулы</option>
             <option>Мазь</option>
-
         </select>
-
     </div>
 
     <div class="edit-section">
-
         <label class="medicine-label">
-
             <i class="fas fa-file-medical"></i>
-
             Рецептурный
-
         </label>
 
         <select
             id="editMedicineRecipe"
             class="form-control"
         >
-
             <option>Без рецепта</option>
             <option>По рецепту</option>
-
         </select>
+    </div>
+
+</div>
+
+<!-- ХОЛОДИЛЬНИК -->
+<div
+    id="editColdGroup"
+    class="edit-section"
+    style="display:none;"
+>
+
+    <label class="medicine-label">
+        <i class="fas fa-snowflake"></i>
+        Требует холодильник
+    </label>
+
+    <div class="medicine-toggle">
+
+        <label class="switch" for="editNeedsCold">
+            <input type="checkbox" id="editNeedsCold">
+            <span class="slider"></span>
+        </label>
+
+        <span class="medicine-toggle-text">
+            Хранить в холоде
+        </span>
 
     </div>
 
-    <div class="medicine-toggle">
-    <label class="switch" for="editNeedsCold">
-        <input type="checkbox" id="editNeedsCold">
-        <span class="slider"></span>
-    </label>
-    <span class="medicine-toggle-text">
-        ❄ Требует холодильник
-    </span>
 </div>
 
-</div>
-
-                    <button class="edit-save-btn" id="saveEditBtn">
-                        <i class="fas fa-check"></i>
-                        Сохранить изменения
-                    </button>
+<button class="edit-save-btn" id="saveEditBtn">
+    <i class="fas fa-check"></i>
+    Сохранить изменения
+</button>
                 </div>
             </div>
         </div>

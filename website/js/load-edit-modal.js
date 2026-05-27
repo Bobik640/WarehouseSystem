@@ -95,13 +95,17 @@ function initMedicineFields() {
         // Управление холодильником
         const coldCheckbox = document.getElementById('editRefrigerationRequired') || document.getElementById('editNeedsCold');
         if (coldCheckbox) {
-            if (currentCategory === 'Медикаменты') {
-                coldCheckbox.disabled = false;
-            } else {
-                coldCheckbox.checked = false;
-                coldCheckbox.disabled = true;
-            }
+        const currentCategoryLower = currentCategory.toLowerCase().trim();
+        // Список категорий, для которых доступен холодильник
+        const allowedColdCategories = ['медикаменты', 'продукты', 'замороженные продукты', 'напитки'];
+
+        if (allowedColdCategories.includes(currentCategoryLower)) {
+            coldCheckbox.disabled = false;
+        } else {
+            coldCheckbox.checked = false;
+            coldCheckbox.disabled = true;
         }
+    }
     });
 }
 
@@ -470,11 +474,11 @@ async function saveEditedProduct() {
 
     const expiryDateInput = document.getElementById('editExpiryDate');
 
-    // [ИСПРАВЛЕНО]: Позволяет сохранять статус холодильника для Продуктов и Медикаментов
+    // Разрешаем сохранять статус холодильника для Медикаментов, Продуктов, Заморозки и Напитков
     const currentCategory = document.getElementById('editCategory')?.value?.toLowerCase()?.trim() || '';
-    const allowedCategories = ['медикаменты', 'продукты', 'замороженные продукты'];
-    
-    const refrigerationRequired = allowedCategories.includes(currentCategory)
+    const allowedColdCategories = ['медикаменты', 'продукты', 'замороженные продукты', 'напитки'];
+
+    const refrigerationRequired = allowedColdCategories.includes(currentCategory)
         ? document.getElementById('editNeedsCold')?.checked === true
         : false;
 
